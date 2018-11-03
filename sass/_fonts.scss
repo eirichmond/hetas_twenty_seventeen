@@ -1,0 +1,23 @@
+@font-face {
+	font-family: 'Glyphicons Halflings';
+	src: url(/wp-content/themes/hetas_twenty_seventeen/#{$icon-font-path}#{$icon-font-name}.ttf) format('truetype');
+	src: url(/wp-content/themes/hetas_twenty_seventeen/#{$icon-font-path}#{$icon-font-name}.eot?#iefix)
+	format('embedded-opentype'),
+	url(/wp-content/themes/hetas_twenty_seventeen/#{$icon-font-path}#{$icon-font-name}.woff) format('woff'),
+	url(/wp-content/themes/hetas_twenty_seventeen/#{$icon-font-path}#{$icon-font-name}.ttf) , format('truetype'),
+	url(/wp-content/themes/hetas_twenty_seventeen/#{$icon-font-path}#{$icon-font-name}.svg##{$icon-font-svg-id})
+	format('svg');
+}
+@font-face {
+	font-family: 'FontAwesome';
+	src: url('/wp-content/themes/hetas_twenty_seventeen/fonts/fontawesome-webfont.eot');
+	src: url('/wp-content/themes/hetas_twenty_seventeen/fonts/fontawesome-webfont.eot') format('embedded-opentype'),
+	url('/wp-content/themes/hetas_twenty_seventeen/fonts/fontawesome-webfont.woff2') format('woff2'),
+	url('/wp-content/themes/hetas_twenty_seventeen/fonts/fontawesome-webfont.woff') format('woff'),
+	url('/wp-content/themes/hetas_twenty_seventeen/fonts/fontawesome-webfont.ttf') format('truetype'),
+	url('/wp-content/themes/hetas_twenty_seventeen/fonts/fontawesome-webfont.svg#fontawesomeregular') format('svg');
+	//  src: url('#{$fa-font-path}/FontAwesome.otf') format('opentype'); // used when developing fonts
+	font-weight: normal;
+	font-style: normal;
+
+}

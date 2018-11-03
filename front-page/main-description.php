@@ -1,0 +1,1 @@
+<h2 class="text-center"><?php echo get_option ('het_homepage_text'); ?></h2>

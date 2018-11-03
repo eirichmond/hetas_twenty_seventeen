@@ -1,0 +1,76 @@
+.search-area.border {
+    border: 1px solid #28a758;
+    border-width: 1px 0;
+    padding: 28px 2px 23px;
+    margin: 0 8px 22px;
+    &.instamenu {
+	    background: rgba(40,167,88,0.1);
+    }
+}
+
+#menu-technical-area {
+    padding: 0px 20px;
+    margin: 0;
+    float: none;
+}
+#menu-technical-area li {
+    margin: 0;
+    padding: 0;
+    float: none;
+    display: inline-block;
+    transition: all .3s;
+    border: none;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	&:hover, &.current-menu-item {
+	    background: #00a160;
+	    color: #fff;
+	    a {
+		    text-decoration: none;
+		    color: #fff;
+	    }
+	}
+	&:hover {
+		text-decoration: none;
+	    ul.sub-menu {
+		    top: 26px;
+		    margin: 0px;
+		    padding: 0px;
+		    z-index: 999;
+		    li {
+			    background: #e3e3e3;
+			    padding: 5px;
+			    width: 100%;
+			    transition: all .3s;
+			    &:hover {
+				    text-decoration: none;
+				    a {
+					    color: #fff;
+				    }
+				    
+				    background: #28a758
+			    }
+		    }
+	    }
+	}
+	a {
+		font-weight: normal;
+	}
+	.sub-menu {
+	    position: absolute;
+	    top: -9999px;
+	    width: 220px;
+	    box-shadow: none;
+	    background: none;
+   		li {
+			a {
+				color: #00a160;
+			}
+		}
+	}
+}
+
+#menu-technical-area li a {
+    padding: 5px 10px;
+}
