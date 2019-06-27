@@ -97,8 +97,12 @@ if (isset($_GET['regid']) && $_GET['regid']) {
 		'posts_per_page' => '-1'
 	);
 	
+	var_dump($_GET);
 	if (isset($_GET['postcode']) && $_GET['postcode']) {
 		$location = geocode_postcode($_GET['postcode']);
+		var_dump($location);
+		wp_die();
+
 	}
 		
 	if (isset($_GET['lat']) && $_GET['lat'] && isset($_GET['lng']) && $_GET['lng']) {
@@ -228,106 +232,103 @@ $google_api_key = hetas_gm_api_key();
 </div>
 
 
-
+<?php if ( $posts ) : ?> 
 		    
 <div class="row">
 	<div class="col-md-9">
 	
 		<div id="main">
 			<div id="content">
-				
-				<?php if ( $posts ) : ?> 
-				
-					<ul class="search-results" id="business">
-					    <?php foreach ($posts as $post) : ?>
-						<li>
-							<h3><?php the_title(); ?></h3>
-							
-							<div class="row">
-								<div class="col-md-6">
-									<ul>
-									    <?php if (has_field($post->ID, 'inst_address_1')) : ?>
-								            <li><?php custom_field($post->ID, 'inst_address_1'); ?></li>
-								        <?php endif; ?> 
-								        <?php if (has_field($post->ID, 'inst_address_2')) : ?>
-								            <li><?php custom_field($post->ID, 'inst_address_2'); ?></li>
-								        <?php endif; ?>
-								        <?php if (has_field($post->ID, 'inst_address_3')) : ?>
-								            <li><?php custom_field($post->ID, 'inst_address_3'); ?></li>
-								        <?php endif; ?>
-								        <?php if (has_field($post->ID, 'inst_town')) : ?>
-								            <li><?php custom_field($post->ID, 'inst_town'); ?></li>
-								        <?php endif; ?>
-								        <?php if (has_field($post->ID, 'inst_county')) : ?>
-								            <li><?php custom_field($post->ID, 'inst_county'); ?></li>
-								        <?php endif; ?>
-								        <?php if (has_field($post->ID, 'inst_postcode')) : ?>
-								            <li><?php custom_field($post->ID, 'inst_postcode'); ?></li>
-								        <?php endif; ?>
-								        <?php if (has_field($post->ID, 'inst_phone')) : ?>
-								            <li>Tel: <?php custom_field($post->ID, 'inst_phone'); ?></li>
-								        <?php endif; ?>
-								        <?php if (has_field($post->ID, 'inst_mobile')) : ?>
-								            <li>Mob: <?php custom_field($post->ID, 'inst_mobile'); ?></li>
-								        <?php endif; ?>
-								        <?php if (has_field($post->ID, 'inst_fax')) : ?>
-								            <li>Fax: <?php custom_field($post->ID, 'inst_fax'); ?></li>
-								        <?php endif; ?>
-								        <?php if (has_field($post->ID, 'inst_website')) : ?>
-								            <li>Website: <a href="<?php custom_field($post->ID, 'inst_website'); ?>" target="_blank" title="website" ><?php custom_field($post->ID, 'inst_website'); ?></a></li>
-								        <?php endif; ?>
-								        <?php if ($post->distance) : ?>
-								        <li><?php echo intval($post->distance) > 1 ? intval($post->distance) . " miles away" : "less than a mile away"; ?></li>
-								        <?php endif; ?>
-									</ul>
-									
-									<h4>Areas of work:</h4>
-									
-									<?php
-									$terms = get_the_terms( $post->ID, 'competencies' );
-									if ( $terms && ! is_wp_error( $terms ) ) : 
-										$competencies = array();
-										foreach ( $terms as $term ) {
-											$competencies[] = $term->name;
-										}
-									?>
-										<ul>
-											<?php 
-											foreach ($competencies as $competencie) {
-												echo '<li>' . $competencie . '</li>';
-											}
-											?>
-										</ul>
-									<?php endif; ?>	
-									
-								    <?php if (has_field($post->ID, 'inst_email')) : ?>
-									<a href="mailto:<?php custom_field($post->ID, 'inst_email'); ?>" class="btn btn-dark">Contact &raquo;</a>
-									<?php endif; ?>
-	
-								</div>
-								<div class="col-md-6">
-									<div class="map retailer">
-										
-										<iframe width="100%" height="350" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=<?php custom_field($post->ID, 'inst_postcode'); ?>%20&key=<?php echo '-'.$google_api_key; ?>" allowfullscreen></iframe>
-	
-										
-	<!-- 									<a href="https://maps.google.co.uk/maps?q=<?php custom_field($post->ID, 'inst_postcode'); ?>" target="_blank"><img src="https://maps.googleapis.com/maps/api/staticmap?center=<?php custom_field($post->ID, 'inst_lat'); ?>,<?php custom_field($post->ID, 'inst_lng'); ?>&amp;zoom=11&amp;size=360x360&amp;sensor=false&amp;markers=color:green|<?php custom_field($post->ID, 'inst_lat'); ?>,<?php custom_field($post->ID, 'inst_lng'); ?>&key=<?php echo esc_attr( $google_api_key ); ?>"></a> -->
-										
-									</div>
-								</div>
-							</div>
+				<ul class="search-results" id="business">
+				    <?php foreach ($posts as $post) : ?>
+					<li>
+						<h3><?php the_title(); ?></h3>
+						
+						<div class="row">
+							<div class="col-md-6">
+								<ul>
+								    <?php if (has_field($post->ID, 'inst_address_1')) : ?>
+							            <li><?php custom_field($post->ID, 'inst_address_1'); ?></li>
+							        <?php endif; ?> 
+							        <?php if (has_field($post->ID, 'inst_address_2')) : ?>
+							            <li><?php custom_field($post->ID, 'inst_address_2'); ?></li>
+							        <?php endif; ?>
+							        <?php if (has_field($post->ID, 'inst_address_3')) : ?>
+							            <li><?php custom_field($post->ID, 'inst_address_3'); ?></li>
+							        <?php endif; ?>
+							        <?php if (has_field($post->ID, 'inst_town')) : ?>
+							            <li><?php custom_field($post->ID, 'inst_town'); ?></li>
+							        <?php endif; ?>
+							        <?php if (has_field($post->ID, 'inst_county')) : ?>
+							            <li><?php custom_field($post->ID, 'inst_county'); ?></li>
+							        <?php endif; ?>
+							        <?php if (has_field($post->ID, 'inst_postcode')) : ?>
+							            <li><?php custom_field($post->ID, 'inst_postcode'); ?></li>
+							        <?php endif; ?>
+							        <?php if (has_field($post->ID, 'inst_phone')) : ?>
+							            <li>Tel: <?php custom_field($post->ID, 'inst_phone'); ?></li>
+							        <?php endif; ?>
+							        <?php if (has_field($post->ID, 'inst_mobile')) : ?>
+							            <li>Mob: <?php custom_field($post->ID, 'inst_mobile'); ?></li>
+							        <?php endif; ?>
+							        <?php if (has_field($post->ID, 'inst_fax')) : ?>
+							            <li>Fax: <?php custom_field($post->ID, 'inst_fax'); ?></li>
+							        <?php endif; ?>
+							        <?php if (has_field($post->ID, 'inst_website')) : ?>
+							            <li>Website: <a href="<?php custom_field($post->ID, 'inst_website'); ?>" target="_blank" title="website" ><?php custom_field($post->ID, 'inst_website'); ?></a></li>
+							        <?php endif; ?>
+							        <?php if ($post->distance) : ?>
+							        <li><?php echo intval($post->distance) > 1 ? intval($post->distance) . " miles away" : "less than a mile away"; ?></li>
+							        <?php endif; ?>
+								</ul>
 								
-						</li>
-	                    <?php endforeach; ?>
-					</ul>
 
-				<?php else: ?>
-				
-					<p>Sorry, no businesses could be found.</p>
-					
-				<?php endif; ?>
-				
+							</div>
+							<div class="col-md-6">
+								
+								<h4>Areas of work:</h4>
+								
+								<?php
+								$terms = get_the_terms( $post->ID, 'competencies' );
+								if ( $terms && ! is_wp_error( $terms ) ) : 
+									$competencies = array();
+									foreach ( $terms as $term ) {
+										$competencies[] = $term->name;
+									}
+								?>
+									<ul>
+										<?php 
+										foreach ($competencies as $competencie) {
+											echo '<li>' . $competencie . '</li>';
+										}
+										?>
+									</ul>
+								<?php endif; ?>	
+								
+							    <?php if (has_field($post->ID, 'inst_email')) : ?>
+								<a href="mailto:<?php custom_field($post->ID, 'inst_email'); ?>" class="btn btn-dark">Contact &raquo;</a>
+								<?php endif; ?>
+
+<!--
+								<div class="map retailer">
+									
+									<iframe width="100%" height="350" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=<?php custom_field($post->ID, 'inst_postcode'); ?>%20&key=<?php echo '-'.$google_api_key; ?>" allowfullscreen></iframe>
+
+									
+									<a href="https://maps.google.co.uk/maps?q=<?php custom_field($post->ID, 'inst_postcode'); ?>" target="_blank"><img src="https://maps.googleapis.com/maps/api/staticmap?center=<?php custom_field($post->ID, 'inst_lat'); ?>,<?php custom_field($post->ID, 'inst_lng'); ?>&amp;zoom=11&amp;size=360x360&amp;sensor=false&amp;markers=color:green|<?php custom_field($post->ID, 'inst_lat'); ?>,<?php custom_field($post->ID, 'inst_lng'); ?>&key=<?php echo esc_attr( $google_api_key ); ?>"></a>
+									
+								</div>
+-->
+							</div>
+						</div>
+							
+					</li>
+                    <?php endforeach; ?>
+				</ul>
 			</div>
+		<?php else: ?>
+			<p>Sorry, no businesses could be found.</p>
+		<?php endif; ?>
 
 
 		</div><!-- /main -->
@@ -335,7 +336,7 @@ $google_api_key = hetas_gm_api_key();
 	</div>
 	
 	<div class="col-md-3">
-		<?php get_sidebar('searchresults'); ?>
+	<?php get_sidebar('searchresults'); ?>
 	</div>
 
 </div><!-- /row -->			

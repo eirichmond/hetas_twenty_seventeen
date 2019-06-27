@@ -41,7 +41,7 @@
 
 
 	            var onSuccess = function(results, status) {
-
+		            
 					var lat = results.latitude;
 					var lng = results.longitude;
 
@@ -63,6 +63,7 @@
 	            }
 	            
 				$.ajax(settings).done(function (response) {
+					
 					onSuccess(response.result, true)
 				});
 				//geocoder.geocode({ 'address': postcode }, onSuccess);

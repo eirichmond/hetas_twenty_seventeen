@@ -78,8 +78,42 @@ if ( post_password_required() ) {
 		<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'hetas_twenty_seventeen' ); ?></p>
 	<?php
 	endif;
-
-	comment_form();
+	
+	$commenter = wp_get_current_commenter();
+	$req = get_option( 'require_name_email' );
+	$aria_req = ( $req ? " aria-required='true'" : '' );
+	
+	$consent = empty( $commenter['comment_author_email'] ) ? '' : ' checked="checked"';
+	
+	$fields =  array(
+	
+	  'author' =>
+	    '<p class="comment-form-author form-group"><label for="author">' . __( 'Name', 'domainreference' ) .
+	    ( $req ? '<span class="required">*</span>' : '' ) . '</label>' .
+	    '<input id="author" class="form-control" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) .
+	    '" size="30"' . $aria_req . ' /></p>',
+	
+	  'email' =>
+	    '<p class="comment-form-email form-group"><label for="email">' . __( 'Email', 'domainreference' ) .
+	    ( $req ? '<span class="required">*</span>' : '' ) . '</label>' .
+	    '<input id="email" class="form-control" name="email" type="text" value="' . esc_attr(  $commenter['comment_author_email'] ) .
+	    '" size="30"' . $aria_req . ' /></p>',
+	
+	  'url' =>
+	    '<p class="comment-form-url form-group"><label for="url">' . __( 'Website', 'domainreference' ) . '</label>' .
+	    '<input id="url" class="form-control" name="url" type="text" value="' . esc_attr( $commenter['comment_author_url'] ) .
+	    '" size="30" /></p>',
+	);
+	
+	$fields['cookies'] =  '<p class="comment-form-cookies-consent checkbox">
+	<label for="wp-comment-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes"' . $consent . ' />' . __( 'Save my name, email, and website in this browser for the next time I comment.' ) . '</label></p>';
+	
+	$comments_form = array(
+		'comment_field' => '<p class="comment-form-comment form-group"><label for="comment">' . _x( 'Comment', 'noun' ) . '</label><textarea id="comment" class="form-control" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>',
+		'class_submit' => 'btn btn-primary',
+		'fields' => $fields,
+	);
+	comment_form($comments_form);
 	?>
 
 </div><!-- #comments -->

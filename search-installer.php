@@ -31,7 +31,7 @@ Template Name: Search Installer
 								
 								<label for="postcode">By postcode</label>
 								<input id="postcode" class="form-control postcodeUK" name="postcode" type="text" placeholder="Enter your postcode (required)" required>
-	
+								
 							</div>
 							
 							<span class="lbl">Installer Type</span>
@@ -130,6 +130,12 @@ Template Name: Search Installer
 					</div>
 				</div>
 			</div>
+			
+			<p class="mt-10">
+			
+				<a class="btn btn-warning" href="/hetas-ireland/" role="button">Click here to search for registered installers in Ireland.</a>
+			
+			</p>
 								
 		</div>
 		<div class="col-md-6 inst-nav">

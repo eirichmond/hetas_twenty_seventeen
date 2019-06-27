@@ -32,10 +32,10 @@
 		    'menu_class' => 'loggers',
 		    'container' => false,
 		) ); ?>
-		
+
 		<div class="row">
 			<div class="col-md-12">
-				
+
 				<?php get_template_part( 'header-parts/header', 'nav' ); ?>
 
 			</div>

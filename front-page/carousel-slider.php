@@ -1,4 +1,4 @@
-<?php 
+<?php
 $args = array(
 	'post_type' => 'featured_slider',
 	'posts_per_page' => -1,
@@ -21,12 +21,12 @@ $the_query = new WP_Query( $args ); ?>
 	<div class="carousel-inner" role="listbox">
 
 		<?php $i = 0; while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
-		
-		
+
+
 		  	<?php $id = get_the_ID(); $link_group = get_post_meta($id, 'link_to', true);
 			  	$linkto = get_featured_permalink(get_the_ID());
 		  	?>
-		
+
 			<div class="<?php echo carousel_first_active_class($i); ?>">
 				<?php if ( has_post_thumbnail() ) { the_post_thumbnail('home-feature'); } ?>
 				<div class="carousel-caption">
@@ -38,17 +38,17 @@ $the_query = new WP_Query( $args ); ?>
 			    	<?php } else { ?>
 				    	<h1 class="cc-lead"><?php the_title(); ?></h1>
 			    	<?php } ?>
-					
+
 					<div class="cc-body">
 						<?php the_content(); ?>
 					</div>
-					
+
 				</div>
 			</div>
-		
+
 		<?php $i++; endwhile; ?>
 		<?php wp_reset_postdata(); ?>
-		
+
 	</div>
 
 	<!-- Controls -->
@@ -63,6 +63,6 @@ $the_query = new WP_Query( $args ); ?>
 	</a>
 -->
 </div>
-	
+
 <?php endif; ?>
 

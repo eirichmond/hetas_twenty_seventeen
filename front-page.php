@@ -16,10 +16,13 @@ get_header(); ?>
 
 
 <?php if ( !wp_is_mobile() ) {
-	get_template_part( 'front-page/carousel', 'slider' );	
+	get_template_part( 'front-page/carousel', 'slider' );
 } ?>
 
 <?php get_template_part( 'header-parts/search', 'nav' ); ?>
+
+<?php the_content(); ?>
+<?php edit_post_link('<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit', '<p>', '</p>'); ?>
 
 <?php get_template_part( 'front-page/main', 'description' ); ?>
 

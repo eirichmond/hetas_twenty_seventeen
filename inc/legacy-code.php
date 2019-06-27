@@ -1,10 +1,10 @@
 <?php
-	
+
 function wps_highlight_results(){
 	$key = get_query_var('s');
 	$teaser = wp_trim_words( get_the_content(), 50, '...' );
 	$replace = '<strong class="search-key">'.$key.'</strong>';
-	$teaser_text = str_replace($key, $replace, $teaser);	     
+	$teaser_text = str_replace($key, $replace, $teaser);
 	return $teaser_text;
 }
 
@@ -42,7 +42,7 @@ function custom_business_column( $column, $post_id ) {
             break;
 
         case 'lng' :
-            $lng = get_post_meta( $post_id , 'inst_lng' , true ); 
+            $lng = get_post_meta( $post_id , 'inst_lng' , true );
             if ( $lng )
                 echo $lng;
             else
@@ -75,7 +75,7 @@ function custom_fuel_column( $column, $post_id ) {
             break;
 
         case 'lng' :
-            $lng = get_post_meta( $post_id , 'inst_lng' , true ); 
+            $lng = get_post_meta( $post_id , 'inst_lng' , true );
             if ( $lng )
                 echo $lng;
             else
@@ -110,7 +110,7 @@ function remove_all_business_posts() {
 	foreach ($postids as $postid) {
 		wp_delete_post( $postid, true );
 	}
-	
+
 }
 add_action('init', 'remove_all_business_posts');
 */
@@ -139,7 +139,7 @@ remove_action('wp_head', 'wp_generator');
 
 
 // create a role for members to login
-add_role('member', 'Member\'s Area User'); 
+add_role('member', 'Member\'s Area User');
 
 // redirect login logo upon click
 add_filter( 'login_headerurl', 'my_custom_login_url' );
@@ -151,10 +151,10 @@ function my_custom_login_url($url) {
 
 
 //Change the alt text for login image
-function change_wp_login_title()  
-{  
+function change_wp_login_title()
+{
     return 'Square One Web and Design';
-}add_filter('login_headertitle', 'change_wp_login_title');
+}add_filter('login_headertext', 'change_wp_login_title');
 
 //Change the footer link in the admin area
 function remove_footer_admin () {
@@ -232,12 +232,12 @@ function hetas_scripts() {
 //	wp_enqueue_script( 'jquery.validate.js', get_template_directory_uri() . '/js/jquery.validate.js', array( 'jquery' ), '10072014' );
 /*
 	wp_enqueue_script( 'mockjax-script', get_template_directory_uri() . '/js/jquery.mockjax.js', array( 'jquery' ));
-	wp_enqueue_script( 'autocomplete-script', get_template_directory_uri() . '/js/jquery.autocomplete.js', array( 'jquery' ));	
-	wp_enqueue_script( 'countries-script', get_template_directory_uri() . '/js/countries.js', array( 'jquery' ));	
+	wp_enqueue_script( 'autocomplete-script', get_template_directory_uri() . '/js/jquery.autocomplete.js', array( 'jquery' ));
+	wp_enqueue_script( 'countries-script', get_template_directory_uri() . '/js/countries.js', array( 'jquery' ));
 */
-// 	wp_enqueue_script( 'demo-script', get_template_directory_uri() . '/js/demo.js', array( 'jquery' ));	
+// 	wp_enqueue_script( 'demo-script', get_template_directory_uri() . '/js/demo.js', array( 'jquery' ));
 //	wp_enqueue_script( 'jquery-ui-autocomplete', '','', false );
-	
+
 /*
 	if (!is_page_template( array('search-installer.php','search-servicing.php') )) {
 		wp_enqueue_style( 'jquery-base-css', '//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css' );
@@ -245,7 +245,7 @@ function hetas_scripts() {
 */
 
 //	wp_enqueue_script( 'jquery-ui-tooltip');
-// 	wp_enqueue_script( 'demo-script', get_template_directory_uri() . '/js/demo.js', array( 'jquery' ));	
+// 	wp_enqueue_script( 'demo-script', get_template_directory_uri() . '/js/demo.js', array( 'jquery' ));
 }
 add_action( 'wp_enqueue_scripts', 'hetas_scripts' );
 
@@ -279,7 +279,7 @@ function hetas_er_footer () {
 }
 */
 
-// load form validation in appliance single 
+// load form validation in appliance single
 /*
 add_action( 'wp_head', 'hetas_form_validator' );
 
@@ -366,7 +366,7 @@ add_action('init', 'removeHeadLinks');
 remove_action('wp_head', 'wp_generator');
 
 function new_excerpt_more( $more ) {
-	
+
 	return ' <a class="read-more" href="'. get_permalink( get_the_ID() ) . '">Read More...</a>';
 }
 add_filter( 'excerpt_more', 'new_excerpt_more');
@@ -441,7 +441,7 @@ add_action( 'wp_login_failed', 'member_login_failed' );
 function member_login_failed($user) {
    $ref = $_SERVER['HTTP_REFERER'];
    if ( !empty($ref) && !strstr($ref, 'wp-login') && !strstr($ref,'wp-admin') ) {
-      wp_redirect( $ref . '?login=no' ); 
+      wp_redirect( $ref . '?login=no' );
       exit;
    }
 }
@@ -457,11 +457,11 @@ function member_login_failed($user) {
 function my_login_redirect( $redirect_to, $request, $user ) {
 	//is there a user to check?
 	global $user;
-		
+
 	if ( isset( $user->roles ) && is_array( $user->roles ) ) {
 
 		//echo '<pre>'; print_r($user->roles); echo '</pre>'; wp_die();
-		
+
 		//check for admins
 		if ( in_array( 'administrator', $user->roles ) ) {
 			// redirect them to the default place
@@ -517,7 +517,7 @@ function custom_taxonomy($post_id, $name, $links=false) {
         $html = strip_tags($html);
         echo $html;
     }
-    
+
 }
 
 // add a custom WP_Query argument to filter on post_title with LIKE
@@ -575,10 +575,10 @@ function kia_metabox_init(){
 	wp_enqueue_script('jquery-ui-widget');
 	wp_enqueue_script('jquery-ui-mouse');
 	wp_enqueue_script('jquery-ui-sortable');
-	
+
 	// special script for dealing with repeating textareas
 	wp_register_script('kia-metabox',get_stylesheet_directory_uri() . '/metaboxes/kia-metabox.js',array('jquery','editor'), '1.0');
-	
+
 	// needs to run AFTER all the tinyMCE init scripts have printed since we're going to steal their settings
 	add_action('after_wp_tiny_mce','kia_metabox_scripts',999);
 }
@@ -587,7 +587,7 @@ function kia_metabox_scripts(){
 	wp_print_scripts('kia-metabox');
 }
 
-/* 
+/*
  * Recreate the default filters on the_content
  * this will make it much easier to output the meta content with proper/expected formatting
 */
@@ -653,7 +653,7 @@ add_filter( 'meta_content', 'prepend_attachment' );
 
 // add the filter for the geodata store meta keys
     add_filter('sc_geodatastore_meta_keys', 'installer_geodata');
-    function installer_geodata($keys) {    
+    function installer_geodata($keys) {
         $keys['lat'][] = "inst_lat";
         $keys['lng'][] = "inst_lng";
         return $keys;
@@ -662,21 +662,22 @@ add_filter( 'meta_content', 'prepend_attachment' );
 
 $postcode_cache = array();
 function geocode_postcode($pc) {
-	
+
     global $postcode_cache;
 
     if (isset($postcode_cache[$pc])) return $postcode_cache[$pc];
-    
+
     //$url = "http://maps.googleapis.com/maps/api/geocode/json?address=" . str_replace(" ", "", $pc) . "&sensor=false";
     //$url = "https://maps.googleapis.com/maps/api/geocode/json?address=" . str_replace(" ", "", $pc) . "&key=AIzaSyAuLJBNa3gDUvo9e9-7qkFivuqrKA6SrKE";
     $url = "https://maps.googleapis.com/maps/api/geocode/json?address=" . str_replace(" ", "", $pc) . "&key=AIzaSyDTBgIiALPDB_Z1C61Jma09ybxncZVgfqA";
-    
+
     $data =  json_decode(file_get_contents($url), true);
-    
+
     $lat = $data['results'][0]['geometry']['location']['lat'];
     $lng = $data['results'][0]['geometry']['location']['lng'];
     $ret = array($lat, $lng);
     if ($ret) $postcode_cache[$pc] = $ret;
+
     return $ret;
 }
 
@@ -684,7 +685,7 @@ $postcode_cache = array();
 function geocode_postcode_meta($pc) {
     global $postcode_cache;
     if (isset($postcode_cache[$pc])) return $postcode_cache[$pc];
-    
+
     $url = "http://maps.googleapis.com/maps/api/geocode/json?address=" . str_replace(" ", "", $pc) . "&sensor=false";
     //$url = "https://maps.googleapis.com/maps/api/geocode/json?address=" . str_replace(" ", "", $pc) . "&key=AIzaSyAuLJBNa3gDUvo9e9-7qkFivuqrKA6SrKE";
     //$url = "https://maps.googleapis.com/maps/api/geocode/json?address=" . str_replace(" ", "", $pc) . "&key=AIzaSyBjBgdPC2eP0ybNEE9R3mnIk1TFNVDENS4";
@@ -694,6 +695,7 @@ function geocode_postcode_meta($pc) {
     $lng = $data['results'][0]['geometry']['location']['lng'];
     $ret = array($lat, $lng);
     if ($ret) $postcode_cache[$pc] = $ret;
+
     return $ret;
 }
 
@@ -705,7 +707,7 @@ function distance($lat1, $lng1, $lat2, $lng2, $miles = true)
 	$lng1 *= $pi80;
 	$lat2 *= $pi80;
 	$lng2 *= $pi80;
- 
+
 	$r = 6372.797; // mean radius of Earth in km
 	$dlat = $lat2 - $lat1;
 	$dlng = $lng2 - $lng1;
@@ -716,7 +718,7 @@ function distance($lat1, $lng1, $lat2, $lng2, $miles = true)
 	return ($miles ? ($km * 0.621371192) : $km);
 }
 
- 
+
 // Implement Custom Header features.
 require get_template_directory() . '/inc/hetas-business-search.php';
 
@@ -725,24 +727,24 @@ require get_template_directory() . '/inc/hetas-business-search.php';
 
 function list_feature_icons($post_id) {
 	$terms = wp_get_post_terms( $post_id, 'appliance_feature_icons' ); ?>
-	
+
 	<ul class="feature-icons">
 		<?php foreach ($terms as $term) { ?>
 			<li><a href="/appliance-by-feature/<?php echo esc_attr( $term->slug ) ;?>" title="filter by: <?php echo esc_attr( $term->name ) ;?>"><img src="<?php echo get_template_directory_uri() . '/images/feature-icons/' .  esc_attr($term->slug) .'.png';?>"></a></li>
 		<?php } ?>
 	</ul>
-	
+
 <?php }
 
 function check_technical_access($post_id){
-	
+
 	$ta_access = get_post_meta($post_id, '_ta_access_fields', true);
-	
+
 	// die early if no access has been set
 	if (empty($ta_access)) {
 		return true;
 	}
-	
+
 	$userdata = get_user_by( 'id', get_current_user_id() );
 	$args = array(
 		'posts_per_page'   => -1,
@@ -752,18 +754,18 @@ function check_technical_access($post_id){
 		'post_status'      => 'publish'
 	);
 	$posts_array = get_posts( $args );
-	
+
 	$terms = wp_get_object_terms( $posts_array[0]->ID, 'competencies' );
-	
+
 	$competencies = wp_list_pluck( $terms, 'slug' );
-	
+
 	$result = array();
 	foreach ($ta_access as $access) {
 		if (in_array($access, $competencies)) {
 			$result[] = true;
 		}
 	}
-	
+
 	if (!empty($result)) {
 		return true;
 	} else {

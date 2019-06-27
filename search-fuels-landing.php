@@ -16,7 +16,7 @@ $ens = get_terms('enplus');
 		
 		<div class="col-md-6">
 			<div class="box halfuser search-wood">
-				<a href="<?php echo get_permalink(239444) ;?>">
+				<a href="https://woodsure.co.uk/wood-fuel-suppliers/" target="_blank">
 					<h3>Wood Fuel Search</h3>
 					<div class="row">
 						<div class="col-md-10">

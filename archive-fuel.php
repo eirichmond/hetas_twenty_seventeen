@@ -192,13 +192,15 @@ $google_api_key = hetas_gm_api_key();
 									</div>
 									<div class="col-md-6">
 										
+<!--
 										<div class="map fuel">
 											
-									<iframe width="100%" height="350" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=<?php custom_field($post->ID, 'fuels_postcode'); ?>%20&key=<?php echo '-'.$google_api_key; ?>" allowfullscreen></iframe>
+											<iframe width="100%" height="350" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=<?php custom_field($post->ID, 'fuels_postcode'); ?>%20&key=<?php echo '-'.$google_api_key; ?>" allowfullscreen></iframe>
 
-<!-- 											<a href="https://maps.google.co.uk/maps?q=<?php custom_field($post->ID, 'fuels_postcode'); ?>" target="_blank"><img src="http://maps.googleapis.com/maps/api/staticmap?center=<?php custom_field($post->ID, 'inst_lat'); ?>,<?php custom_field($post->ID, 'inst_lng'); ?>&amp;zoom=11&amp;size=360x360&amp;sensor=false&amp;markers=color:green|<?php custom_field($post->ID, 'inst_lat'); ?>,<?php custom_field($post->ID, 'inst_lng'); ?>"></a> -->
+											<a href="https://maps.google.co.uk/maps?q=<?php custom_field($post->ID, 'fuels_postcode'); ?>" target="_blank"><img src="http://maps.googleapis.com/maps/api/staticmap?center=<?php custom_field($post->ID, 'inst_lat'); ?>,<?php custom_field($post->ID, 'inst_lng'); ?>&amp;zoom=11&amp;size=360x360&amp;sensor=false&amp;markers=color:green|<?php custom_field($post->ID, 'inst_lat'); ?>,<?php custom_field($post->ID, 'inst_lng'); ?>"></a>
 										</div>
 									
+-->
 										
 									</div>
 	
@@ -311,13 +313,15 @@ $google_api_key = hetas_gm_api_key();
 								
 								<div class="col-md-6">
 
+<!--
 									<div class="map fuel">
 
 									<iframe width="100%" height="350" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=<?php custom_field($post->ID, 'fuels_postcode'); ?>%20&key=<?php echo '-'.$google_api_key; ?>" allowfullscreen></iframe>
 
 										
-<!-- 										<a href="https://maps.google.co.uk/maps?q=<?php custom_field($post->ID, 'fuels_postcode'); ?>"><img src="http://maps.googleapis.com/maps/api/staticmap?center=<?php custom_field($post->ID, 'inst_lat'); ?>,<?php custom_field($post->ID, 'inst_lng'); ?>&amp;zoom=11&amp;size=360x360&amp;sensor=false&amp;markers=color:green|<?php custom_field($post->ID, 'inst_lat'); ?>,<?php custom_field($post->ID, 'inst_lng'); ?>"></a> -->
+										<a href="https://maps.google.co.uk/maps?q=<?php custom_field($post->ID, 'fuels_postcode'); ?>"><img src="http://maps.googleapis.com/maps/api/staticmap?center=<?php custom_field($post->ID, 'inst_lat'); ?>,<?php custom_field($post->ID, 'inst_lng'); ?>&amp;zoom=11&amp;size=360x360&amp;sensor=false&amp;markers=color:green|<?php custom_field($post->ID, 'inst_lat'); ?>,<?php custom_field($post->ID, 'inst_lng'); ?>"></a>
 									</div>
+-->
 
 								</div>
 								

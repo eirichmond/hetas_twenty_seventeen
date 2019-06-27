@@ -10617,14 +10617,14 @@ div.secondary .widget ul.menu li a:hover {
 	Sidebar submenu  
 --------------------------------------------------------------*/
 /* line 100, sass/_custom.scss */
-.sidechildmenu .sub-menu {
+.sidechildmenu .sub-menu, .widget_categories .sub-menu {
   display: none; }
 /* line 104, sass/_custom.scss */
-.sidechildmenu ul {
+.sidechildmenu ul, .widget_categories ul {
   margin: 0;
   padding: 0px; }
   /* line 107, sass/_custom.scss */
-  .sidechildmenu ul li {
+  .sidechildmenu ul li, .widget_categories ul li {
     list-style: none;
     border-top: 1px solid #fff;
     background: none;
@@ -10632,16 +10632,16 @@ div.secondary .widget ul.menu li a:hover {
     min-height: inherit;
     margin-bottom: 0px; }
     /* line 114, sass/_custom.scss */
-    .sidechildmenu ul li.current_page_item {
+    .sidechildmenu ul li.current_page_item, .widget_categories ul li.current_page_item {
       background: #C3D0C9; }
     /* line 117, sass/_custom.scss */
-    .sidechildmenu ul li a {
+    .sidechildmenu ul li a, .widget_categories ul li a {
       display: block;
       padding: 7px 18px;
       color: #26a557;
       background-color: #deede5; }
       /* line 122, sass/_custom.scss */
-      .sidechildmenu ul li a:hover {
+      .sidechildmenu ul li a:hover, .widget_categories ul li a:hover {
         text-decoration: none;
         color: #fff;
         background: #C3D0C9; }
@@ -11766,3 +11766,390 @@ footer#colophon {
   /* line 1025, sass/_custom.scss */
   .navbar-fixed-top {
     height: 190px; } }
+/* line 1031, sass/_custom.scss */
+.blockpanel {
+  overflow: overlay; }
+
+/*---------------------------------------------------------------------
+news
+----------------------------------------------------------------------*/
+/* line 1041, sass/_custom.scss */
+.blog article.post, .archive.category article.post, .archive.tag article.post {
+  border-bottom: 1px solid #eeeeee;
+  padding-bottom: 20px;
+  margin-bottom: 40px; }
+  /* line 1045, sass/_custom.scss */
+  .blog article.post .entry-meta, .archive.category article.post .entry-meta, .archive.tag article.post .entry-meta {
+    opacity: .5;
+    font-size: .9em; }
+  /* line 1050, sass/_custom.scss */
+  .blog article.post footer.entry-footer .cat-links, .archive.category article.post footer.entry-footer .cat-links, .archive.tag article.post footer.entry-footer .cat-links {
+    display: block; }
+  /* line 1054, sass/_custom.scss */
+  .blog article.post span.tags-links a, .archive.category article.post span.tags-links a, .archive.tag article.post span.tags-links a {
+    background: #00a160;
+    padding: 5px 10px;
+    color: #fff;
+    border-radius: 5px;
+    font-size: .9em;
+    white-space: nowrap;
+    line-height: 2.5em;
+    transition: .3s all; }
+  /* line 1065, sass/_custom.scss */
+  .blog article.post span.tags-links, .archive.category article.post span.tags-links, .archive.tag article.post span.tags-links {
+    padding: 20px 0;
+    display: block; }
+  /* line 1070, sass/_custom.scss */
+  .blog article.post span.tags-links a:hover, .archive.category article.post span.tags-links a:hover, .archive.tag article.post span.tags-links a:hover {
+    text-decoration: none;
+    background: #656565; }
+  /* line 1075, sass/_custom.scss */
+  .blog article.post h2.entry-title, .archive.category article.post h2.entry-title, .archive.tag article.post h2.entry-title {
+    font-weight: bold; }
+  /* line 1079, sass/_custom.scss */
+  .blog article.post h2.entry-title a, .archive.category article.post h2.entry-title a, .archive.tag article.post h2.entry-title a {
+    text-decoration: none; }
+  /* line 1083, sass/_custom.scss */
+  .blog article.post a.read-more, .archive.category article.post a.read-more, .archive.tag article.post a.read-more {
+    background: #656565;
+    border-radius: 5px;
+    padding: 4px 7px;
+    font-size: .8em;
+    color: #fff;
+    transition: .3s all; }
+  /* line 1092, sass/_custom.scss */
+  .blog article.post a.read-more:hover, .archive.category article.post a.read-more:hover, .archive.tag article.post a.read-more:hover {
+    text-decoration: none;
+    background: #e43e00;
+    color: #fff; }
+
+/*---------------------------------------------------------------------
+all around radius corners
+----------------------------------------------------------------------*/
+/* line 1109, sass/_custom.scss */
+.br-1 {
+  border-radius: 1px; }
+
+/* line 1112, sass/_custom.scss */
+.br-1 {
+  border-radius: 1px; }
+
+/* line 1115, sass/_custom.scss */
+.br-2 {
+  border-radius: 2px; }
+
+/* line 1118, sass/_custom.scss */
+.br-3 {
+  border-radius: 3px; }
+
+/* line 1121, sass/_custom.scss */
+.br-4 {
+  border-radius: 4px; }
+
+/* line 1124, sass/_custom.scss */
+.br-5 {
+  border-radius: 5px; }
+
+/* line 1127, sass/_custom.scss */
+.br-6 {
+  border-radius: 6px; }
+
+/* line 1130, sass/_custom.scss */
+.br-7 {
+  border-radius: 7px; }
+
+/* line 1133, sass/_custom.scss */
+.br-8 {
+  border-radius: 8px; }
+
+/* line 1136, sass/_custom.scss */
+.br-9 {
+  border-radius: 9px; }
+
+/* line 1139, sass/_custom.scss */
+.br-10 {
+  border-radius: 10px; }
+
+/* line 1142, sass/_custom.scss */
+.br-11 {
+  border-radius: 11px; }
+
+/* line 1145, sass/_custom.scss */
+.br-12 {
+  border-radius: 12px; }
+
+/* line 1148, sass/_custom.scss */
+.br-13 {
+  border-radius: 13px; }
+
+/* line 1151, sass/_custom.scss */
+.br-14 {
+  border-radius: 14px; }
+
+/* line 1154, sass/_custom.scss */
+.br-15 {
+  border-radius: 15px; }
+
+/*---------------------------------------------------------------------
+even padding styles
+----------------------------------------------------------------------*/
+/* line 1163, sass/_custom.scss */
+.p-1 {
+  padding: 1px; }
+
+/* line 1166, sass/_custom.scss */
+.p-2 {
+  padding: 2px; }
+
+/* line 1169, sass/_custom.scss */
+.p-3 {
+  padding: 3px; }
+
+/* line 1172, sass/_custom.scss */
+.p-4 {
+  padding: 4px; }
+
+/* line 1175, sass/_custom.scss */
+.p-5 {
+  padding: 5px; }
+
+/* line 1178, sass/_custom.scss */
+.p-6 {
+  padding: 6px; }
+
+/* line 1181, sass/_custom.scss */
+.p-7 {
+  padding: 7px; }
+
+/* line 1184, sass/_custom.scss */
+.p-8 {
+  padding: 8px; }
+
+/* line 1187, sass/_custom.scss */
+.p-9 {
+  padding: 9px; }
+
+/* line 1190, sass/_custom.scss */
+.p-10 {
+  padding: 10px; }
+
+/* line 1193, sass/_custom.scss */
+.p-11 {
+  padding: 11px; }
+
+/* line 1196, sass/_custom.scss */
+.p-12 {
+  padding: 12px; }
+
+/* line 1199, sass/_custom.scss */
+.p-13 {
+  padding: 13px; }
+
+/* line 1202, sass/_custom.scss */
+.p-14 {
+  padding: 14px; }
+
+/* line 1205, sass/_custom.scss */
+.p-15 {
+  padding: 15px; }
+
+/*---------------------------------------------------------------------
+all margin
+----------------------------------------------------------------------*/
+/* line 1213, sass/_custom.scss */
+.m-1 {
+  margin: 1px; }
+
+/* line 1216, sass/_custom.scss */
+.m-1 {
+  margin: 1px; }
+
+/* line 1219, sass/_custom.scss */
+.m-2 {
+  margin: 2px; }
+
+/* line 1222, sass/_custom.scss */
+.m-3 {
+  margin: 3px; }
+
+/* line 1225, sass/_custom.scss */
+.m-4 {
+  margin: 4px; }
+
+/* line 1228, sass/_custom.scss */
+.m-5 {
+  margin: 5px; }
+
+/* line 1231, sass/_custom.scss */
+.m-6 {
+  margin: 6px; }
+
+/* line 1234, sass/_custom.scss */
+.m-7 {
+  margin: 7px; }
+
+/* line 1237, sass/_custom.scss */
+.m-8 {
+  margin: 8px; }
+
+/* line 1240, sass/_custom.scss */
+.m-9 {
+  margin: 9px; }
+
+/* line 1243, sass/_custom.scss */
+.m-10 {
+  margin: 10px; }
+
+/* line 1246, sass/_custom.scss */
+.m-11 {
+  margin: 11px; }
+
+/* line 1249, sass/_custom.scss */
+.m-12 {
+  margin: 12px; }
+
+/* line 1252, sass/_custom.scss */
+.m-13 {
+  margin: 13px; }
+
+/* line 1255, sass/_custom.scss */
+.m-14 {
+  margin: 14px; }
+
+/* line 1258, sass/_custom.scss */
+.m-15 {
+  margin: 15px; }
+
+/*---------------------------------------------------------------------
+top margin
+----------------------------------------------------------------------*/
+/* line 1266, sass/_custom.scss */
+.mt-1 {
+  margin-top: 1px; }
+
+/* line 1269, sass/_custom.scss */
+.mt-1 {
+  margin-top: 1px; }
+
+/* line 1272, sass/_custom.scss */
+.mt-2 {
+  margin-top: 2px; }
+
+/* line 1275, sass/_custom.scss */
+.mt-3 {
+  margin-top: 3px; }
+
+/* line 1278, sass/_custom.scss */
+.mt-4 {
+  margin-top: 4px; }
+
+/* line 1281, sass/_custom.scss */
+.mt-5 {
+  margin-top: 5px; }
+
+/* line 1284, sass/_custom.scss */
+.mt-6 {
+  margin-top: 6px; }
+
+/* line 1287, sass/_custom.scss */
+.mt-7 {
+  margin-top: 7px; }
+
+/* line 1290, sass/_custom.scss */
+.mt-8 {
+  margin-top: 8px; }
+
+/* line 1293, sass/_custom.scss */
+.mt-9 {
+  margin-top: 9px; }
+
+/* line 1296, sass/_custom.scss */
+.mt-10 {
+  margin-top: 10px; }
+
+/* line 1299, sass/_custom.scss */
+.mt-11 {
+  margin-top: 11px; }
+
+/* line 1302, sass/_custom.scss */
+.mt-12 {
+  margin-top: 12px; }
+
+/* line 1305, sass/_custom.scss */
+.mt-13 {
+  margin-top: 13px; }
+
+/* line 1308, sass/_custom.scss */
+.mt-14 {
+  margin-top: 14px; }
+
+/* line 1311, sass/_custom.scss */
+.mt-15 {
+  margin-top: 15px; }
+
+/*---------------------------------------------------------------------
+bottom margin
+----------------------------------------------------------------------*/
+/* line 1319, sass/_custom.scss */
+.mb-1 {
+  margin-bottom: 1px; }
+
+/* line 1322, sass/_custom.scss */
+.mb-1 {
+  margin-bottom: 1px; }
+
+/* line 1325, sass/_custom.scss */
+.mb-2 {
+  margin-bottom: 2px; }
+
+/* line 1328, sass/_custom.scss */
+.mb-3 {
+  margin-bottom: 3px; }
+
+/* line 1331, sass/_custom.scss */
+.mb-4 {
+  margin-bottom: 4px; }
+
+/* line 1334, sass/_custom.scss */
+.mb-5 {
+  margin-bottom: 5px; }
+
+/* line 1337, sass/_custom.scss */
+.mb-6 {
+  margin-bottom: 6px; }
+
+/* line 1340, sass/_custom.scss */
+.mb-7 {
+  margin-bottom: 7px; }
+
+/* line 1343, sass/_custom.scss */
+.mb-8 {
+  margin-bottom: 8px; }
+
+/* line 1346, sass/_custom.scss */
+.mb-9 {
+  margin-bottom: 9px; }
+
+/* line 1349, sass/_custom.scss */
+.mb-10 {
+  margin-bottom: 10px; }
+
+/* line 1352, sass/_custom.scss */
+.mb-11 {
+  margin-bottom: 11px; }
+
+/* line 1355, sass/_custom.scss */
+.mb-12 {
+  margin-bottom: 12px; }
+
+/* line 1358, sass/_custom.scss */
+.mb-13 {
+  margin-bottom: 13px; }
+
+/* line 1361, sass/_custom.scss */
+.mb-14 {
+  margin-bottom: 14px; }
+
+/* line 1364, sass/_custom.scss */
+.mb-15 {
+  margin-bottom: 15px; }

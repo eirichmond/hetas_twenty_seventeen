@@ -10,7 +10,10 @@
 get_header(); ?>
 
 	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+		
+		<?php get_template_part( 'header-parts/search', 'nav' ); ?>
+
+		<main id="main" class="site-main col-md-9" role="main">
 
 		<?php
 		if ( have_posts() ) : ?>
@@ -44,6 +47,11 @@ get_header(); ?>
 		endif; ?>
 
 		</main><!-- #main -->
+		
+		<div class="col-md-3">
+			<?php get_sidebar(); ?>
+		</div>
+		
 	</div><!-- #primary -->
 
 <?php
