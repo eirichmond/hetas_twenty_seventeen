@@ -144,7 +144,7 @@ add_role('member', 'Member\'s Area User');
 // redirect login logo upon click
 add_filter( 'login_headerurl', 'my_custom_login_url' );
 function my_custom_login_url($url) {
-    return 'http://www.squareonemd.co.uk';
+    return get_bloginfo('siteurl');
 }
 
 //This snippet allows you to change the logo you see when you login to WordPress(http://website.com/wp-admin). Just put the snippet in functions.php, and then add your login image to a folder called images in your theme folder.

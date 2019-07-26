@@ -18,6 +18,17 @@
 <link rel="profile" href="http://gmpg.org/xfn/11">
 
 <?php wp_head(); ?>
+
+<script type='text/javascript'>
+(function (d, t) {
+  var bh = d.createElement(t), s = d.getElementsByTagName(t)[0];
+  bh.type = 'text/javascript';
+  bh.src = 'https://www.bugherd.com/sidebarv2.js?apikey=grp7tithbbqjzhrxtqcr6a';
+  s.parentNode.insertBefore(bh, s);
+  })(document, 'script');
+</script>
+
+
 </head>
 
 <body <?php body_class(); ?>>

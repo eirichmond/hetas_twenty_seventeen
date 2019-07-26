@@ -4,7 +4,7 @@
 get_header(); ?>
 
 <?php
-	
+
 /* update the query for any search terms that have been supplied */
 
 if (isset($_GET['regid']) && $_GET['regid']) {
@@ -65,7 +65,7 @@ if (isset($_GET['regid']) && $_GET['regid']) {
 	/* Restore original Post Data */
 	wp_reset_postdata();
 } else {
-		
+
 /*
 	$posts = array();
 	$the_query = new WP_Query( array(
@@ -89,26 +89,22 @@ if (isset($_GET['regid']) && $_GET['regid']) {
 	}
 	wp_reset_postdata();
 */
-	
+
 	$distance_to_search = 50; /* miles */
 	$location = false;
-	
+
 	$update = array(
 		'posts_per_page' => '-1'
 	);
-	
-	var_dump($_GET);
+
 	if (isset($_GET['postcode']) && $_GET['postcode']) {
 		$location = geocode_postcode($_GET['postcode']);
-		var_dump($location);
-		wp_die();
-
 	}
-		
+
 	if (isset($_GET['lat']) && $_GET['lat'] && isset($_GET['lng']) && $_GET['lng']) {
 		$location = array($_GET['lat'], $_GET['lng']);
 	}
-	
+
 	if (!$location) {
 	    echo "<p>Unable to locate your postcode.</p>";
 	    get_footer();
@@ -118,11 +114,11 @@ if (isset($_GET['regid']) && $_GET['regid']) {
 	    /* we need to order the posts by distance from $location */
 
 	    $ids = $sc_gds->getPostIDsOfInRange('business', $distance_to_search, $location[0], $location[1]);
-	    
+
 	    $update['post__in'] = $ids;
 	}
-	
-	
+
+
 	$filter = array(
 		'dry-stove' => array('dry-stove-room-heater-cooker'),
 		'stove-with-boiler' => array('stove-room-heater-cooker-including-boiler'),
@@ -154,10 +150,10 @@ if (isset($_GET['regid']) && $_GET['regid']) {
 		'service-and-maintenance' => array('service-maintenance'),
 */
 	);
-	
+
 	$terms = array();
 	foreach($_GET as $key=>$value) {
-		
+
 	    if ($value == "filter") {
 	        $terms[] = $filter[$key];
 	    }
@@ -169,54 +165,54 @@ if (isset($_GET['regid']) && $_GET['regid']) {
 			$taxterms[] = $t;
 		}
 	}
-	
+
 	$unique = array_unique($taxterms);
-	
+
 	if (!$terms) {
 		$update['post__in'] = array ( 0 ); /* this will cause an empty result set */
 	} else {
 	    $update['competencies'] = join(",", $unique);
 	}
-	
+
 	$update['business-status'] = "Live,Live PRA 3 Month";
-	
+
 	/* update the search query */
 	global $wp_query;
 	$args = array_merge( $wp_query->query, $update );
-	
+
 	if ($update) {
 		query_posts( $args );
 	}
 
 	// fetch all the posts
 	$posts = array();
-	while ( have_posts() ) : the_post(); 
+	while ( have_posts() ) : the_post();
 		$post->distance = distance($location[0], $location[1], get_custom_field($post->ID, 'inst_lat'), get_custom_field($post->ID, 'inst_lng') );
 		$posts[] = $post;
 	endwhile;
-	
+
 	// sort them by distance
 	function compare_distance($a, $b) {
 	    return $a->distance < $b->distance;
 	}
 	usort($posts, "compare_distance");
-	
-	
-	
+
+
+
 	// grab the top 15 closest
 	$posts = array_reverse($posts);
 	$posts = array_slice($posts, 0, 15);
-	
-	
+
+
 	// a variable for results
 	if (isset($_GET['retailer'])) {
 		$result = 'Retailers';
 	}
-	
+
 	if (isset($_GET['stove-with-boiler']) || ($_GET['dry-stove']) || ($_GET['biomas-systems']) || ($_GET['service-and-maintenance'])) {
 		$result = 'Installers';
 	}
-	
+
 	if (isset($_GET['chimney-sweep'])) {
 		$result = 'Chimney Sweeps';
 	}
@@ -232,24 +228,24 @@ $google_api_key = hetas_gm_api_key();
 </div>
 
 
-<?php if ( $posts ) : ?> 
-		    
+<?php if ( $posts ) : ?>
+
 <div class="row">
 	<div class="col-md-9">
-	
+
 		<div id="main">
 			<div id="content">
 				<ul class="search-results" id="business">
 				    <?php foreach ($posts as $post) : ?>
 					<li>
 						<h3><?php the_title(); ?></h3>
-						
+
 						<div class="row">
 							<div class="col-md-6">
 								<ul>
 								    <?php if (has_field($post->ID, 'inst_address_1')) : ?>
 							            <li><?php custom_field($post->ID, 'inst_address_1'); ?></li>
-							        <?php endif; ?> 
+							        <?php endif; ?>
 							        <?php if (has_field($post->ID, 'inst_address_2')) : ?>
 							            <li><?php custom_field($post->ID, 'inst_address_2'); ?></li>
 							        <?php endif; ?>
@@ -281,47 +277,47 @@ $google_api_key = hetas_gm_api_key();
 							        <li><?php echo intval($post->distance) > 1 ? intval($post->distance) . " miles away" : "less than a mile away"; ?></li>
 							        <?php endif; ?>
 								</ul>
-								
+
 
 							</div>
 							<div class="col-md-6">
-								
+
 								<h4>Areas of work:</h4>
-								
+
 								<?php
 								$terms = get_the_terms( $post->ID, 'competencies' );
-								if ( $terms && ! is_wp_error( $terms ) ) : 
+								if ( $terms && ! is_wp_error( $terms ) ) :
 									$competencies = array();
 									foreach ( $terms as $term ) {
 										$competencies[] = $term->name;
 									}
 								?>
 									<ul>
-										<?php 
+										<?php
 										foreach ($competencies as $competencie) {
 											echo '<li>' . $competencie . '</li>';
 										}
 										?>
 									</ul>
-								<?php endif; ?>	
-								
+								<?php endif; ?>
+
 							    <?php if (has_field($post->ID, 'inst_email')) : ?>
 								<a href="mailto:<?php custom_field($post->ID, 'inst_email'); ?>" class="btn btn-dark">Contact &raquo;</a>
 								<?php endif; ?>
 
 <!--
 								<div class="map retailer">
-									
+
 									<iframe width="100%" height="350" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=<?php custom_field($post->ID, 'inst_postcode'); ?>%20&key=<?php echo '-'.$google_api_key; ?>" allowfullscreen></iframe>
 
-									
+
 									<a href="https://maps.google.co.uk/maps?q=<?php custom_field($post->ID, 'inst_postcode'); ?>" target="_blank"><img src="https://maps.googleapis.com/maps/api/staticmap?center=<?php custom_field($post->ID, 'inst_lat'); ?>,<?php custom_field($post->ID, 'inst_lng'); ?>&amp;zoom=11&amp;size=360x360&amp;sensor=false&amp;markers=color:green|<?php custom_field($post->ID, 'inst_lat'); ?>,<?php custom_field($post->ID, 'inst_lng'); ?>&key=<?php echo esc_attr( $google_api_key ); ?>"></a>
-									
+
 								</div>
 -->
 							</div>
 						</div>
-							
+
 					</li>
                     <?php endforeach; ?>
 				</ul>
@@ -332,13 +328,13 @@ $google_api_key = hetas_gm_api_key();
 
 
 		</div><!-- /main -->
-			
+
 	</div>
-	
+
 	<div class="col-md-3">
 	<?php get_sidebar('searchresults'); ?>
 	</div>
 
-</div><!-- /row -->			
+</div><!-- /row -->
 
 <?php get_footer();?>

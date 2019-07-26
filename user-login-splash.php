@@ -30,6 +30,12 @@ get_header(); ?>
 												</div>
 											</a>
 										</div>
+										
+										<br>
+										<p>The upgrade to the HETAS notification system is beginning soon. From 11.30 am Thursday 18th July we will need to shut the on-line log-in for new notifications, while we apply all the changes. The new system will be open on Tuesday 23rd July.</p>
+<p>Follow this link for more details of how to access the new system <a href="https://www.hetas.co.uk/systems-upgrade/" target="_blank">click here</a></p>
+<p>Apologies for this delay in notifying your work and getting certificates issued to your customers.</p>
+
 									</div>
 									<div class="col-md-4">
 										<div class="box halfuser" id="training-center">
