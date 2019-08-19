@@ -8,17 +8,17 @@ get_header(); ?>
 
 			<div id="main">
 				<div class="clearfix">
-					<?php if (have_posts()) : ?> 
-					<?php while (have_posts()) : the_post(); ?> 
+					<?php if (have_posts()) : ?>
+					<?php while (have_posts()) : the_post(); ?>
 						<div id="content-fullw">
 							<div class="article" id="post-<?php the_ID(); ?>">
 								<?php the_content(); ?>
-								
-								
+
+
 								<div class="row">
 									<div class="col-md-4">
 										<div class="box halfuser" id="registrant">
-											<a href="http://hetas.boroughit.com/user/signIn?ReturnUrl=%2f" target="_blank">
+											<a href="/wp-admin/" target="_blank">
 												<h1>HETAS <br>Registrant</h1>
 												<div class="row">
 													<div class="col-md-8">
@@ -30,19 +30,14 @@ get_header(); ?>
 												</div>
 											</a>
 										</div>
-										
-										<br>
-										<p>The upgrade to the HETAS notification system is beginning soon. From 11.30 am Thursday 18th July we will need to shut the on-line log-in for new notifications, while we apply all the changes. The new system will be open on Tuesday 23rd July.</p>
-<p>Follow this link for more details of how to access the new system <a href="https://www.hetas.co.uk/systems-upgrade/" target="_blank">click here</a></p>
-<p>Apologies for this delay in notifying your work and getting certificates issued to your customers.</p>
 
 									</div>
 									<div class="col-md-4">
 										<div class="box halfuser" id="training-center">
 											<a href="<?php bloginfo ('url'); ?>/members-area/">
-											
+
 												<h1>Training <br>Centre</h1>
-												
+
 												<div class="row">
 													<div class="col-md-8">
 														<p>Login here</p>
@@ -69,23 +64,23 @@ get_header(); ?>
 											</a>
 										</div>
 									</div>
-									
-								</div>
-								
-								
 
-								
+								</div>
+
+
+
+
 							</div>
 						</div>
-					<?php endwhile; ?> 
-					<?php next_posts_link('Older Entries'); ?> 
-					<?php previous_posts_link('Newer Entries'); ?> 
-					<?php else : ?> 
+					<?php endwhile; ?>
+					<?php next_posts_link('Older Entries'); ?>
+					<?php previous_posts_link('Newer Entries'); ?>
+					<?php else : ?>
 					<h2>Nothing Found</h2>
-					<?php endif; ?>	
-					
+					<?php endif; ?>
+
 					<?php //get_sidebar('page'); ?>
-					
+
 				</div>
 			</div><!-- /main -->
 <?php get_footer();?>

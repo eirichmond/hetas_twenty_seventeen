@@ -122,7 +122,7 @@ function hetas_replace_h005br($title){
 }
 
 function installer_user_check() {
-	$access = current_user_can('hetas_installer') || current_user_can('manage_options');
+	$access = current_user_can('hetas_installer') || current_user_can('operative_responsible_person') || current_user_can('operative') || current_user_can('manage_options');
 	if ( !is_user_logged_in() || !$access) {
 		wp_die('Sorry! Your user access level does not allow you to access this area.');
 	}
@@ -521,15 +521,15 @@ function custom_taxonomy($post_id, $name, $links=false) {
 }
 
 // add a custom WP_Query argument to filter on post_title with LIKE
-add_filter( 'posts_where', 'query_post_title_like', 10, 2 );
-function query_post_title_like( $where, &$wp_query )
-{
-    global $wpdb;
-    if ( $post_title_like = $wp_query->get( 'post_title_like' ) ) {
-        $where .= ' AND ' . $wpdb->posts . '.post_title LIKE \'' . esc_sql( like_escape( $post_title_like ) ) . '%\'';
-    }
-    return $where;
-}
+// commented out as clueless to what this actually does
+// add_filter( 'posts_where', 'query_post_title_like', 10, 2 );
+// function query_post_title_like( $where, &$wp_query ) {
+//     global $wpdb;
+//     if ( $post_title_like = $wp_query->get( 'post_title_like' ) ) {
+//         $where .= ' AND ' . $wpdb->posts . '.post_title LIKE \'' . esc_sql( like_escape( $post_title_like ) ) . '%\'';
+//     }
+//     return $where;
+// }
 
 // Wpalchemy setup
 /*
