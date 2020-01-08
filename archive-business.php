@@ -19,7 +19,8 @@ if (isset($_GET['regid']) && $_GET['regid']) {
 			array(
 				'taxonomy' => 'business-status',
 				'field' => 'id',
-				'terms' => array(488,518)
+				'terms' => array(5255)
+				// 'terms' => array(488,518) // pre CRM update
 			)
 		)
 		)
@@ -50,7 +51,8 @@ if (isset($_GET['regid']) && $_GET['regid']) {
 			array(
 				'taxonomy' => 'business-status',
 				'field' => 'id',
-				'terms' => array(488,518)
+				'terms' => array(5255)
+				// 'terms' => array(488,518) // pre CRM update
 			)
 		)
 		)
@@ -94,7 +96,14 @@ if (isset($_GET['regid']) && $_GET['regid']) {
 	$location = false;
 
 	$update = array(
-		'posts_per_page' => '-1'
+		'posts_per_page' => '-1',
+		'meta_query' => array(
+			array(
+				'key' => 'inst_display',
+				'value' => '1',
+				'compare' => '='
+			)
+		),
 	);
 
 	if (isset($_GET['postcode']) && $_GET['postcode']) {
@@ -132,7 +141,7 @@ if (isset($_GET['regid']) && $_GET['regid']) {
 		'service-and-maintenance-dry-appliances' => array('service-and-maintenance-dry-appliances'),
 		'service-and-maintenance-wet-systems' => array('service-and-maintenance-wet-systems'),
 		'service-and-maintenance-biomass-systems' => array('service-and-maintenance-biomass-systems'),
-		'chimney-sweep' => array('hetas-approved-chimney-sweep-apics', 'hetas-approved-chimney-sweep-gomcs', 'hetas-approved-chimney-sweep-nacs', 'hetas-approved-chimney-sweep-sweep-safe'),
+		'chimney-sweep' => array('hetas-approved-chimney-sweep-apics', 'hetas-approved-chimney-sweep-gomcs', 'hetas-approved-chimney-sweep-nacs', 'hetas-approved-chimney-sweep-sweep-safe', 'hetas-approved-chimney-sweep-de'),
 		'retailer' => array('hetas-approved-retail-advisor')
 /*
 		'dry-stove-room-heater-cooker' => array('dry-stove'),
@@ -174,7 +183,7 @@ if (isset($_GET['regid']) && $_GET['regid']) {
 	    $update['competencies'] = join(",", $unique);
 	}
 
-	$update['business-status'] = "Live,Live PRA 3 Month";
+	//$update['business-status'] = "Live,Live PRA 3 Month";
 
 	/* update the search query */
 	global $wp_query;
