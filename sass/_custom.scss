@@ -630,10 +630,19 @@ p.notfound {
 			    max-width: 100%;
 		    }
 		}
-		ul.app-certs li {
-		    float: left;
-		    margin-right: 5px;
-		}
+	}
+}
+
+.app-certs {
+	display: flex;
+	align-items: center;
+	justify-content: left;
+	li {
+		margin-right: 8px;
+		padding: 8px;
+		background:
+		#fff;
+		border-radius: 6px;
 	}
 }
 

@@ -164,9 +164,9 @@ if (isset($_GET['mcs-approved']) && $_GET['mcs-approved'] == "yes") {
 	);
 }
 
-if (isset($_GET['sia_ecodesign_ready']) && $_GET['sia_ecodesign_ready'] == "yes") {
+if (isset($_GET['hetas_eco_design']) && $_GET['hetas_eco_design'] == "yes") {
 	$update['meta_query'][] = array(
-		'key' => 'sia_ecodesign_ready',
+		'key' => 'hetas_eco_design',
 		'value' => "Yes"
 	);
 }
@@ -248,7 +248,7 @@ if ($update) {
 							$attachment = get_page_by_title( $image,'OBJECT','attachment' );
 							$hetas_approved = get_custom_field($post->ID, 'hetas_approved');
 							$defra_approved = get_custom_field($post->ID, 'app_clean_air_exempt');
-							$sia_ecodesign = get_custom_field($post->ID, 'sia_ecodesign_ready');
+							$hetas_ecodesign = get_custom_field($post->ID, 'hetas_eco_design');
 							$app_mcs_approved = get_custom_field($post->ID, 'app_mcs_approved');
 
 							?>
@@ -296,9 +296,9 @@ if ($update) {
 																<img src="<?php echo bloginfo('template_url'); ?>/images/mcs-logo.jpg" alt="mcs logo" />
 															</li>
 														<?php } ?>
-														<?php if ($sia_ecodesign == 'Yes') { ?>
+														<?php if ($hetas_ecodesign == 'Yes') { ?>
 															<li>
-																<img src="<?php echo bloginfo('template_url'); ?>/images/sia_ecodesign_logo-sm.jpg" alt="CE logo" />
+																<img src="<?php echo bloginfo('template_url'); ?>/images/HETAS-Ecodesign-Compliant-Logo-sm.jpg" alt="CE logo" />
 															</li>
 														<?php } ?>
 														</ul>

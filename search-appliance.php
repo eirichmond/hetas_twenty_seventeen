@@ -250,8 +250,8 @@ jQuery(document).ready(function(){
 						<div class="col-md-3">
 							<div class="checkbox">
 								<label>
-									<input type="checkbox" name="sia_ecodesign_ready" value="yes">
-									SIA EcoDesign Ready
+									<input type="checkbox" name="hetas_eco_design" value="yes">
+									Eco Design Compliant
 								</label>
 							</div>
 						</div>
