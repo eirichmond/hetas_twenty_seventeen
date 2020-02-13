@@ -2025,6 +2025,7 @@ p.notfound{background-color:#ff4747;padding:10px;text-align:center;border-radius
 .post-type-archive-appliance .search-results .img img{width:inherit;-webkit-box-shadow:inherit;box-shadow:inherit;max-width:100%}
 .app-certs{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:left;-ms-flex-pack:left;justify-content:left}
 .app-certs li{margin-right:8px;padding:8px;background:#fff;border-radius:6px}
+.view{text-align:center}
 .ui-autocomplete{background:#fff;margin:0;padding:0;width:200px}
 .ui-autocomplete .ui-menu-item{padding:10px;-webkit-transition:.5s;transition:.5s}
 .ui-autocomplete .ui-menu-item:hover{background-color:#00a160;color:#fff;cursor:pointer}

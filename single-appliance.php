@@ -33,7 +33,6 @@ rewind_posts();
 									$mcs_approved = get_custom_field($post->ID, 'app_mcs_approved');
 									$ce_marked = get_custom_field($post->ID, 'app_ce_cert');
 									$hetas_ecodesign = get_custom_field($post->ID, 'hetas_eco_design');
-									$hetas_eco_design = get_custom_field($post->ID, 'hetas_eco_design');
 									$defra_approved = get_custom_field($post->ID, 'app_clean_air_exempt');
 									$attachment = get_page_by_title( $image,'OBJECT','attachment' );
 									?>
@@ -59,9 +58,6 @@ rewind_posts();
 									<?php } ?>
 									<?php if ($hetas_ecodesign == 'Yes') { ?>
 										<img src="<?php echo bloginfo('template_url'); ?>/images/HETAS-Ecodesign-Compliant-Logo.jpg" alt="CE logo" />
-									<?php } ?>
-									<?php if ($hetas_eco_design == 'Yes') { ?>
-										<img src="<?php echo bloginfo('template_url'); ?>/images/ecoDesignComp.jpeg" alt="HETAS Eco Design" />
 									<?php } ?>
 									
 								</div>
