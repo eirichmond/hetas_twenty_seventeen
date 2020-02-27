@@ -32,8 +32,7 @@ rewind_posts();
 									$hetas_approved = get_custom_field($post->ID, 'hetas_approved');
 									$mcs_approved = get_custom_field($post->ID, 'app_mcs_approved');
 									$ce_marked = get_custom_field($post->ID, 'app_ce_cert');
-									$sia_ecodesign = get_custom_field($post->ID, 'sia_ecodesign_ready');
-									$hetas_eco_design = get_custom_field($post->ID, 'hetas_eco_design');
+									$hetas_ecodesign = get_custom_field($post->ID, 'hetas_eco_design');
 									$defra_approved = get_custom_field($post->ID, 'app_clean_air_exempt');
 									$attachment = get_page_by_title( $image,'OBJECT','attachment' );
 									?>
@@ -57,11 +56,8 @@ rewind_posts();
 									<?php if ($mcs_approved == 'Yes') { ?>
 										<img src="<?php echo bloginfo('template_url'); ?>/images/hetas_mcs_combined.jpg" alt="MCS HETAS Approved" />
 									<?php } ?>
-									<?php if ($sia_ecodesign == 'Yes') { ?>
-										<img src="<?php echo bloginfo('template_url'); ?>/images/sia_ecodesign_logo.jpg" alt="CE logo" />
-									<?php } ?>
-									<?php if ($hetas_eco_design == 'Yes') { ?>
-										<img src="<?php echo bloginfo('template_url'); ?>/images/ecoDesignComp.jpeg" alt="HETAS Eco Design" />
+									<?php if ($hetas_ecodesign == 'Yes') { ?>
+										<img src="<?php echo bloginfo('template_url'); ?>/images/HETAS-Ecodesign-Compliant-Logo.jpg" alt="HETAS Ecodesign Compliant Logo" />
 									<?php } ?>
 									
 								</div>
@@ -78,10 +74,10 @@ rewind_posts();
 									<?php
 									$hetas_approved = get_custom_field($post->ID, 'hetas_approved');
 									$mcs_approved = get_custom_field($post->ID, 'app_mcs_approved');
-									$sia_ecodesign = get_custom_field($post->ID, 'sia_ecodesign_ready');
+									$hetas_ecodesign = get_custom_field($post->ID, 'hetas_eco_design');
 									$defra_approved = get_custom_field($post->ID, 'app_clean_air_exempt');
 
-									if ($hetas_approved != 'Yes' && $defra_approved != 'Yes' && $mcs_approved != 'Yes' && $sia_ecodesign == 'Yes') { ?>
+									if ($hetas_approved != 'Yes' && $defra_approved != 'Yes' && $mcs_approved != 'Yes' && $hetas_ecodesign == 'Yes') { ?>
 									
 									<?php } else { ?>
 										<div class="data-area">
@@ -465,7 +461,7 @@ rewind_posts();
 					
 												
 												<?php if (has_field($post->ID, 'app_appliance_web-link')) : ?>
-													<?php if ($hetas_approved != 'Yes' && $defra_approved != 'Yes' && $mcs_approved != 'Yes' && $sia_ecodesign == 'Yes') { ?>
+													<?php if ($hetas_approved != 'Yes' && $defra_approved != 'Yes' && $mcs_approved != 'Yes' && $hetas_ecodesign == 'Yes') { ?>
 														<dd><span style="color: #666;"><?php custom_field($post->ID, 'app_appliance_web-link'); ?></span></dd>
 													<?php } else { ?>
 														<dd><a target="_blank" href="http://<?php custom_field($post->ID, 'app_appliance_web-link'); ?>">Visit Manufacturer's website</a></dd>

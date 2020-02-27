@@ -53,7 +53,13 @@ if (isset($_GET['fuel-operation']) && $_GET['fuel-operation']) {
 if (isset($_GET['output']) && $_GET['output']) {
 	$op = explode("/", $_GET['output']);
 	$update['meta_query'][] = array(
-		'key' => 'output_value',
+		'key' => 'full_load_output_water_wood',
+		'value' => array(intval($op[0]), intval($op[1])),
+		'type' => 'numeric',
+		'compare' => 'BETWEEN'
+	);
+	$update['meta_query'][] = array(
+		'key' => 'full_load_output_room_wood',
 		'value' => array(intval($op[0]), intval($op[1])),
 		'type' => 'numeric',
 		'compare' => 'BETWEEN'
@@ -74,7 +80,7 @@ if (isset($_GET['model']) && $_GET['model']) {
 		'compare' => 'LIKE'
 	);
 }
- 
+
 if (isset($_GET['efficiency']) && $_GET['efficiency']) {
 	$update['meta_query'][] = array(
 		'key' => 'app_sap_efficiency',
@@ -158,9 +164,9 @@ if (isset($_GET['mcs-approved']) && $_GET['mcs-approved'] == "yes") {
 	);
 }
 
-if (isset($_GET['sia_ecodesign_ready']) && $_GET['sia_ecodesign_ready'] == "yes") {
+if (isset($_GET['hetas_eco_design']) && $_GET['hetas_eco_design'] == "yes") {
 	$update['meta_query'][] = array(
-		'key' => 'sia_ecodesign_ready',
+		'key' => 'hetas_eco_design',
 		'value' => "Yes"
 	);
 }
@@ -196,7 +202,7 @@ $prem_list = array(
 /* update the search query */
 global $wp_query;
 
-$total_pages = $wp_query->max_num_pages; 
+$total_pages = $wp_query->max_num_pages;
 
 $args = array_merge( $wp_query->query, $update, $prem_list );
 
@@ -213,7 +219,7 @@ if (count($update['meta_query']) > 1) {
 
 
 if ($update) {
-	
+
 	$prem_posts = new WP_Query( $args );
 
 }
@@ -222,36 +228,36 @@ if ($update) {
 
 
 	<?php get_template_part( 'header-parts/search', 'nav' ); ?>
-		
-		<?php if ( $prem_posts->have_posts() ) : ?> 
+
+		<?php if ( $prem_posts->have_posts() ) : ?>
 			<div class="heading">
 				<h2>The following appliances have been found:</h2>
 			</div>
-			
-			
+
+
 			<div id="main">
 				<div id="content">
-					
-					
+
+
 					<ul class="search-results">
 						<?php while ( $prem_posts->have_posts() ) : $prem_posts->the_post(); ?>
-						
+
 							<?php
 							$image = get_custom_field($post->ID, 'app_appliance_image');
 							$list_type = get_custom_field($post->ID, 'app_listing_type');
 							$attachment = get_page_by_title( $image,'OBJECT','attachment' );
 							$hetas_approved = get_custom_field($post->ID, 'hetas_approved');
 							$defra_approved = get_custom_field($post->ID, 'app_clean_air_exempt');
-							$sia_ecodesign = get_custom_field($post->ID, 'sia_ecodesign_ready');
+							$hetas_ecodesign = get_custom_field($post->ID, 'hetas_eco_design');
 							$app_mcs_approved = get_custom_field($post->ID, 'app_mcs_approved');
-							
+
 							?>
 							<?php if ($list_type == 1) { ?>
-							
-							
-							
+
+
+
 								<li class="premium">
-								
+
 								<div class="row">
 									<div class="col-md-2">
 									<?php if (!empty($attachment)) { ?>
@@ -264,11 +270,11 @@ if ($update) {
 										</div>
 									<?php } ?>
 									</div>
-									
+
 									<div class="col-md-10">
-											
+
 										<div class="descr">
-											
+
 											<div class="row">
 												<div class="col-md-10">
 													<div class="info-block">
@@ -285,21 +291,21 @@ if ($update) {
 																<img src="<?php echo bloginfo('template_url'); ?>/images/defra_logo-sm.jpg" alt="defra logo" />
 															</li>
 														<?php } ?>
+														<?php if ($hetas_ecodesign == 'Yes') { ?>
+															<li>
+																<img src="<?php echo bloginfo('template_url'); ?>/images/HETAS-Ecodesign-Compliant-Logo-sm.jpg" alt="HETAS Ecodesign Compliant Logo" />
+															</li>
+														<?php } ?>
 														<?php if ($app_mcs_approved == 'Yes') { ?>
 															<li>
 																<img src="<?php echo bloginfo('template_url'); ?>/images/mcs-logo.jpg" alt="mcs logo" />
 															</li>
 														<?php } ?>
-														<?php if ($sia_ecodesign == 'Yes') { ?>
-															<li>
-																<img src="<?php echo bloginfo('template_url'); ?>/images/sia_ecodesign_logo-sm.jpg" alt="CE logo" />
-															</li>
-														<?php } ?>
 														</ul>
-			
+
 													</div>
 												</div>
-												
+
 												<div class="col-md-2">
 													<div class="cell">
 														<ul>
@@ -309,17 +315,17 @@ if ($update) {
 													</div>
 												</div>
 											</div>
-											
-											
+
+
 										</div>
-									
+
 									</div>
-									
+
 								</div>
 								</li>
-								
-								
-								
+
+
+
 							<?php } elseif ($list_type == 2) { ?>
 								<li class="standard">
 									<div class="row">
@@ -334,11 +340,11 @@ if ($update) {
 												<img src="<?php echo bloginfo ('template_url'); ?>/images/hetas-logo.png" alt="<?php echo $image; ?>" />
 											</div>
 										<?php } ?>
-											
+
 <!--
 										<?php if (!empty($image)) { ?>
 											<?php $upload_dir = wp_upload_dir(); ?>
-											
+
 											<div class="img">
 												<img src="<?php echo $upload_dir['baseurl']; ?>/<?php echo $image; ?>.png" alt="Standard HETAS listed Appliance" />
 											</div>
@@ -348,44 +354,44 @@ if ($update) {
 											</div>
 										<?php } ?>
 -->
-										
-										
+
+
 										</div>
 										<div class="col-md-10">
 											<div class="descr">
 
 												<div class="row">
 													<div class="col-md-10">
-	
+
 														<div class="info-block">
 															<h3><?php the_title(); ?></h3>
 															<p><?php the_excerpt(); ?></p>
 														</div>
-														
+
 													</div>
-													
+
 													<div class="col-md-2">
-	
+
 														<div class="cell">
 															<ul>
 																<?php echo get_the_term_list( $post->ID, 'fuel_types', '<li>', '</li><li>', '</li>' ); ?>
 															</ul>
-															
+
 															<?php if (has_field($post->ID, 'docs')) : ?>
 																<?php $metas = get_custom_field($post->ID, 'docs'); ?>
 																<?php foreach ($metas as $k => $v) { ?>
 																	<a href="<?php echo $v['imageurl']; ?>" class="btn standard" target="_blank"><?php echo $v['caption']; ?></a>
 																<?php } ?>
 															<?php endif; ?>
-				
+
 														</div>
-													
+
 													</div>
-													
-													
+
+
 												</div>
-												
-												
+
+
 											</div>
 										</div>
 									</div>
@@ -397,7 +403,7 @@ if ($update) {
 											<h3><?php the_title(); ?></h3>
 										</div>
 										<div class="cell">
-											
+
 											<?php if (has_field($post->ID, 'docs')) : ?>
 												<?php $metas = get_custom_field($post->ID, 'docs'); ?>
 												<?php foreach ($metas as $k => $v) { ?>
@@ -415,7 +421,7 @@ if ($update) {
 
 
 					<?php get_template_part( 'inc/app_nav' ); ?>
-					
+
 
 
 
@@ -429,7 +435,7 @@ if ($update) {
 					<p>Sorry, no appliances could be found.</p>
 				</div>
 			<?php endif; ?>
-			
-			
+
+
 			</div><!-- /main -->
 <?php get_footer();?>

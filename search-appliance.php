@@ -12,14 +12,14 @@ $brands = get_terms('manufacturers');
 
 $meta_key = 'app_model_name';
 
-$all_models = $wpdb->get_col( $wpdb->prepare( 
+$all_models = $wpdb->get_col( $wpdb->prepare(
 	"
 	SELECT      key1.meta_value
 	FROM        $wpdb->postmeta key1
 	WHERE       key1.meta_key = %s
 	",
 	$meta_key
-) ); 
+) );
 
 $model_titles = array_unique($all_models);
 
@@ -47,13 +47,13 @@ jQuery(document).ready(function(){
 		<div class="col-md-9 app-search">
 
 			<div class="hetasform">
-				
+
 				<form action="/appliance/" method="get">
-					
+
 					<h3>Find a Product</h3>
 					<div class="row">
 						<div class="col-md-6">
-							
+
 							<div class="form-group">
 								<label for="manufacturer">Manufacturer's Name</label>
 								<select id="manufacturer" name="manufacturer" class="form-control">
@@ -93,13 +93,13 @@ jQuery(document).ready(function(){
 							</div>
 
 						</div>
-						
+
 					</div>
 
 					<h3 class="midtit">Design Filters</h3>
 					<div class="row">
 						<div class="col-md-6">
-							
+
 							<div class="form-group">
 								<label for="style">Style</label>
 								<select id="style" name="style" class="form-control">
@@ -128,7 +128,7 @@ jQuery(document).ready(function(){
 									<option value="automatic-refuel">Automatic Refuel</option>
 								</select>
 							</div>
-														
+
 							<div class="form-group">
 								<label for="efficiency">Efficiency more than ></label>
 								<select id="efficiency" name="efficiency" class="form-control">
@@ -140,7 +140,7 @@ jQuery(document).ready(function(){
 									<option value="90">90</option>
 								</select>
 							</div>
-														
+
 
 						</div>
 						<div class="col-md-6">
@@ -154,7 +154,7 @@ jQuery(document).ready(function(){
 									<option value="thermostatic-air-control">Thermostatic Air Control</option>
 								</select>
 							</div>
-							
+
 							<div class="form-group">
 								<label for="hearth-requirement">Hearth Requirement</label>
 								<select id="hearth-requirement" name="hearth-requirement" class="form-control">
@@ -163,7 +163,7 @@ jQuery(document).ready(function(){
 									<option value="superimposed">Superimposed</option>
 								</select>
 							</div>
-							
+
 							<div class="form-group">
 								<label for="loading-function">Loading Function</label>
 								<select id="loading-function" name="loading-function" class="form-control">
@@ -177,21 +177,23 @@ jQuery(document).ready(function(){
 								<label for="output">Output between</label>
 								<select id="output" name="output"  class="form-control">
 								    <option value=""> - any - </option>
-									<option value="0/5">0 and 5</option>
-									<option value="5/10">5 and 10</option>
-									<option value="10/20">10 and 20</option>
-									<option value="20/999">20 and above</option>
+									<option value="2.5/5">2.5 and 5</option>
+									<option value="5/7.5">5 and 7.5</option>
+									<option value="7.5/10">7.5 and 10</option>
+									<option value="10/15">10 and 15</option>
+									<option value="15/20">15 and 20</option>
+									<option value="20/99">20 and above</option>
 								</select>
 							</div>
-							
+
 						</div>
-						
+
 					</div>
-					
-					
+
+
 					<h3 class="midtit">Additional Filters</h3>
 					<div class="row">
-						
+
 						<div class="col-md-3">
 							<div class="checkbox">
 								<label>
@@ -200,7 +202,7 @@ jQuery(document).ready(function(){
 								</label>
 							</div>
 						</div>
-						
+
 						<div class="col-md-3">
 							<div class="checkbox">
 								<label>
@@ -209,7 +211,7 @@ jQuery(document).ready(function(){
 								</label>
 							</div>
 						</div>
-						
+
 						<div class="col-md-3">
 							<div class="checkbox">
 								<label>
@@ -218,42 +220,15 @@ jQuery(document).ready(function(){
 								</label>
 							</div>
 						</div>
-						
+
 						<div class="col-md-3">
 						</div>
-						
+
 					</div>
-					
+
 					<h3 class="midtit">Certification Status</h3>
 					<div class="row">
-						
-						<div class="col-md-3">
-							<div class="checkbox">
-								<label>
-									<input type="checkbox" name="defra-exempt"  value="yes">
-									DEFRA Exempted
-								</label>
-							</div>
-						</div>
-						
-						<div class="col-md-3">
-							<div class="checkbox">
-								<label>
-									<input type="checkbox" name="mcs-approved" value="yes">
-									MCS Certified
-								</label>
-							</div>
-						</div>
-						
-						<div class="col-md-3">
-							<div class="checkbox">
-								<label>
-									<input type="checkbox" name="sia_ecodesign_ready" value="yes">
-									SIA EcoDesign Ready
-								</label>
-							</div>
-						</div>
-						
+
 						<div class="col-md-3">
 							<div class="checkbox">
 								<label>
@@ -262,23 +237,50 @@ jQuery(document).ready(function(){
 								</label>
 							</div>
 						</div>
-						
+
+						<div class="col-md-3">
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" name="defra-exempt"  value="yes">
+									DEFRA Exempted
+								</label>
+							</div>
+						</div>
+
+						<div class="col-md-3">
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" name="hetas_eco_design" value="yes">
+									HETAS Ecodesign Compliant
+								</label>
+							</div>
+						</div>
+
+						<div class="col-md-3">
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" name="mcs-approved" value="yes">
+									MCS Certified
+								</label>
+							</div>
+						</div>
+
 					</div>
-					
+
 					<div class="form-group">
 						<button type="submit" class="btn btn-submit">Search</button>
 					</div>
-				
+
 				</form>
 			</div>
-			
+
 		</div>
 		<div class="col-md-3 app-nav">
-			
+
 			<a title="Permanent Ventilators" href="<?php echo get_option('het_covents_pdf'); ?>" target="_blank"><img src="<?php bloginfo('template_url'); ?>/images/co-alarms-vents.jpg" alt="Permanent Ventilators" ></a>
 			<a title="Ancillary Products" href="<?php echo get_option('het_linkupsys_pdf'); ?>" target="_blank"><img src="<?php bloginfo('template_url'); ?>/images/heat-genie.jpg" alt="Ancillary Products" ></a>
 			<a title="CO Alarms & Analysers" href="<?php echo get_option('het_codetectors_pdf'); ?>" target="_blank"><img src="<?php bloginfo('template_url'); ?>/images/co-alarm.jpg" alt="CO Alarms & Analysers" ></a>
-			
+
 		</div>
 	</div>
 </div>
@@ -287,15 +289,15 @@ jQuery(document).ready(function(){
 	<div class="col-md-9">
 		<div id="primary" class="content-area">
 			<main id="main" class="site-main" role="main">
-	
+
 				<?php
 				while ( have_posts() ) : the_post();
-	
+
 					get_template_part( 'template-parts/content', 'page' );
-			
+
 				endwhile; // End of the loop.
 				?>
-					
+
 			</main><!-- #main -->
 		</div><!-- #primary -->
 	</div>

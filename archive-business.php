@@ -19,7 +19,7 @@ if (isset($_GET['regid']) && $_GET['regid']) {
 			array(
 				'taxonomy' => 'business-status',
 				'field' => 'id',
-				'terms' => array(5255)
+				'terms' => array(5412)
 				// 'terms' => array(488,518) // pre CRM update
 			)
 		)
@@ -51,7 +51,7 @@ if (isset($_GET['regid']) && $_GET['regid']) {
 			array(
 				'taxonomy' => 'business-status',
 				'field' => 'id',
-				'terms' => array(5255)
+				'terms' => array(5412)
 				// 'terms' => array(488,518) // pre CRM update
 			)
 		)
