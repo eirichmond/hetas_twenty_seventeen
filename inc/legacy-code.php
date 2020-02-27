@@ -128,10 +128,6 @@ function installer_user_check() {
 	}
 }
 
-//include ('settings.php');
-
-// include('custom-types.php');
-
 // security
 remove_action('wp_head', 'wp_generator');
 
