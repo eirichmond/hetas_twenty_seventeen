@@ -318,7 +318,7 @@ include_once 'metaboxes/ta-manufacturers-spec.php';
 /**
  * Include all legacy
  */
-//require get_template_directory() . '/inc/settings.php';
+require get_template_directory() . '/inc/settings.php';
 require get_template_directory() . '/inc/legacy-code.php';
 require get_template_directory() . '/inc/required-legacy-code.php';
 
