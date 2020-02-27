@@ -57,7 +57,7 @@ rewind_posts();
 										<img src="<?php echo bloginfo('template_url'); ?>/images/hetas_mcs_combined.jpg" alt="MCS HETAS Approved" />
 									<?php } ?>
 									<?php if ($hetas_ecodesign == 'Yes') { ?>
-										<img src="<?php echo bloginfo('template_url'); ?>/images/HETAS-Ecodesign-Compliant-Logo.jpg" alt="CE logo" />
+										<img src="<?php echo bloginfo('template_url'); ?>/images/HETAS-Ecodesign-Compliant-Logo.jpg" alt="HETAS Ecodesign Compliant Logo" />
 									<?php } ?>
 									
 								</div>

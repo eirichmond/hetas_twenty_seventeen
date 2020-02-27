@@ -291,14 +291,14 @@ if ($update) {
 																<img src="<?php echo bloginfo('template_url'); ?>/images/defra_logo-sm.jpg" alt="defra logo" />
 															</li>
 														<?php } ?>
+														<?php if ($hetas_ecodesign == 'Yes') { ?>
+															<li>
+																<img src="<?php echo bloginfo('template_url'); ?>/images/HETAS-Ecodesign-Compliant-Logo-sm.jpg" alt="HETAS Ecodesign Compliant Logo" />
+															</li>
+														<?php } ?>
 														<?php if ($app_mcs_approved == 'Yes') { ?>
 															<li>
 																<img src="<?php echo bloginfo('template_url'); ?>/images/mcs-logo.jpg" alt="mcs logo" />
-															</li>
-														<?php } ?>
-														<?php if ($hetas_ecodesign == 'Yes') { ?>
-															<li>
-																<img src="<?php echo bloginfo('template_url'); ?>/images/HETAS-Ecodesign-Compliant-Logo-sm.jpg" alt="CE logo" />
 															</li>
 														<?php } ?>
 														</ul>

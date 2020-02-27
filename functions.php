@@ -197,7 +197,7 @@ add_action( 'widgets_init', 'hetas_twenty_seventeen_widgets_init' );
  */
 function hetas_twenty_seventeen_scripts() {
 
-	wp_enqueue_style( 'hetas_twenty_seventeen-style', get_stylesheet_uri() );
+	wp_enqueue_style( 'hetas_twenty_seventeen-style', get_stylesheet_uri(), array(), '20200218' );
 
 	wp_enqueue_script( 'hetas_twenty_seventeen-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20170525', true );
 	wp_enqueue_script( 'hetas_twenty_seventeen-init-bootstrap', get_template_directory_uri() . '/js/init-bootstrap.js', array(), '20170525', true );

@@ -232,6 +232,15 @@ jQuery(document).ready(function(){
 						<div class="col-md-3">
 							<div class="checkbox">
 								<label>
+									<input type="checkbox" name="hetas-approved" value="yes" checked>
+									HETAS Approved
+								</label>
+							</div>
+						</div>
+
+						<div class="col-md-3">
+							<div class="checkbox">
+								<label>
 									<input type="checkbox" name="defra-exempt"  value="yes">
 									DEFRA Exempted
 								</label>
@@ -241,26 +250,17 @@ jQuery(document).ready(function(){
 						<div class="col-md-3">
 							<div class="checkbox">
 								<label>
+									<input type="checkbox" name="hetas_eco_design" value="yes">
+									HETAS Ecodesign Compliant
+								</label>
+							</div>
+						</div>
+
+						<div class="col-md-3">
+							<div class="checkbox">
+								<label>
 									<input type="checkbox" name="mcs-approved" value="yes">
 									MCS Certified
-								</label>
-							</div>
-						</div>
-
-						<div class="col-md-3">
-							<div class="checkbox">
-								<label>
-									<input type="checkbox" name="hetas_eco_design" value="yes">
-									Eco Design Compliant
-								</label>
-							</div>
-						</div>
-
-						<div class="col-md-3">
-							<div class="checkbox">
-								<label>
-									<input type="checkbox" name="hetas-approved" value="yes" checked>
-									HETAS Approved
 								</label>
 							</div>
 						</div>
