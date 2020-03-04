@@ -141,7 +141,7 @@ if (isset($_GET['regid']) && $_GET['regid']) {
 		'service-and-maintenance-dry-appliances' => array('service-and-maintenance-dry-appliances'),
 		'service-and-maintenance-wet-systems' => array('service-and-maintenance-wet-systems'),
 		'service-and-maintenance-biomass-systems' => array('service-and-maintenance-biomass-systems'),
-		'chimney-sweep' => array('hetas-approved-chimney-sweep-apics', 'hetas-approved-chimney-sweep-gomcs', 'hetas-approved-chimney-sweep-nacs', 'hetas-approved-chimney-sweep-sweep-safe', 'hetas-approved-chimney-sweep-de'),
+		'chimney-sweep' => array('hetas-approved-chimney-sweep-apics', 'hetas-approved-chimney-sweep-gomcs', 'hetas-approved-chimney-sweep-nacs', 'hetas-approved-chimney-sweep-sweep-safe', 'hetas-approved-chimney-sweep-de', 'chimney-sweep-biomass-facilities', 'chimney-sweep-camera-surveys','chimney-sweep-power-sweeping'),
 		'retailer' => array('hetas-approved-retail-advisor')
 /*
 		'dry-stove-room-heater-cooker' => array('dry-stove'),

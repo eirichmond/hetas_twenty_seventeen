@@ -2110,6 +2110,8 @@ footer#colophon .widget ul li{list-style:none}
 .blog article.post h2.entry-title a,.archive.category article.post h2.entry-title a,.archive.tag article.post h2.entry-title a,.single article.post h2.entry-title a{text-decoration:none}
 .blog article.post a.read-more,.archive.category article.post a.read-more,.archive.tag article.post a.read-more,.single article.post a.read-more{background:#656565;border-radius:5px;padding:4px 7px;font-size:.8em;color:#fff;-webkit-transition:.3s all;transition:.3s all}
 .blog article.post a.read-more:hover,.archive.category article.post a.read-more:hover,.archive.tag article.post a.read-more:hover,.single article.post a.read-more:hover{text-decoration:none;background:#e43e00;color:#fff}
+.related-posts a{display:block;padding:7px 18px;color:#26a557;background:#deede5;border-bottom:1px solid #fff;text-decoration:none;border-radius:3px;-webkit-transition:all .5s ease;transition:all .5s ease}
+.related-posts a:hover{color:#fff;background:#c3d0c9}
 .br-1{border-radius:1px}
 .br-1{border-radius:1px}
 .br-2{border-radius:2px}
