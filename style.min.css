@@ -2100,16 +2100,16 @@ footer#colophon .widget ul{margin:0;padding:0}
 footer#colophon .widget ul li{list-style:none}
 .carousel-indicators{height:20px}
 .blockpanel{overflow:overlay}
-.blog article.post,.archive.category article.post,.archive.tag article.post{border-bottom:1px solid #eee;padding-bottom:20px;margin-bottom:40px}
-.blog article.post .entry-meta,.archive.category article.post .entry-meta,.archive.tag article.post .entry-meta{opacity:.5;font-size:.9em}
-.blog article.post footer.entry-footer .cat-links,.archive.category article.post footer.entry-footer .cat-links,.archive.tag article.post footer.entry-footer .cat-links{display:block}
-.blog article.post span.tags-links a,.archive.category article.post span.tags-links a,.archive.tag article.post span.tags-links a{background:#00a160;padding:5px 10px;color:#fff;border-radius:5px;font-size:.9em;white-space:nowrap;line-height:2.5em;-webkit-transition:.3s all;transition:.3s all}
-.blog article.post span.tags-links,.archive.category article.post span.tags-links,.archive.tag article.post span.tags-links{padding:20px 0;display:block}
-.blog article.post span.tags-links a:hover,.archive.category article.post span.tags-links a:hover,.archive.tag article.post span.tags-links a:hover{text-decoration:none;background:#656565}
-.blog article.post h2.entry-title,.archive.category article.post h2.entry-title,.archive.tag article.post h2.entry-title{font-weight:bold}
-.blog article.post h2.entry-title a,.archive.category article.post h2.entry-title a,.archive.tag article.post h2.entry-title a{text-decoration:none}
-.blog article.post a.read-more,.archive.category article.post a.read-more,.archive.tag article.post a.read-more{background:#656565;border-radius:5px;padding:4px 7px;font-size:.8em;color:#fff;-webkit-transition:.3s all;transition:.3s all}
-.blog article.post a.read-more:hover,.archive.category article.post a.read-more:hover,.archive.tag article.post a.read-more:hover{text-decoration:none;background:#e43e00;color:#fff}
+.blog article.post,.archive.category article.post,.archive.tag article.post,.single article.post{border-bottom:1px solid #eee;padding-bottom:20px;margin-bottom:40px}
+.blog article.post .entry-meta,.archive.category article.post .entry-meta,.archive.tag article.post .entry-meta,.single article.post .entry-meta{opacity:.5;font-size:.9em}
+.blog article.post footer.entry-footer .cat-links,.archive.category article.post footer.entry-footer .cat-links,.archive.tag article.post footer.entry-footer .cat-links,.single article.post footer.entry-footer .cat-links{display:block}
+.blog article.post span.tags-links a,.archive.category article.post span.tags-links a,.archive.tag article.post span.tags-links a,.single article.post span.tags-links a{background:#00a160;padding:5px 10px;color:#fff;border-radius:5px;font-size:.9em;white-space:nowrap;line-height:2.5em;-webkit-transition:.3s all;transition:.3s all}
+.blog article.post span.tags-links,.archive.category article.post span.tags-links,.archive.tag article.post span.tags-links,.single article.post span.tags-links{padding:20px 0;display:block}
+.blog article.post span.tags-links a:hover,.archive.category article.post span.tags-links a:hover,.archive.tag article.post span.tags-links a:hover,.single article.post span.tags-links a:hover{text-decoration:none;background:#656565}
+.blog article.post h2.entry-title,.archive.category article.post h2.entry-title,.archive.tag article.post h2.entry-title,.single article.post h2.entry-title{font-weight:bold}
+.blog article.post h2.entry-title a,.archive.category article.post h2.entry-title a,.archive.tag article.post h2.entry-title a,.single article.post h2.entry-title a{text-decoration:none}
+.blog article.post a.read-more,.archive.category article.post a.read-more,.archive.tag article.post a.read-more,.single article.post a.read-more{background:#656565;border-radius:5px;padding:4px 7px;font-size:.8em;color:#fff;-webkit-transition:.3s all;transition:.3s all}
+.blog article.post a.read-more:hover,.archive.category article.post a.read-more:hover,.archive.tag article.post a.read-more:hover,.single article.post a.read-more:hover{text-decoration:none;background:#e43e00;color:#fff}
 .br-1{border-radius:1px}
 .br-1{border-radius:1px}
 .br-2{border-radius:2px}

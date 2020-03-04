@@ -8,7 +8,7 @@
 				<?php if (have_posts()) : ?> 
 				<?php while (have_posts()) : the_post(); ?> 
 					<div id="content">
-						<div class="article" id="post-<?php the_ID(); ?>">
+						<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 							<header class="entry-header">
 								<h1><?php the_title(); ?></h1> 
 
@@ -34,7 +34,7 @@
 						<?php comments_template( '', true ); ?>
 
 
-						</div>
+						</article>
 					</div>
 					
 
