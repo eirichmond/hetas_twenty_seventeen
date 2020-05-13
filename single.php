@@ -8,9 +8,15 @@
 				<?php if (have_posts()) : ?> 
 				<?php while (have_posts()) : the_post(); ?> 
 					<div id="content">
-						<div class="article" id="post-<?php the_ID(); ?>">
-							<h1><?php the_title(); ?></h1> 
-							
+						<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+							<header class="entry-header">
+								<h1><?php the_title(); ?></h1> 
+
+								<div class="entry-meta">
+									<?php hetas_twenty_seventeen_posted_on(); ?>
+								</div><!-- .entry-meta -->
+
+							</header>
 							<div class="featimg">
 								<?php 
 								if ( has_post_thumbnail() ) {
@@ -19,16 +25,18 @@
 								?>
 							</div>
 							
-<!-- 							<p class="meta"><span>Posted on</span> <?php the_time('F jS, Y'); ?> <span>by</span> <?php the_author(); ?></p>  -->
 							<?php the_content('Read Full Article'); ?> 
-<!-- 							<p><?php the_tags('Tags: ', ', ', '<br />'); ?> Posted in <?php the_category(', '); ?> <?php comments_popup_link('No Comments;', '1 Comment', '% Comments'); ?></p>  -->
+
+
+
+							<?php hetas_post_related_posts($post->ID); ?>
 							
 
 						<?php get_template_part( 'content', 'single' ); ?>
 						<?php comments_template( '', true ); ?>
 
 
-						</div>
+						</article>
 					</div>
 					
 

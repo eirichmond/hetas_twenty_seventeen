@@ -1,5 +1,4 @@
 <div class="search-area border">
-
 	<div class="btn-group btn-group-justified" role="group" aria-label="Search">
 		<div class="btn-group" role="group">
 			<a href="<?php echo get_permalink(27) ;?>" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-search find-fuels" aria-hidden="true"></span> Fuels</a>

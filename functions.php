@@ -94,10 +94,63 @@ function hetas_twenty_seventeen_setup() {
         'flex-width'  => true,
         'header-text' => array( 'site-title', 'site-description' ),
     );
-    add_theme_support( 'custom-logo', $defaults );
+	add_theme_support( 'custom-logo', $defaults );
+	
+
+	/**
+	 * Standardise the HETAS colour pallete
+	 */
+	add_theme_support( 'editor-color-palette', array(
+        array(
+            'name' => __( 'HETAS Green', 'hetas_twenty_seventeen' ),
+            'slug' => 'hetas-green',
+            'color' => '#03A261',
+        ),
+        array(
+            'name' => __( 'HETAS Orange', 'hetas_twenty_seventeen' ),
+            'slug' => 'hetas-orange',
+            'color' => '#f79726',
+        ),
+        array(
+            'name' => __( 'HETAS Orange Red', 'hetas_twenty_seventeen' ),
+            'slug' => 'hetas-orange-red',
+            'color' => '#e43e00',
+        ),
+        array(
+            'name' => __( 'HETAS Red', 'hetas_twenty_seventeen' ),
+            'slug' => 'hetas-red',
+            'color' => '#cf1546',
+        ),
+        array(
+            'name' => __( 'HETAS Black', 'hetas_twenty_seventeen' ),
+            'slug' => 'hetas-black',
+            'color' => '#000000',
+        ),
+        array(
+            'name' => __( 'HETAS Grey', 'hetas_twenty_seventeen' ),
+            'slug' => 'hetas-grey',
+            'color' => '#b2b1b1',
+        ),
+        array(
+            'name' => __( 'HETAS White', 'hetas_twenty_seventeen' ),
+            'slug' => 'hetas-white',
+            'color' => '#ffffff',
+        ),
+	) );
+	
+	/**
+	 * enable wide blocks alignment
+	 */
+	add_theme_support( 'align-wide' );
+	
 }
 endif;
 add_action( 'after_setup_theme', 'hetas_twenty_seventeen_setup' );
+
+function hetas_block_stylesheet() {
+    wp_enqueue_style( 'hetas-block-style', get_template_directory_uri() . '/editor-block-styles.css' );
+}
+add_action( 'enqueue_block_assets', 'hetas_block_stylesheet' );
 
 function add_logout_to_menu($items, $args) {
 	if ($args->theme_location == 'members-logged-in') {
@@ -356,6 +409,7 @@ require get_template_directory() . '/inc/customizer.php';
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
+
 
 
 

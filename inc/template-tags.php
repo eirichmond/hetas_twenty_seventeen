@@ -14,14 +14,12 @@ if ( ! function_exists( 'hetas_twenty_seventeen_posted_on' ) ) :
 function hetas_twenty_seventeen_posted_on() {
 	$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
 	if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
-		$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time> <time class="updated" datetime="%3$s">%4$s</time>';
+		$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time>';
 	}
 
 	$time_string = sprintf( $time_string,
 		esc_attr( get_the_date( 'c' ) ),
-		esc_html( get_the_date() ),
-		esc_attr( get_the_modified_date( 'c' ) ),
-		esc_html( get_the_modified_date() )
+		esc_html( get_the_date() )
 	);
 
 	$posted_on = sprintf(
@@ -187,3 +185,49 @@ function hetas_gm_api_key() {
 	return 'AIzaSyDTBgIiALPDB_Z1C61Jma09ybxncZVgfqA';
 }
 
+
+function hetas_post_related_posts($post_id) {
+
+	//for use in the loop, list 5 post titles related to first tag on current post
+	$tags = wp_get_post_tags($post_id);
+	if ($tags) {
+
+		echo '<section class="related-posts">';
+
+		echo '<h3>Related News Items</h3>';
+
+		$post_ids = array();
+		foreach($tags as $tag) {
+			$term_id = $tag->term_id;
+			$args = array(
+				'tag__in' 			=> array($term_id),
+				'post__not_in' 		=> array($post_id),
+				'posts_per_page' 	=> 1
+			);
+			$posts = get_posts($args);
+			$post_ids[] = $posts[0]->ID;
+		}
+
+		$post_ids = array_filter($post_ids);
+
+		$args = array(
+			'post__in' => $post_ids,
+			'post_status' => 'publish',
+			'order' => 'DESC'
+		);
+
+		$related_hetas_posts = new WP_Query($args);
+		if( $related_hetas_posts->have_posts() ) {
+			while ($related_hetas_posts->have_posts()) : $related_hetas_posts->the_post(); ?>
+
+				<a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a>
+			
+			<?php
+			endwhile;
+		}
+		echo '</section>';
+		wp_reset_query();
+
+	}
+
+}

@@ -1047,7 +1047,7 @@ footer#colophon {
 /*---------------------------------------------------------------------
 news
 ----------------------------------------------------------------------*/
-.blog, .archive.category, .archive.tag {
+.blog, .archive.category, .archive.tag, .single {
 
 
 	article.post {
@@ -1111,6 +1111,21 @@ news
 	}
 
 
+}
+
+.related-posts a {
+	display: block;
+	padding: 7px 18px;
+	color:	#26a557;
+	background:#deede5;
+	border-bottom:1px solid #fff;
+	text-decoration: none;
+	border-radius: 3px;
+	transition:all 0.5s ease;
+	&:hover {
+		color: #fff;
+		background: #C3D0C9;
+	}
 }
 
 
