@@ -122,9 +122,15 @@ function hetas_replace_h005br($title){
 }
 
 function installer_user_check() {
-	$access = current_user_can('hetas_installer') || current_user_can('operative_responsible_person') || current_user_can('operative') || current_user_can('manage_options');
+    $access = current_user_can('hetas_installer')
+    || current_user_can('operative_inspector')
+    || current_user_can('operative_responsible_person')
+    || current_user_can('operative')
+    || current_user_can('manage_options');
 	if ( !is_user_logged_in() || !$access) {
-		wp_die('Sorry! Your user access level does not allow you to access this area.');
+        
+		wp_die('You\'ll need to be logged in to the HETAS website to access this exclusive content. <a href="'.home_url('/members-area/').'">Click here to login</a> or contact <a href="mailto:info@hetas.co.uk">info@hetas.co.uk</a> for more details or to reset your password.<br/><br/>
+        <a href="'.home_url().'">Click here to return to the homepage.</a>');
 	}
 }
 
