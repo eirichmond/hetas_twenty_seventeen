@@ -31,12 +31,7 @@ get_header(); ?>
 				
 					endwhile; // End of the loop.
 					?>
-					
-					<?php if (is_page('1879')) {
-						//insert_cform('2');
-						if( function_exists( 'ninja_forms_display_form' ) ){ ninja_forms_display_form( 4 ); }
-					} ?>
-		
+							
 				</main><!-- #main -->
 			</div><!-- #primary -->
 			

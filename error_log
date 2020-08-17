@@ -30,3 +30,107 @@ Stack trace:
 Stack trace:
 #0 {main}
   thrown in /home/hetas/public_html/wp-content/themes/hetas_twenty_seventeen/index.php on line 15
+[18-Jun-2020 11:49:11 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/hetas/public_html/wp-content/themes/hetas_twenty_seventeen/index.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/hetas/public_html/wp-content/themes/hetas_twenty_seventeen/index.php on line 15
+[18-Jun-2020 11:49:11 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/hetas/public_html/wp-content/themes/hetas_twenty_seventeen/index.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/hetas/public_html/wp-content/themes/hetas_twenty_seventeen/index.php on line 15
+[18-Jun-2020 11:49:14 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/hetas/public_html/wp-content/themes/hetas_twenty_seventeen/index.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/hetas/public_html/wp-content/themes/hetas_twenty_seventeen/index.php on line 15
+[18-Jun-2020 11:49:14 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/hetas/public_html/wp-content/themes/hetas_twenty_seventeen/index.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/hetas/public_html/wp-content/themes/hetas_twenty_seventeen/index.php on line 15
+[18-Jun-2020 11:49:16 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/hetas/public_html/wp-content/themes/hetas_twenty_seventeen/index.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/hetas/public_html/wp-content/themes/hetas_twenty_seventeen/index.php on line 15
+[18-Jun-2020 11:49:16 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/hetas/public_html/wp-content/themes/hetas_twenty_seventeen/index.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/hetas/public_html/wp-content/themes/hetas_twenty_seventeen/index.php on line 15
+[18-Jun-2020 11:49:18 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/hetas/public_html/wp-content/themes/hetas_twenty_seventeen/index.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/hetas/public_html/wp-content/themes/hetas_twenty_seventeen/index.php on line 15
+[18-Jun-2020 11:49:19 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/hetas/public_html/wp-content/themes/hetas_twenty_seventeen/index.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/hetas/public_html/wp-content/themes/hetas_twenty_seventeen/index.php on line 15
+[08-Jul-2020 20:25:30 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/hetas/public_html/wp-content/themes/hetas_twenty_seventeen/index.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/hetas/public_html/wp-content/themes/hetas_twenty_seventeen/index.php on line 15
+[08-Jul-2020 20:25:30 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/hetas/public_html/wp-content/themes/hetas_twenty_seventeen/index.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/hetas/public_html/wp-content/themes/hetas_twenty_seventeen/index.php on line 15
+[08-Jul-2020 20:25:31 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/hetas/public_html/wp-content/themes/hetas_twenty_seventeen/index.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/hetas/public_html/wp-content/themes/hetas_twenty_seventeen/index.php on line 15
+[08-Jul-2020 20:25:31 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/hetas/public_html/wp-content/themes/hetas_twenty_seventeen/index.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/hetas/public_html/wp-content/themes/hetas_twenty_seventeen/index.php on line 15
+[08-Jul-2020 20:25:43 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/hetas/public_html/wp-content/themes/hetas_twenty_seventeen/index.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/hetas/public_html/wp-content/themes/hetas_twenty_seventeen/index.php on line 15
+[08-Jul-2020 20:25:43 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/hetas/public_html/wp-content/themes/hetas_twenty_seventeen/index.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/hetas/public_html/wp-content/themes/hetas_twenty_seventeen/index.php on line 15
+[08-Jul-2020 20:25:43 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/hetas/public_html/wp-content/themes/hetas_twenty_seventeen/index.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/hetas/public_html/wp-content/themes/hetas_twenty_seventeen/index.php on line 15
+[08-Jul-2020 20:25:43 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/hetas/public_html/wp-content/themes/hetas_twenty_seventeen/index.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/hetas/public_html/wp-content/themes/hetas_twenty_seventeen/index.php on line 15
+[08-Jul-2020 20:27:51 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/hetas/public_html/wp-content/themes/hetas_twenty_seventeen/index.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/hetas/public_html/wp-content/themes/hetas_twenty_seventeen/index.php on line 15
+[08-Jul-2020 20:27:51 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/hetas/public_html/wp-content/themes/hetas_twenty_seventeen/index.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/hetas/public_html/wp-content/themes/hetas_twenty_seventeen/index.php on line 15
+[08-Jul-2020 20:27:51 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/hetas/public_html/wp-content/themes/hetas_twenty_seventeen/index.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/hetas/public_html/wp-content/themes/hetas_twenty_seventeen/index.php on line 15
+[08-Jul-2020 20:27:52 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/hetas/public_html/wp-content/themes/hetas_twenty_seventeen/index.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/hetas/public_html/wp-content/themes/hetas_twenty_seventeen/index.php on line 15
+[08-Jul-2020 20:27:57 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/hetas/public_html/wp-content/themes/hetas_twenty_seventeen/index.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/hetas/public_html/wp-content/themes/hetas_twenty_seventeen/index.php on line 15
+[08-Jul-2020 20:27:58 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/hetas/public_html/wp-content/themes/hetas_twenty_seventeen/index.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/hetas/public_html/wp-content/themes/hetas_twenty_seventeen/index.php on line 15
+[08-Jul-2020 20:27:58 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/hetas/public_html/wp-content/themes/hetas_twenty_seventeen/index.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/hetas/public_html/wp-content/themes/hetas_twenty_seventeen/index.php on line 15
+[08-Jul-2020 20:27:58 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/hetas/public_html/wp-content/themes/hetas_twenty_seventeen/index.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/hetas/public_html/wp-content/themes/hetas_twenty_seventeen/index.php on line 15
+[30-Jul-2020 06:36:43 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/hetas/public_html/wp-content/themes/hetas_twenty_seventeen/index.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/hetas/public_html/wp-content/themes/hetas_twenty_seventeen/index.php on line 15
+[30-Jul-2020 08:40:37 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/hetas/public_html/wp-content/themes/hetas_twenty_seventeen/index.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/hetas/public_html/wp-content/themes/hetas_twenty_seventeen/index.php on line 15
