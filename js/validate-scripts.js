@@ -92,7 +92,10 @@
 	);
 
 	function check_isles(postcode) {
+		const str = postcode.substr(0.3);
+		console.log(typeof(postcode));
 
+debugger;
 		if(postcode.indexOf('GY') != -1 || postcode.indexOf('IM') != -1 || postcode.indexOf('JE') != -1 ) {
 
 			//console.log(postcode.substr(0,3));

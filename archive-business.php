@@ -226,7 +226,6 @@ if (isset($_GET['regid']) && $_GET['regid']) {
 		$result = 'Chimney Sweeps';
 	}
 }
-$google_api_key = hetas_gm_api_key();
 
 ?>
 
@@ -314,16 +313,6 @@ $google_api_key = hetas_gm_api_key();
 								<a href="mailto:<?php custom_field($post->ID, 'inst_email'); ?>" class="btn btn-dark">Contact &raquo;</a>
 								<?php endif; ?>
 
-<!--
-								<div class="map retailer">
-
-									<iframe width="100%" height="350" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=<?php custom_field($post->ID, 'inst_postcode'); ?>%20&key=<?php echo '-'.$google_api_key; ?>" allowfullscreen></iframe>
-
-
-									<a href="https://maps.google.co.uk/maps?q=<?php custom_field($post->ID, 'inst_postcode'); ?>" target="_blank"><img src="https://maps.googleapis.com/maps/api/staticmap?center=<?php custom_field($post->ID, 'inst_lat'); ?>,<?php custom_field($post->ID, 'inst_lng'); ?>&amp;zoom=11&amp;size=360x360&amp;sensor=false&amp;markers=color:green|<?php custom_field($post->ID, 'inst_lat'); ?>,<?php custom_field($post->ID, 'inst_lng'); ?>&key=<?php echo esc_attr( $google_api_key ); ?>"></a>
-
-								</div>
--->
 							</div>
 						</div>
 
