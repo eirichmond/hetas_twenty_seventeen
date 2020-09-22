@@ -261,11 +261,9 @@ function hetas_twenty_seventeen_scripts() {
 
 	//wp_enqueue_script( 'hetas_twenty_seventeen-ninjaforms', get_template_directory_uri() . '/js/ninjaforms.js', array('jquery'), '20170525', true );
 	if(is_page( array('find-fuels','find-woodfuels','find-retailer','find-installer','find-servicing','find-chimney-sweep','find-appliance') )) {
-		$google_api_key = hetas_gm_api_key();
 		wp_enqueue_script( 'jquery.validate.js', get_template_directory_uri() . '/js/jquery.validate.js', array( 'jquery' ), '20170525' );
 		wp_enqueue_script( 'jquery.validate-additional-methods', get_template_directory_uri() . '/js/jquery.validate-additional-methods.js', array( 'jquery' ), '20170525' );
 		wp_enqueue_script( 'validate-scripts', get_template_directory_uri() . '/js/validate-scripts.js', array( 'jquery' ), '20170525', true );
-		wp_enqueue_script( 'google', 'https://maps.googleapis.com/maps/api/js?key='.$google_api_key );
 	}
 	wp_enqueue_script( 'jquery-ui-autocomplete', '','', false );
 	wp_enqueue_script( 'jquery-ui-accordion', '','', false );
@@ -281,27 +279,6 @@ function hetas_twenty_seventeen_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'hetas_twenty_seventeen_scripts' );
 
-/*
-	Add google maps to the footer
-*/
-/*
-function hetas_footer_hook() {
-	// @TODO put this in a conditional so it doesnt render on every page
-    echo '
-	<script type="text/javascript">
-	function loadScript() {
-		var script = document.createElement("script");
-		script.type = "text/javascript";
-		script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyCXLdzQAHX56JE5sz6k81OXh-krjoNYpsM&sensor=true&callback=initialize";
-		document.body.appendChild(script);
-	}
-
-	window.onload = loadScript;
-	</script>
-    ';
-}
-add_action( 'wp_footer', 'hetas_footer_hook' );
-*/
 
 // add hook
 add_filter( 'wp_nav_menu_objects', 'my_wp_nav_menu_objects_sub_menu', 10, 2 );
