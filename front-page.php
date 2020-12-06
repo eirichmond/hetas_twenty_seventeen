@@ -19,7 +19,9 @@ get_header(); ?>
 	get_template_part( 'front-page/carousel', 'slider' );
 } ?>
 
-<?php get_template_part( 'header-parts/search', 'nav' ); ?>
+<?php if (get_current_blog_id() == 1) {
+		get_template_part( 'header-parts/search', 'nav' );
+}  ?>
 
 <?php the_content(); ?>
 
