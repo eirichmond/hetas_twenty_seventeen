@@ -18,13 +18,16 @@
 								</div><!-- .entry-meta -->
 
 							</header>
-							<div class="featimg">
-								<?php 
-								if ( has_post_thumbnail() ) {
-									the_post_thumbnail('full-width');
-								}
-								?>
-							</div>
+
+							<?php if (get_current_blog_id() == 1) { ?>
+								<div class="featimg">
+									<?php 
+									if ( has_post_thumbnail() ) {
+										the_post_thumbnail('full-width');
+									}
+									?>
+								</div>
+							<?php } ?>
 							
 							<?php the_content('Read Full Article'); ?> 
 

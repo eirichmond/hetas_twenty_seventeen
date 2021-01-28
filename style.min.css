@@ -2115,6 +2115,13 @@ footer#colophon .widget ul li{list-style:none}
 .blog article.post a.read-more:hover,.archive.category article.post a.read-more:hover,.archive.tag article.post a.read-more:hover,.single article.post a.read-more:hover{text-decoration:none;background:#e43e00;color:#fff}
 .related-posts a{display:block;padding:7px 18px;color:#26a557;background:#deede5;border-bottom:1px solid #fff;text-decoration:none;border-radius:3px;-webkit-transition:all .5s ease;transition:all .5s ease}
 .related-posts a:hover{color:#fff;background:#c3d0c9}
+div.greenButton a.wp-block-button__link,div.yellowButton a.wp-block-button__link,div.redButton a.wp-block-button__link{border-radius:10px}
+div.greenButton a.wp-block-button__link{background-color:#03a261}
+div.greenButton a:hover{background-color:#027043}
+div.yellowButton a.wp-block-button__link{background-color:#f79726}
+div.yellowButton a:hover{background-color:#e27e08}
+div.redButton a.wp-block-button__link{background-color:#e43e00}
+div.redButton a:hover{background-color:#b13000}
 .br-1{border-radius:1px}
 .br-1{border-radius:1px}
 .br-2{border-radius:2px}

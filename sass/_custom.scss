@@ -1132,6 +1132,38 @@ news
 	}
 }
 
+/**
+from customizer
+**/
+
+div.greenButton a.wp-block-button__link, div.yellowButton a.wp-block-button__link, div.redButton a.wp-block-button__link {
+	border-radius:10px;
+}
+
+div.greenButton a.wp-block-button__link {
+	background-color: #03A261;
+}
+
+div.greenButton a:hover {
+	background-color:#027043;
+}
+
+div.yellowButton a.wp-block-button__link {
+	background-color:#f79726;
+}
+
+div.yellowButton a:hover {
+	background-color:#e27e08;
+}
+
+div.redButton a.wp-block-button__link {
+	background-color:#e43e00;
+}
+
+div.redButton a:hover {
+	background-color:#b13000;
+}
+
 
 /*---------------------------------------------------------------------
 all around radius corners
