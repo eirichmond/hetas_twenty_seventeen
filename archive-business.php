@@ -19,7 +19,7 @@ if (isset($_GET['regid']) && $_GET['regid']) {
 			array(
 				'taxonomy' => 'business-status',
 				'field' => 'id',
-				'terms' => array(5412)
+				'terms' => array(5412,5414)
 				// 'terms' => array(488,518) // pre CRM update
 			)
 		)
@@ -236,96 +236,99 @@ if (isset($_GET['regid']) && $_GET['regid']) {
 </div>
 
 
-<?php if ( $posts ) : ?>
+
 
 <div class="row">
 	<div class="col-md-9">
 
-		<div id="main">
-			<div id="content">
-				<ul class="search-results" id="business">
-				    <?php foreach ($posts as $post) : ?>
-					<li>
-						<h3><?php the_title(); ?></h3>
+		<?php if ( $posts ) : ?>
 
-						<div class="row">
-							<div class="col-md-6">
-								<ul>
-								    <?php if (has_field($post->ID, 'inst_address_1')) : ?>
-							            <li><?php custom_field($post->ID, 'inst_address_1'); ?></li>
-							        <?php endif; ?>
-							        <?php if (has_field($post->ID, 'inst_address_2')) : ?>
-							            <li><?php custom_field($post->ID, 'inst_address_2'); ?></li>
-							        <?php endif; ?>
-							        <?php if (has_field($post->ID, 'inst_address_3')) : ?>
-							            <li><?php custom_field($post->ID, 'inst_address_3'); ?></li>
-							        <?php endif; ?>
-							        <?php if (has_field($post->ID, 'inst_town')) : ?>
-							            <li><?php custom_field($post->ID, 'inst_town'); ?></li>
-							        <?php endif; ?>
-							        <?php if (has_field($post->ID, 'inst_county')) : ?>
-							            <li><?php custom_field($post->ID, 'inst_county'); ?></li>
-							        <?php endif; ?>
-							        <?php if (has_field($post->ID, 'inst_postcode')) : ?>
-							            <li><?php custom_field($post->ID, 'inst_postcode'); ?></li>
-							        <?php endif; ?>
-							        <?php if (has_field($post->ID, 'inst_phone')) : ?>
-							            <li>Tel: <?php custom_field($post->ID, 'inst_phone'); ?></li>
-							        <?php endif; ?>
-							        <?php if (has_field($post->ID, 'inst_mobile')) : ?>
-							            <li>Mob: <?php custom_field($post->ID, 'inst_mobile'); ?></li>
-							        <?php endif; ?>
-							        <?php if (has_field($post->ID, 'inst_fax')) : ?>
-							            <li>Fax: <?php custom_field($post->ID, 'inst_fax'); ?></li>
-							        <?php endif; ?>
-							        <?php if (has_field($post->ID, 'inst_website')) : ?>
-							            <li>Website: <a href="<?php custom_field($post->ID, 'inst_website'); ?>" target="_blank" title="website" ><?php custom_field($post->ID, 'inst_website'); ?></a></li>
-							        <?php endif; ?>
-							        <?php if ($post->distance) : ?>
-							        <li><?php echo intval($post->distance) > 1 ? intval($post->distance) . " miles away" : "less than a mile away"; ?></li>
-							        <?php endif; ?>
-								</ul>
+			<div id="main">
+				<div id="content">
+					<ul class="search-results" id="business">
+						<?php foreach ($posts as $post) : ?>
+						<li>
+							<h3><?php the_title(); ?></h3>
 
-
-							</div>
-							<div class="col-md-6">
-
-								<h4>Areas of work:</h4>
-
-								<?php
-								$terms = get_the_terms( $post->ID, 'competencies' );
-								if ( $terms && ! is_wp_error( $terms ) ) :
-									$competencies = array();
-									foreach ( $terms as $term ) {
-										$competencies[] = $term->name;
-									}
-								?>
+							<div class="row">
+								<div class="col-md-6">
 									<ul>
-										<?php
-										foreach ($competencies as $competencie) {
-											echo '<li>' . $competencie . '</li>';
-										}
-										?>
+										<?php if (has_field($post->ID, 'inst_address_1')) : ?>
+											<li><?php custom_field($post->ID, 'inst_address_1'); ?></li>
+										<?php endif; ?>
+										<?php if (has_field($post->ID, 'inst_address_2')) : ?>
+											<li><?php custom_field($post->ID, 'inst_address_2'); ?></li>
+										<?php endif; ?>
+										<?php if (has_field($post->ID, 'inst_address_3')) : ?>
+											<li><?php custom_field($post->ID, 'inst_address_3'); ?></li>
+										<?php endif; ?>
+										<?php if (has_field($post->ID, 'inst_town')) : ?>
+											<li><?php custom_field($post->ID, 'inst_town'); ?></li>
+										<?php endif; ?>
+										<?php if (has_field($post->ID, 'inst_county')) : ?>
+											<li><?php custom_field($post->ID, 'inst_county'); ?></li>
+										<?php endif; ?>
+										<?php if (has_field($post->ID, 'inst_postcode')) : ?>
+											<li><?php custom_field($post->ID, 'inst_postcode'); ?></li>
+										<?php endif; ?>
+										<?php if (has_field($post->ID, 'inst_phone')) : ?>
+											<li>Tel: <?php custom_field($post->ID, 'inst_phone'); ?></li>
+										<?php endif; ?>
+										<?php if (has_field($post->ID, 'inst_mobile')) : ?>
+											<li>Mob: <?php custom_field($post->ID, 'inst_mobile'); ?></li>
+										<?php endif; ?>
+										<?php if (has_field($post->ID, 'inst_fax')) : ?>
+											<li>Fax: <?php custom_field($post->ID, 'inst_fax'); ?></li>
+										<?php endif; ?>
+										<?php if (has_field($post->ID, 'inst_website')) : ?>
+											<li>Website: <a href="<?php custom_field($post->ID, 'inst_website'); ?>" target="_blank" title="website" ><?php custom_field($post->ID, 'inst_website'); ?></a></li>
+										<?php endif; ?>
+										<?php if ($post->distance) : ?>
+										<li><?php echo intval($post->distance) > 1 ? intval($post->distance) . " miles away" : "less than a mile away"; ?></li>
+										<?php endif; ?>
 									</ul>
-								<?php endif; ?>
 
-							    <?php if (has_field($post->ID, 'inst_email')) : ?>
-								<a href="mailto:<?php custom_field($post->ID, 'inst_email'); ?>" class="btn btn-dark">Contact &raquo;</a>
-								<?php endif; ?>
 
+								</div>
+								<div class="col-md-6">
+
+									<h4>Areas of work:</h4>
+
+									<?php
+									$terms = get_the_terms( $post->ID, 'competencies' );
+									if ( $terms && ! is_wp_error( $terms ) ) :
+										$competencies = array();
+										foreach ( $terms as $term ) {
+											$competencies[] = $term->name;
+										}
+									?>
+										<ul>
+											<?php
+											foreach ($competencies as $competencie) {
+												echo '<li>' . $competencie . '</li>';
+											}
+											?>
+										</ul>
+									<?php endif; ?>
+
+									<?php if (has_field($post->ID, 'inst_email')) : ?>
+									<a href="mailto:<?php custom_field($post->ID, 'inst_email'); ?>" class="btn btn-dark">Contact &raquo;</a>
+									<?php endif; ?>
+
+								</div>
 							</div>
-						</div>
 
-					</li>
-                    <?php endforeach; ?>
-				</ul>
-			</div>
+						</li>
+						<?php endforeach; ?>
+					</ul>
+				</div>
+
+
+			</div><!-- /main -->
+
 		<?php else: ?>
 			<p>Sorry, no businesses could be found.</p>
 		<?php endif; ?>
-
-
-		</div><!-- /main -->
 
 	</div>
 
