@@ -1969,6 +1969,8 @@ img.custom-logo{max-width:100%}
 .btn-dark.disabled:hover,.btn-dark.disabled:focus,.btn-dark.disabled.focus,.btn-dark[disabled]:hover,.btn-dark[disabled]:focus,.btn-dark[disabled].focus,fieldset[disabled] .btn-dark:hover,fieldset[disabled] .btn-dark:focus,fieldset[disabled] .btn-dark.focus{background-color:#666;border-color:#595959}
 .btn-dark .badge{color:#666;background-color:#fff}
 .search-area.border{margin:28px 0}
+.search-area .btn-group-justified{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}
+.search-area .btn-group-justified>.btn,.search-area .btn-group-justified>.btn-group{float:none;display:inherit;width:100%}
 .hpwidgets{margin:40px 0}
 .hpwidgets .hpwidget{min-height:180px;position:relative;overflow:hidden;color:#fff}
 .hpwidgets .hpwidget h4{color:#fff;margin:0 0 15px;padding:0}

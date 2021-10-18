@@ -95,6 +95,7 @@ if (isset($_GET['regid']) && $_GET['regid']) {
 	$distance_to_search = 50; /* miles */
 	$location = false;
 
+
 	$update = array(
 		'posts_per_page' => '-1',
 		'meta_query' => array(
@@ -105,6 +106,15 @@ if (isset($_GET['regid']) && $_GET['regid']) {
 			)
 		),
 	);
+
+	if(isset($_GET["filter"]) && $_GET["filter"] == 'boiler-maintenance') {
+		$meta_array = array(
+			'key' => 'rhi_manufacturers',
+			'compare' => 'EXISTS'
+		);
+		$update['meta_query'][] = $meta_array;
+	};
+
 
 	if (isset($_GET['postcode']) && $_GET['postcode']) {
 		$location = geocode_postcode($_GET['postcode']);
@@ -173,7 +183,12 @@ if (isset($_GET['regid']) && $_GET['regid']) {
 	    }
 
 		if ($value == "boiler-maintenance") {
-			$terms[] = $filter[$_GET["competencies"]];
+			if(!empty($_GET["competencies"])) {
+				$terms[] = $filter[$_GET["competencies"]];
+			} else {
+				$terms[] = array('habms-domestic-installations', 'habms-small-non-domestic-installations-200kw', 'habms-medium-non-domestic-installations-200-to-1000kw', 'habms-large-non-domestic-installations-1000-kw');
+			}
+			
 		}
 
 	}
@@ -207,8 +222,9 @@ if (isset($_GET['regid']) && $_GET['regid']) {
 	$posts = array();
 	while ( have_posts() ) : the_post();
 		$post->distance = distance($location[0], $location[1], get_custom_field($post->ID, 'inst_lat'), get_custom_field($post->ID, 'inst_lng') );
-		$posts[] = $post;
+		$posts[] = apply_filters('check_rhi_manufacturer', $post, $_GET);
 	endwhile;
+	$posts = array_filter($posts);
 
 	// sort them by distance
 	function compare_distance($a, $b) {
@@ -306,19 +322,30 @@ if (isset($_GET['regid']) && $_GET['regid']) {
 
 									<?php
 									$terms = get_the_terms( $post->ID, 'competencies' );
+									$terms = reorder_biomass_competencies($terms);
 									if ( $terms && ! is_wp_error( $terms ) ) :
 										$competencies = array();
 										foreach ( $terms as $term ) {
 											$competencies[] = $term->name;
 										}
 									?>
-										<ul>
+										<ul class="competencies" id="<?php echo esc_attr( $post->ID ); ?>-comps">
 											<?php
 											foreach ($competencies as $competencie) {
 												echo '<li>' . $competencie . '</li>';
 											}
 											?>
 										</ul>
+									<?php endif; ?>
+
+									<?php if (has_field($post->ID, 'rhi_manufacturers')) : $rhi_manufacturers = get_post_meta($post->ID, 'rhi_manufacturers'); ?>
+										<h4>Manufacturers:</h4>
+										<ul>
+											<?php foreach($rhi_manufacturers[0] as $k => $value) { ?>
+												<li><?php echo esc_attr( $value['van_name'] ); ?></li>
+											<?php } ?>
+										</ul>
+
 									<?php endif; ?>
 
 									<?php if (has_field($post->ID, 'inst_email')) : ?>

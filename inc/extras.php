@@ -37,3 +37,19 @@ function hetas_twenty_seventeen_pingback_header() {
 	}
 }
 add_action( 'wp_head', 'hetas_twenty_seventeen_pingback_header' );
+
+
+function check_rhi_manufacturer_callback($post, $global_get) {
+	if(isset($global_get['filter']) && $global_get['filter'] == 'boiler-maintenance' ) {
+		$manufacturers_array = get_post_meta($post->ID, 'rhi_manufacturers');
+		$manufacturers_ids = wp_list_pluck( $manufacturers_array[0], 'van_rhimanufacturerid' );
+		if(in_array($global_get["boiler_maintenance_manufacturers"], $manufacturers_ids)) {
+			return $post;
+		}
+		if(empty($global_get["boiler_maintenance_manufacturers"]) && !empty($global_get["postcode"])) {
+			return $post;
+		}
+	}
+	return $post;
+}
+add_filter('check_rhi_manufacturer', 'check_rhi_manufacturer_callback', 10, 2);

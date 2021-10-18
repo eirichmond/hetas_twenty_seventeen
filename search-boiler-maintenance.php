@@ -1,13 +1,7 @@
 <?php
 get_header();
-$call_crm = new Dynamics_crm('Dynamics_crm', '1.0.0');
-$boiler_competences = $call_crm->get_boiler_maintenance_competencies();
-$comps = wp_list_pluck( $boiler_competences->value, 'van_name' );
-$competencies = get_terms(array(
-	'taxonomy' => 'competencies',
-	'name' => $comps
-));
-$rhi_manufacturers = $call_crm->get_all_rhi_manufacturers();
+$competencies = get_current_biomass_competencies();
+$rhi_manufacturers = get_current_biomass_rhi_manufactures();
 /*
 Template Name: Search Boiler Maintenance
 */
@@ -30,12 +24,12 @@ Template Name: Search Boiler Maintenance
 				<div role="tabpanel" class="tab-pane fade in active" id="findbusiness">
 					<div class="hetasform hybrid">
 						
-						<h3>Find HETAS Approved Boiler Maintenance</h3>
+						<h3>Find HETAS Approved Biomass Maintenance (HABMS)</h3>
 
 						<form class="cmxform" id="geocode" method="get" action="/business/">
 
 							<div class="form-group">
-								<label for="competencies">By Boiler Maintenance Competencies</label>
+								<label for="competencies">By Biomass Category</label>
 								<select id="competencies" name="competencies" class="form-control">
 								    <option value=""> - all - </option>
 								    <?php foreach($competencies as $boiler_competency) { ?>
@@ -49,8 +43,8 @@ Template Name: Search Boiler Maintenance
 								<label for="boiler_maintenance_manufacturers">By Manufacturer</label>
 								<select id="boiler_maintenance_manufacturers" name="boiler_maintenance_manufacturers" class="form-control">
 								    <option value=""> - all - </option>
-								    <?php foreach($rhi_manufacturers->value as $rhi_manufacturer) { ?>
-									<option value="<?php echo $rhi_manufacturer->van_rhimanufacturerid; ?>"><?php echo $rhi_manufacturer->van_name; ?></option>
+								    <?php foreach($rhi_manufacturers as $rhimanufacturerid => $rhi_manufacturer) { ?>
+									<option value="<?php echo esc_attr( $rhimanufacturerid ); ?>"><?php echo esc_attr( $rhi_manufacturer ); ?></option>
 									<?php } ?>
 								</select>
 							</div>
