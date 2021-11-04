@@ -958,6 +958,19 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eca755', end
 
 
 /* search-area */
+
+
+.search-area .btn-group-justified {
+	display: flex;
+	justify-content: space-between;
+}
+
+.search-area .btn-group-justified > .btn, .search-area .btn-group-justified > .btn-group {
+	float: none;
+	display: inherit;
+	width: 100%;
+}
+
 .search-area {
 	padding:18px 10px 0;
 	overflow:hidden;

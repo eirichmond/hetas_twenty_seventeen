@@ -665,18 +665,22 @@ add_filter( 'meta_content', 'prepend_attachment' );
 $postcode_cache = array();
 function geocode_postcode($pc) {
 
-    global $postcode_cache;
-
+	
+	global $postcode_cache;
+	
+	
     if (isset($postcode_cache[$pc])) return $postcode_cache[$pc];
 
     //$url = "http://maps.googleapis.com/maps/api/geocode/json?address=" . str_replace(" ", "", $pc) . "&sensor=false";
     //$url = "https://maps.googleapis.com/maps/api/geocode/json?address=" . str_replace(" ", "", $pc) . "&key=AIzaSyAuLJBNa3gDUvo9e9-7qkFivuqrKA6SrKE";
     $url = "https://maps.googleapis.com/maps/api/geocode/json?address=" . str_replace(" ", "", $pc) . "&key=AIzaSyDTBgIiALPDB_Z1C61Jma09ybxncZVgfqA";
 
-    $data =  json_decode(file_get_contents($url), true);
+    // $data =  json_decode(file_get_contents($url), true);
+	$data =  wp_remote_get($url);
+	$data =  json_decode($data["body"]);
 
-    $lat = $data['results'][0]['geometry']['location']['lat'];
-    $lng = $data['results'][0]['geometry']['location']['lng'];
+    $lat = $data->results[0]->geometry->location->lat;
+    $lng = $data->results[0]->geometry->location->lng;
     $ret = array($lat, $lng);
     if ($ret) $postcode_cache[$pc] = $ret;
 

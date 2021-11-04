@@ -276,6 +276,17 @@ img.custom-logo {
     margin: 28px 0px;
 }
 
+.search-area .btn-group-justified {
+	display: flex;
+	justify-content: space-between;
+}
+  
+.search-area .btn-group-justified > .btn, .search-area .btn-group-justified > .btn-group {
+	float: none;
+	display: inherit;
+	width: 100%;
+}
+
 .hpwidgets {
     margin: 40px 0;
 	.hpwidget {

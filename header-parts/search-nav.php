@@ -13,10 +13,13 @@
 			<a href="<?php echo get_permalink(234546) ;?>" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-search find-servicing" aria-hidden="true"></span> Servicing</a>
 		</div>
 		<div class="btn-group" role="group">
-			<a href="<?php echo get_permalink(39) ;?>" type="button" class="btn btn-orange"><span class="glyphicon glyphicon-search find-chimney-sweep" aria-hidden="true"></span> Chimney Sweep</a>
+			<a href="<?php echo get_permalink(263110) ;?>" type="button" class="btn btn-orange"><span class="glyphicon glyphicon-search find-servicing" aria-hidden="true"></span> Biomass Maintenance</a>
 		</div>
 		<div class="btn-group" role="group">
-			<a href="<?php echo get_permalink(42) ;?>" type="button" class="btn btn-redorange"><span class="glyphicon glyphicon-search find-product" aria-hidden="true"></span> Product</a>
+			<a href="<?php echo get_permalink(39) ;?>" type="button" class="btn btn-redorange"><span class="glyphicon glyphicon-search find-chimney-sweep" aria-hidden="true"></span> Chimney Sweep</a>
+		</div>
+		<div class="btn-group" role="group">
+			<a href="<?php echo get_permalink(42) ;?>" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-search find-product" aria-hidden="true"></span> Product</a>
 		</div>
 	</div>
 
