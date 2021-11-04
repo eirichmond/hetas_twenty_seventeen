@@ -93,10 +93,8 @@
 
 	function check_isles(postcode) {
 		const str = postcode.substr(0.3);
-		console.log(typeof(postcode));
 
-debugger;
-		if(postcode.indexOf('GY') != -1 || postcode.indexOf('IM') != -1 || postcode.indexOf('JE') != -1 ) {
+		if(postcode.startsWith('GY') || postcode.startsWith('IM') || postcode.startsWith('JE') ) {
 
 			//console.log(postcode.substr(0,3));
 			var lonLat = generate_isles_geo(postcode.substr(0,3));

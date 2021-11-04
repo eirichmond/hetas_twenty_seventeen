@@ -242,19 +242,37 @@ function get_current_biomass_rhi_manufactures() {
 	$meta_key = 'rhi_manufacturers';
 
 	$rhi_manufacturers = $wpdb->get_col( $wpdb->prepare(
-		"SELECT key1.meta_value FROM $wpdb->postmeta key1 WHERE key1.meta_key = %s",
+		"SELECT key1.post_id
+		FROM $wpdb->postmeta key1
+		WHERE key1.meta_key = %s",
 		$meta_key
 	) );
 	$array = array();
+	$active_manufacturers = array();
 
-	foreach ($rhi_manufacturers as $k => $rhi_manufacturer) {
-		$unserialized = unserialize($rhi_manufacturer);
-		foreach($unserialized as $arr) {
-			$array[$arr['van_rhimanufacturerid']] = $arr['van_name'];
+	foreach($rhi_manufacturers as $post_id) {
+		$display = get_post_meta( $post_id, 'inst_display', true );
+		if($display == '1') {
+			$active_manufacturers = get_post_meta( $post_id, 'rhi_manufacturers', true );
+			foreach ($active_manufacturers as $active_manufacturer) {
+				$array[$active_manufacturer['van_rhimanufacturerid']] = $active_manufacturer['van_name'];
+			}
+		
 		}
-
 	}
+
+
 	asort($array);
+
+
+	// foreach ($rhi_manufacturers as $k => $rhi_manufacturer) {
+	// 	$unserialized = unserialize($rhi_manufacturer);
+	// 	foreach($unserialized as $arr) {
+	// 		$array[$arr['van_rhimanufacturerid']] = $arr['van_name'];
+	// 	}
+
+	// }
+	// asort($array);
 
 	$rhi_manufacturers = $array;	
 
