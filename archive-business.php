@@ -19,7 +19,7 @@ if (isset($_GET['regid']) && $_GET['regid']) {
 			array(
 				'taxonomy' => 'business-status',
 				'field' => 'id',
-				'terms' => array(5412)
+				'terms' => array(5412,5414)
 				// 'terms' => array(488,518) // pre CRM update
 			)
 		)
@@ -95,6 +95,7 @@ if (isset($_GET['regid']) && $_GET['regid']) {
 	$distance_to_search = 50; /* miles */
 	$location = false;
 
+
 	$update = array(
 		'posts_per_page' => '-1',
 		'meta_query' => array(
@@ -105,6 +106,15 @@ if (isset($_GET['regid']) && $_GET['regid']) {
 			)
 		),
 	);
+
+	if(isset($_GET["filter"]) && $_GET["filter"] == 'boiler-maintenance') {
+		$meta_array = array(
+			'key' => 'rhi_manufacturers',
+			'compare' => 'EXISTS'
+		);
+		$update['meta_query'][] = $meta_array;
+	};
+
 
 	if (isset($_GET['postcode']) && $_GET['postcode']) {
 		$location = geocode_postcode($_GET['postcode']);
@@ -142,7 +152,12 @@ if (isset($_GET['regid']) && $_GET['regid']) {
 		'service-and-maintenance-wet-systems' => array('service-and-maintenance-wet-systems'),
 		'service-and-maintenance-biomass-systems' => array('service-and-maintenance-biomass-systems'),
 		'chimney-sweep' => array('hetas-approved-chimney-sweep-apics', 'hetas-approved-chimney-sweep-gomcs', 'hetas-approved-chimney-sweep-nacs', 'hetas-approved-chimney-sweep-sweep-safe', 'hetas-approved-chimney-sweep-de', 'chimney-sweep-biomass-facilities', 'chimney-sweep-camera-surveys','chimney-sweep-power-sweeping'),
-		'retailer' => array('hetas-approved-retail-advisor')
+		'retailer' => array('hetas-approved-retail-advisor'),
+		'habms-domestic-installations' => array('habms-domestic-installations'),
+		'habms-large-non-domestic-installations-1000-kw' => array('habms-large-non-domestic-installations-1000-kw'),
+		'habms-medium-non-domestic-installations-200-to-1000kw' => array('habms-medium-non-domestic-installations-200-to-1000kw'),
+		'habms-small-non-domestic-installations-200kw' => array('habms-small-non-domestic-installations-200kw')
+
 /*
 		'dry-stove-room-heater-cooker' => array('dry-stove'),
 		'biomass-boiler' => array('biomass-wet-system', 'heating-systems'),
@@ -166,6 +181,16 @@ if (isset($_GET['regid']) && $_GET['regid']) {
 	    if ($value == "filter") {
 	        $terms[] = $filter[$key];
 	    }
+
+		if ($value == "boiler-maintenance") {
+			if(!empty($_GET["competencies"])) {
+				$terms[] = $filter[$_GET["competencies"]];
+			} else {
+				$terms[] = array('habms-domestic-installations', 'habms-small-non-domestic-installations-200kw', 'habms-medium-non-domestic-installations-200-to-1000kw', 'habms-large-non-domestic-installations-1000-kw');
+			}
+			
+		}
+
 	}
 
 	$taxterms = array();
@@ -197,8 +222,9 @@ if (isset($_GET['regid']) && $_GET['regid']) {
 	$posts = array();
 	while ( have_posts() ) : the_post();
 		$post->distance = distance($location[0], $location[1], get_custom_field($post->ID, 'inst_lat'), get_custom_field($post->ID, 'inst_lng') );
-		$posts[] = $post;
+		$posts[] = apply_filters('check_rhi_manufacturer', $post, $_GET);
 	endwhile;
+	$posts = array_filter($posts);
 
 	// sort them by distance
 	function compare_distance($a, $b) {
@@ -236,96 +262,110 @@ if (isset($_GET['regid']) && $_GET['regid']) {
 </div>
 
 
-<?php if ( $posts ) : ?>
+
 
 <div class="row">
 	<div class="col-md-9">
 
-		<div id="main">
-			<div id="content">
-				<ul class="search-results" id="business">
-				    <?php foreach ($posts as $post) : ?>
-					<li>
-						<h3><?php the_title(); ?></h3>
+		<?php if ( $posts ) : ?>
 
-						<div class="row">
-							<div class="col-md-6">
-								<ul>
-								    <?php if (has_field($post->ID, 'inst_address_1')) : ?>
-							            <li><?php custom_field($post->ID, 'inst_address_1'); ?></li>
-							        <?php endif; ?>
-							        <?php if (has_field($post->ID, 'inst_address_2')) : ?>
-							            <li><?php custom_field($post->ID, 'inst_address_2'); ?></li>
-							        <?php endif; ?>
-							        <?php if (has_field($post->ID, 'inst_address_3')) : ?>
-							            <li><?php custom_field($post->ID, 'inst_address_3'); ?></li>
-							        <?php endif; ?>
-							        <?php if (has_field($post->ID, 'inst_town')) : ?>
-							            <li><?php custom_field($post->ID, 'inst_town'); ?></li>
-							        <?php endif; ?>
-							        <?php if (has_field($post->ID, 'inst_county')) : ?>
-							            <li><?php custom_field($post->ID, 'inst_county'); ?></li>
-							        <?php endif; ?>
-							        <?php if (has_field($post->ID, 'inst_postcode')) : ?>
-							            <li><?php custom_field($post->ID, 'inst_postcode'); ?></li>
-							        <?php endif; ?>
-							        <?php if (has_field($post->ID, 'inst_phone')) : ?>
-							            <li>Tel: <?php custom_field($post->ID, 'inst_phone'); ?></li>
-							        <?php endif; ?>
-							        <?php if (has_field($post->ID, 'inst_mobile')) : ?>
-							            <li>Mob: <?php custom_field($post->ID, 'inst_mobile'); ?></li>
-							        <?php endif; ?>
-							        <?php if (has_field($post->ID, 'inst_fax')) : ?>
-							            <li>Fax: <?php custom_field($post->ID, 'inst_fax'); ?></li>
-							        <?php endif; ?>
-							        <?php if (has_field($post->ID, 'inst_website')) : ?>
-							            <li>Website: <a href="<?php custom_field($post->ID, 'inst_website'); ?>" target="_blank" title="website" ><?php custom_field($post->ID, 'inst_website'); ?></a></li>
-							        <?php endif; ?>
-							        <?php if ($post->distance) : ?>
-							        <li><?php echo intval($post->distance) > 1 ? intval($post->distance) . " miles away" : "less than a mile away"; ?></li>
-							        <?php endif; ?>
-								</ul>
+			<div id="main">
+				<div id="content">
+					<ul class="search-results" id="business">
+						<?php foreach ($posts as $post) : ?>
+						<li>
+							<h3><?php the_title(); ?></h3>
 
-
-							</div>
-							<div class="col-md-6">
-
-								<h4>Areas of work:</h4>
-
-								<?php
-								$terms = get_the_terms( $post->ID, 'competencies' );
-								if ( $terms && ! is_wp_error( $terms ) ) :
-									$competencies = array();
-									foreach ( $terms as $term ) {
-										$competencies[] = $term->name;
-									}
-								?>
+							<div class="row">
+								<div class="col-md-6">
 									<ul>
-										<?php
-										foreach ($competencies as $competencie) {
-											echo '<li>' . $competencie . '</li>';
-										}
-										?>
+										<?php if (has_field($post->ID, 'inst_address_1')) : ?>
+											<li><?php custom_field($post->ID, 'inst_address_1'); ?></li>
+										<?php endif; ?>
+										<?php if (has_field($post->ID, 'inst_address_2')) : ?>
+											<li><?php custom_field($post->ID, 'inst_address_2'); ?></li>
+										<?php endif; ?>
+										<?php if (has_field($post->ID, 'inst_address_3')) : ?>
+											<li><?php custom_field($post->ID, 'inst_address_3'); ?></li>
+										<?php endif; ?>
+										<?php if (has_field($post->ID, 'inst_town')) : ?>
+											<li><?php custom_field($post->ID, 'inst_town'); ?></li>
+										<?php endif; ?>
+										<?php if (has_field($post->ID, 'inst_county')) : ?>
+											<li><?php custom_field($post->ID, 'inst_county'); ?></li>
+										<?php endif; ?>
+										<?php if (has_field($post->ID, 'inst_postcode')) : ?>
+											<li><?php custom_field($post->ID, 'inst_postcode'); ?></li>
+										<?php endif; ?>
+										<?php if (has_field($post->ID, 'inst_phone')) : ?>
+											<li>Tel: <?php custom_field($post->ID, 'inst_phone'); ?></li>
+										<?php endif; ?>
+										<?php if (has_field($post->ID, 'inst_mobile')) : ?>
+											<li>Mob: <?php custom_field($post->ID, 'inst_mobile'); ?></li>
+										<?php endif; ?>
+										<?php if (has_field($post->ID, 'inst_fax')) : ?>
+											<li>Fax: <?php custom_field($post->ID, 'inst_fax'); ?></li>
+										<?php endif; ?>
+										<?php if (has_field($post->ID, 'inst_website')) : ?>
+											<li>Website: <a href="<?php custom_field($post->ID, 'inst_website'); ?>" target="_blank" title="website" ><?php custom_field($post->ID, 'inst_website'); ?></a></li>
+										<?php endif; ?>
+										<?php if ($post->distance) : ?>
+										<li><?php echo intval($post->distance) > 1 ? intval($post->distance) . " miles away" : "less than a mile away"; ?></li>
+										<?php endif; ?>
 									</ul>
-								<?php endif; ?>
 
-							    <?php if (has_field($post->ID, 'inst_email')) : ?>
-								<a href="mailto:<?php custom_field($post->ID, 'inst_email'); ?>" class="btn btn-dark">Contact &raquo;</a>
-								<?php endif; ?>
 
+								</div>
+								<div class="col-md-6">
+
+									<h4>Areas of work:</h4>
+
+									<?php
+									$terms = get_the_terms( $post->ID, 'competencies' );
+									$terms = reorder_biomass_competencies($terms);
+									if ( $terms && ! is_wp_error( $terms ) ) :
+										$competencies = array();
+										foreach ( $terms as $term ) {
+											$competencies[] = $term->name;
+										}
+									?>
+										<ul class="competencies" id="<?php echo esc_attr( $post->ID ); ?>-comps">
+											<?php
+											foreach ($competencies as $competencie) {
+												echo '<li>' . $competencie . '</li>';
+											}
+											?>
+										</ul>
+									<?php endif; ?>
+
+									<?php if (has_field($post->ID, 'rhi_manufacturers')) : $rhi_manufacturers = get_post_meta($post->ID, 'rhi_manufacturers'); ?>
+										<h4>Manufacturers:</h4>
+										<ul>
+											<?php foreach($rhi_manufacturers[0] as $k => $value) { ?>
+												<li><?php echo esc_attr( $value['van_name'] ); ?></li>
+											<?php } ?>
+										</ul>
+
+									<?php endif; ?>
+
+									<?php if (has_field($post->ID, 'inst_email')) : ?>
+									<a href="mailto:<?php custom_field($post->ID, 'inst_email'); ?>" class="btn btn-dark">Contact &raquo;</a>
+									<?php endif; ?>
+
+								</div>
 							</div>
-						</div>
 
-					</li>
-                    <?php endforeach; ?>
-				</ul>
-			</div>
+						</li>
+						<?php endforeach; ?>
+					</ul>
+				</div>
+
+
+			</div><!-- /main -->
+
 		<?php else: ?>
 			<p>Sorry, no businesses could be found.</p>
 		<?php endif; ?>
-
-
-		</div><!-- /main -->
 
 	</div>
 

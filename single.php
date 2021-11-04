@@ -1,9 +1,10 @@
 <?php get_header(); ?>
 
-	<?php get_template_part( 'header-parts/search', 'nav' ); ?>
+	<?php if (get_current_blog_id() == 1) {
+		get_template_part( 'header-parts/search', 'nav' );
+	}  ?>
 	
-	
-		<main id="main" class="site-main col-md-9" role="main">
+		<?php do_action('hetas_before_main_content'); ?>
 			<div class="clearfix">
 				<?php if (have_posts()) : ?> 
 				<?php while (have_posts()) : the_post(); ?> 
@@ -17,13 +18,16 @@
 								</div><!-- .entry-meta -->
 
 							</header>
-							<div class="featimg">
-								<?php 
-								if ( has_post_thumbnail() ) {
-									the_post_thumbnail('full-width');
-								}
-								?>
-							</div>
+
+							<?php if (get_current_blog_id() == 1) { ?>
+								<div class="featimg">
+									<?php 
+									if ( has_post_thumbnail() ) {
+										the_post_thumbnail('full-width');
+									}
+									?>
+								</div>
+							<?php } ?>
 							
 							<?php the_content('Read Full Article'); ?> 
 
@@ -50,11 +54,10 @@
 				
 				
 			</div>
-		</main><!-- /main -->
+
+		<?php do_action('hetas_after_main_content'); ?>
 		
-		<div class="col-md-3">
-			<?php get_sidebar(); ?>
-		</div>
+		<?php do_action('hetas_sidebar_content'); ?>
 		
 <?php get_footer();?>
 

@@ -231,3 +231,82 @@ function hetas_post_related_posts($post_id) {
 	}
 
 }
+
+/**
+ * Get current biomass rhi manufacturers from the local db and sort them alphabetically
+ *
+ * @return array $rhi_manufacturers;
+ */
+function get_current_biomass_rhi_manufactures() {
+	global $wpdb;
+	$meta_key = 'rhi_manufacturers';
+
+	$rhi_manufacturers = $wpdb->get_col( $wpdb->prepare(
+		"SELECT key1.post_id
+		FROM $wpdb->postmeta key1
+		WHERE key1.meta_key = %s",
+		$meta_key
+	) );
+	$array = array();
+	$active_manufacturers = array();
+
+	foreach($rhi_manufacturers as $post_id) {
+		$display = get_post_meta( $post_id, 'inst_display', true );
+		if($display == '1') {
+			$active_manufacturers = get_post_meta( $post_id, 'rhi_manufacturers', true );
+			foreach ($active_manufacturers as $active_manufacturer) {
+				$array[$active_manufacturer['van_rhimanufacturerid']] = $active_manufacturer['van_name'];
+			}
+		
+		}
+	}
+
+
+	asort($array);
+
+
+	// foreach ($rhi_manufacturers as $k => $rhi_manufacturer) {
+	// 	$unserialized = unserialize($rhi_manufacturer);
+	// 	foreach($unserialized as $arr) {
+	// 		$array[$arr['van_rhimanufacturerid']] = $arr['van_name'];
+	// 	}
+
+	// }
+	// asort($array);
+
+	$rhi_manufacturers = $array;	
+
+	return $rhi_manufacturers;
+}
+
+function get_current_biomass_competencies() {
+	$call_crm = new Dynamics_crm('Dynamics_crm', '1.0.0');
+	$boiler_competences = $call_crm->get_boiler_maintenance_competencies();
+	$comps = wp_list_pluck( $boiler_competences->value, 'van_name' );
+	$competencies = get_terms(array(
+		'taxonomy' => 'competencies',
+		'name' => $comps
+	));
+
+	$comps_reordered = reorder_biomass_competencies($competencies);
+
+	return $comps_reordered;
+
+}
+
+function reorder_biomass_competencies($competencies) {
+	if (!array_key_exists('filter', $_GET)) {
+		return $competencies;
+	}
+	$orders = array('0','3','2','1');
+	$comps_reordered = array();
+
+	foreach($orders as $order) {
+		$comps_reordered[] = $competencies[$order];
+	}
+	
+	$comps_reordered = array_filter($comps_reordered);
+	
+	return $comps_reordered;
+
+}

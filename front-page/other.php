@@ -46,10 +46,14 @@ $hetasguide = new WP_Query( $homepageloop ); ?>
 	</div>
 
 	<div class="col-md-6">
-		<?php
-			//if( function_exists( 'ninja_forms_display_form' ) ){ ninja_forms_display_form( 3 ); }
-			Ninja_Forms()->display( 3, false );
-		?>
+
+		<?php if (get_current_blog_id() == 1) { ?>
+			<?php
+				//if( function_exists( 'ninja_forms_display_form' ) ){ ninja_forms_display_form( 3 ); }
+				Ninja_Forms()->display( 3, false );
+			?>
+		<?php }  ?>
+
 	</div>
 
 </div>

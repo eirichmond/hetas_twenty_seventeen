@@ -162,11 +162,15 @@ add_filter('wp_nav_menu_items', 'add_logout_to_menu', 10, 2);
 
 function menu_filters($sorted_menu_items, $args) {
 	if ($args->theme_location == 'members-logged-in') {
-		if (current_user_can('hetas_installer')) {
-			unset($sorted_menu_items[1]);
-		}
-		if (current_user_can('member')) {
-			unset($sorted_menu_items[2]);
+		if(!current_user_can('administrator')) {
+			// RP and Operative should only see Technical area
+			if (current_user_can('operative_responsible_person') || current_user_can('operative')) {
+				unset($sorted_menu_items[1]);
+			}
+			// Removed as member should see all menus
+			// if (current_user_can('member')) {
+			// 	unset($sorted_menu_items[2]);
+			// }
 		}
 	}
 	return $sorted_menu_items;
@@ -386,6 +390,10 @@ require get_template_directory() . '/inc/customizer.php';
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
+
+require get_template_directory() . '/inc/hetas-theme-actions.php';
+
+
 
 
 

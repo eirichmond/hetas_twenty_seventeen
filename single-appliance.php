@@ -402,13 +402,7 @@ rewind_posts();
 											<?php if (has_tax($post->ID, 'fuel_types')) : ?>
 												<dt>Fuel Types:</dt>
 												<dd><?php custom_taxonomy($post->ID, 'fuel_types'); ?></dd>
-											<?php endif; ?>
-											
-											<?php if (has_tax($post->ID, 'appliance_operations')) : ?>
-												<dt>Appliance Operations:</dt>
-												<dd><?php custom_taxonomy($post->ID, 'appliance_operations'); ?></dd>
-											<?php endif; ?>
-											
+											<?php endif; ?>											
 											
 										</dl>
 										
