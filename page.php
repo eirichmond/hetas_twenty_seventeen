@@ -21,28 +21,6 @@ get_header(); ?>
 
 	<div class="row">
 
-<<<<<<< HEAD
-		<div class="col-md-9">
-
-			<div id="primary" class="content-area">
-				<main id="main" class="site-main" role="main">
-		
-					<?php
-					while ( have_posts() ) : the_post();
-		
-						get_template_part( 'template-parts/content', 'page' );
-				
-					endwhile; // End of the loop.
-					?>
-							
-				</main><!-- #main -->
-			</div><!-- #primary -->
-			
-		</div>
-		<div class="col-md-3">
-			
-			<?php get_sidebar('page'); ?>
-=======
 		<?php do_action('hetas_before_main_content'); ?>
 
 		<div id="primary" class="content-area">
@@ -52,7 +30,6 @@ get_header(); ?>
 				while ( have_posts() ) : the_post();
 
 					get_template_part( 'template-parts/content', 'page' );
->>>>>>> main
 			
 				endwhile; // End of the loop.
 				?>
