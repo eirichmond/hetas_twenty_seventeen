@@ -67,6 +67,8 @@ if (isset($_GET['regid']) && $_GET['regid']) {
 	/* Restore original Post Data */
 	wp_reset_postdata();
 } else {
+	
+	
 
 /*
 	$posts = array();
@@ -114,6 +116,8 @@ if (isset($_GET['regid']) && $_GET['regid']) {
 		);
 		$update['meta_query'][] = $meta_array;
 	};
+	
+
 
 
 	if (isset($_GET['postcode']) && $_GET['postcode']) {
@@ -123,7 +127,7 @@ if (isset($_GET['regid']) && $_GET['regid']) {
 	if (isset($_GET['lat']) && $_GET['lat'] && isset($_GET['lng']) && $_GET['lng']) {
 		$location = array($_GET['lat'], $_GET['lng']);
 	}
-
+	
 	if (!$location) {
 	    echo "<p>Unable to locate your postcode.</p>";
 	    get_footer();
@@ -192,7 +196,8 @@ if (isset($_GET['regid']) && $_GET['regid']) {
 		}
 
 	}
-
+	
+				
 	$taxterms = array();
 	foreach ($terms as $term) {
 		foreach ($term as $t) {
@@ -201,6 +206,7 @@ if (isset($_GET['regid']) && $_GET['regid']) {
 	}
 
 	$unique = array_unique($taxterms);
+	
 
 	if (!$terms) {
 		$update['post__in'] = array ( 0 ); /* this will cause an empty result set */
@@ -209,10 +215,15 @@ if (isset($_GET['regid']) && $_GET['regid']) {
 	}
 
 	//$update['business-status'] = "Live,Live PRA 3 Month";
+	
+
 
 	/* update the search query */
 	global $wp_query;
 	$args = array_merge( $wp_query->query, $update );
+	
+		//var_dump($ids);
+
 
 	if ($update) {
 		query_posts( $args );
@@ -329,7 +340,7 @@ if (isset($_GET['regid']) && $_GET['regid']) {
 											$competencies[] = $term->name;
 										}
 									?>
-										<ul class="competencies" id="<?php echo esc_attr( $post->ID ); ?>-comps">
+										<ul>
 											<?php
 											foreach ($competencies as $competencie) {
 												echo '<li>' . $competencie . '</li>';
