@@ -1,5 +1,24 @@
 (function ( $ ) {
 
+	var habmsNationwide = document.getElementById("habmsnationwide");
+	if(habmsNationwide) {
+
+		habmsNationwide.addEventListener('change', function() {
+			if (this.checked) {
+				document.getElementById("postcode").required = false;
+				document.getElementById("postcode").classList.toggle("valid");
+				document.getElementById("postcode").classList.toggle("postcodeUK");
+
+				document.getElementById("reqPostcode").style.display = 'none';
+			} else {
+				document.getElementById("postcode").required = true;
+
+				document.getElementById("reqPostcode").style.display = 'block';
+			}
+		});
+	}
+
+
 // Copyright 2014-2015 Twitter, Inc.
 // Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
 if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
@@ -195,7 +214,6 @@ if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
 
 // 	$( document ).tooltip();
 
-
-
-
 }(jQuery));
+
+

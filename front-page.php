@@ -27,11 +27,11 @@ get_header(); ?>
 
 <?php edit_post_link('<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit', '<p>', '</p>'); ?>
 
-<?php get_template_part( 'front-page/main', 'description' ); ?>
+<?php //get_template_part( 'front-page/main', 'description' ); ?>
 
-<?php get_template_part( 'front-page/home', 'widgets' ); ?>
+<?php //get_template_part( 'front-page/home', 'widgets' ); ?>
 
-<?php get_template_part( 'front-page/other' ); ?>
+<?php //get_template_part( 'front-page/other' ); ?>
 
 <?php
 	get_footer();

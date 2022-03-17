@@ -292,7 +292,7 @@ if ($update) {
 														<?php } ?>
 														<?php if ($hetas_ecodesign == 'Yes') { ?>
 															<li>
-																<img src="<?php echo bloginfo('template_url'); ?>/images/HETAS-Ecodesign-Compliant-Logo-sm.jpg" alt="HETAS Ecodesign Compliant Logo" />
+																<img style="max-height:50px;" src="<?php echo bloginfo('template_url'); ?>/images/hetas-cleaner-choice.png" alt="HETAS cleaner choice" />
 															</li>
 														<?php } ?>
 														<?php if ($app_mcs_approved == 'Yes') { ?>

@@ -298,6 +298,9 @@ function reorder_biomass_competencies($competencies) {
 	if (!array_key_exists('filter', $_GET)) {
 		return $competencies;
 	}
+	if (in_array('boiler-maintenance', $_GET)) {
+		$competencies = only_habms_terms($competencies);
+	}
 	$orders = array('0','3','2','1');
 	$comps_reordered = array();
 
@@ -309,4 +312,19 @@ function reorder_biomass_competencies($competencies) {
 	
 	return $comps_reordered;
 
+}
+
+function only_habms_terms($competencies) {
+	$include_only_terms = array(
+		'habms-domestic-installations',
+		'habms-large-non-domestic-installations-1000-kw',
+		'habms-medium-non-domestic-installations-200-to-1000kw',
+		'habms-small-non-domestic-installations-200kw'
+	);
+	foreach ($competencies as $k => $competency) {
+		if(!in_array($competency->slug, $include_only_terms)) {
+			unset($competencies[$k]);
+		}
+	}
+	return $competencies;
 }

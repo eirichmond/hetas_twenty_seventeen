@@ -38,7 +38,6 @@
 
 
 	jQuery.validator.addMethod('postcodeUK', function(value, element) {
-
 		error_check_on_search_form(element);
 		//console.log(element.parentElement.classList.toggle('has-error','has-feedback'));
 		//return this.optional(element) || /^[A-Z]{1,2}[0-9]{1,2} ?[0-9][A-Z]{2}$/i.test(value);
@@ -57,7 +56,6 @@
 				var postcode = postcode.replace(/\s+/g, '');
 				//var geocoder = new google.maps.Geocoder();
 
-
 				var settings = {
 					"async": true,
 					"crossDomain": true,
@@ -67,7 +65,6 @@
 
 
 	            var onSuccess = function(results, status) {
-
 
 					var lat = results.latitude;
 					var lng = results.longitude;

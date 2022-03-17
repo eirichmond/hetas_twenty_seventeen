@@ -7,7 +7,9 @@ body {
     ColorBox Core Style:
     The following CSS is consistent between example themes and should not be altered.
 */
-#colorbox, #cboxOverlay, #cboxWrapper {
+#colorbox,
+#cboxOverlay,
+#cboxWrapper {
   position: absolute;
   top: 0;
   left: 0;
@@ -21,7 +23,8 @@ body {
   height: 100%;
 }
 
-#cboxMiddleLeft, #cboxBottomLeft {
+#cboxMiddleLeft,
+#cboxBottomLeft {
   clear: left;
 }
 
@@ -37,7 +40,8 @@ body {
   margin: 0;
 }
 
-#cboxLoadingOverlay, #cboxLoadingGraphic {
+#cboxLoadingOverlay,
+#cboxLoadingGraphic {
   position: absolute;
   top: 0;
   left: 0;
@@ -45,7 +49,10 @@ body {
   height: 100%;
 }
 
-#cboxPrevious, #cboxNext, #cboxClose, #cboxSlideshow {
+#cboxPrevious,
+#cboxNext,
+#cboxClose,
+#cboxSlideshow {
   cursor: pointer;
 }
 
@@ -64,7 +71,9 @@ body {
   border: 0;
 }
 
-#colorbox, #cboxContent, #cboxLoadedContent {
+#colorbox,
+#cboxContent,
+#cboxLoadedContent {
   box-sizing: content-box;
 }
 
@@ -176,7 +185,8 @@ body {
   width: 94%;
 }
 
-.ninja-forms-form input, .ninja-forms-form textarea {
+.ninja-forms-form input,
+.ninja-forms-form textarea {
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
   border-radius: 6px;
@@ -483,7 +493,8 @@ div.editlink {
   list-style: none;
 }
 
-.ui-helper-clearfix:before, .ui-helper-clearfix:after {
+.ui-helper-clearfix:before,
+.ui-helper-clearfix:after {
   content: "";
   display: table;
 }
@@ -552,7 +563,8 @@ div.editlink {
   background-image: url(images/ui-icons_888888_256x240.png);
 }
 
-.ui-state-hover .ui-icon, .ui-state-focus .ui-icon {
+.ui-state-hover .ui-icon,
+.ui-state-focus .ui-icon {
   background-image: url(images/ui-icons_454545_256x240.png);
 }
 
@@ -564,7 +576,8 @@ div.editlink {
   background-image: url(images/ui-icons_2e83ff_256x240.png);
 }
 
-.ui-state-error .ui-icon, .ui-state-error-text .ui-icon {
+.ui-state-error .ui-icon,
+.ui-state-error-text .ui-icon {
   background-image: url(images/ui-icons_cd0a0a_256x240.png);
 }
 
@@ -669,7 +682,8 @@ textarea {
   vertical-align: middle;
 }
 
-blockquote, q {
+blockquote,
+q {
   quotes: none;
 }
 
@@ -1036,7 +1050,8 @@ ul.ui-autocomplete {
   left: auto;
 }
 
-#visual-hover-left span a, #visual-hover-right span a {
+#visual-hover-left span a,
+#visual-hover-right span a {
   width: 100%;
   height: 349px;
   display: block;
@@ -1055,7 +1070,8 @@ ul.ui-autocomplete {
   font-weight: bold;
 }
 
-.info .list-box, .widg {
+.info .list-box,
+.widg {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -1118,22 +1134,27 @@ ul.ui-autocomplete {
   /* Chrome10-25,Safari5.1-6 */
   background: radial-gradient(ellipse at center, #eca755 0%, #f27100 100%);
   /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#eca755", endColorstr="#f27100",GradientType=1 );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#eca755", endColorstr="#f27100", GradientType=1);
   /* IE6-9 fallback on horizontal gradient */
 }
 
-#registrant a, #training-center a, #technical-area a {
+#registrant a,
+#training-center a,
+#technical-area a {
   color: #fff;
   display: block;
   /* width: 410px; */
   height: 117px;
 }
 
-#registrant a, #training-center a:hover, #technical-area a:hover {
+#registrant a,
+#training-center a:hover,
+#technical-area a:hover {
   text-decoration: none;
 }
 
-#content-fullw .box p, #content-fullw .box img {
+#content-fullw .box p,
+#content-fullw .box img {
   float: right;
 }
 
@@ -1229,7 +1250,8 @@ ul.ui-autocomplete {
   background-color: #FBEFDB;
 }
 
-.page_nav .prev, .page_nav .next {
+.page_nav .prev,
+.page_nav .next {
   border: none;
   color: blue;
 }
@@ -1252,7 +1274,8 @@ ul.ui-autocomplete {
 }
 
 /*Radio buttons*/
-.radioArea, .radioAreaChecked {
+.radioArea,
+.radioAreaChecked {
   float: left;
   width: 15px;
   height: 16px;
@@ -1265,7 +1288,8 @@ ul.ui-autocomplete {
 }
 
 /*Checkboxes*/
-.checkboxArea, .checkboxAreaChecked {
+.checkboxArea,
+.checkboxAreaChecked {
   float: left;
   width: 14px;
   height: 14px;
@@ -1364,7 +1388,8 @@ ul.ui-autocomplete {
   justify-content: space-between;
 }
 
-.search-area .btn-group-justified > .btn, .search-area .btn-group-justified > .btn-group {
+.search-area .btn-group-justified > .btn,
+.search-area .btn-group-justified > .btn-group {
   float: none;
   display: inherit;
   width: 100%;
@@ -1784,7 +1809,8 @@ ul.ui-autocomplete {
   margin-left: 0%;
 }
 
-.tlogin a, .hrlogin a {
+.tlogin a,
+.hrlogin a {
   padding: 7px 5%;
   display: block;
   color: #fff;
@@ -1821,7 +1847,8 @@ body.home #main ul li {
 }
 
 /* to accomodate homepage */
-body.post-type-archive #main ul li ul li, body.page-template-user-login-splash-php #main ul li {
+body.post-type-archive #main ul li ul li,
+body.page-template-user-login-splash-php #main ul li {
   background: none;
   padding: 0px;
   min-height: 0px;
@@ -2198,7 +2225,7 @@ body.page-template-appliance-results-php #main .search-results > li {
 #main .dlist dt {
   float: left;
   clear: left;
-  width: 170px;
+  width: 270px;
   padding: 0 10px 0 3px;
 }
 
@@ -2312,7 +2339,8 @@ body.page-template-appliance-results-php #main .search-results > li {
   color: #27a658;
 }
 
-#main .books .btn, #main .books .ddownload-button {
+#main .books .btn,
+#main .books .ddownload-button {
   position: absolute;
   right: 18px;
   bottom: 17px;
@@ -2989,7 +3017,12 @@ footer p {
   z-index: 1;
 }
 
-.hpwidget h1, .hpwidget h2, .hpwidget h3, .hpwidget h4, .hpwidget h5, .hpwidget h6 {
+.hpwidget h1,
+.hpwidget h2,
+.hpwidget h3,
+.hpwidget h4,
+.hpwidget h5,
+.hpwidget h6 {
   margin: 0px 0px;
 }
 
@@ -3072,7 +3105,9 @@ footer p {
 }
 
 /* installers menu */
-.page-template-installers-area-php .search-area, .single-installers .search-area, .search-area.border.instamenu > .holder {
+.page-template-installers-area-php .search-area,
+.single-installers .search-area,
+.search-area.border.instamenu > .holder {
   overflow: visible !important;
 }
 
@@ -3081,7 +3116,9 @@ ul#menu-installers {
   float: left;
 }
 
-ul#menu-installers > li:hover, #menu-installers > li.current-menu-item, #menu-installers > li.current-menu-ancestor {
+ul#menu-installers > li:hover,
+#menu-installers > li.current-menu-item,
+#menu-installers > li.current-menu-ancestor {
   border-bottom: none;
 }
 

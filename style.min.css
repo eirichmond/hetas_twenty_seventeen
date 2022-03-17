@@ -2009,6 +2009,15 @@ h1.entry-title{color:#00a160;margin:0 0 14px;font-size:24px;line-height:27px;fon
 #main .books .descr{overflow:hidden;font-size:12px;line-height:18px}
 #main .books h3{border-bottom:1px solid #ddd;margin:0 0 2px;font-size:16px;line-height:19px;font-weight:normal;padding:0 0 7px;color:#27a658}
 #main .books h3 a{color:#27a658}
+.has-hetas-green-background-color{background-color:#03a261}
+.has-hetas-orange-background-color{background-color:#f79726}
+.has-hetas-orange-red-background-color{background-color:#e43e00}
+.has-hetas-green-color{color:#03a261}
+.has-hetas-orange-color{color:#f79726}
+.has-hetas-orange-red-color{color:#e43e00}
+.has-hetas-red-color{color:#cf1546}
+.has-hetas-white-color{color:#fff}
+.has-hetas-black-color{color:#000}
 .ttip{display:block}
 .grid{margin-bottom:20px}
 .grid img{min-width:100%}
@@ -2041,7 +2050,7 @@ ul.ui-autocomplete li{list-style:none}
 .nav-tabs.hbg>li.active>a,.nav-tabs>li.active>a:hover,.nav-tabs>li.active>a:focus{background:#eee}
 .view img{max-width:100%}
 #main .data th,#main .data td{text-align:center;height:40px;padding:10px;background:#fff;background:url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJod…EiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);background:-webkit-gradient(linear,left top,left bottom,from(#fff),to(#ececec));background:linear-gradient(top,#fff 0,#ececec 100%);-pie-background:linear-gradient(top,#fff 0,#ececec 100%)}
-#main .dlist dt{float:left;clear:left;width:170px;padding:0 10px 0 3px;font-weight:normal}
+#main .dlist dt{float:left;clear:left;width:270px;padding:0 10px 0 3px;font-weight:normal}
 #main .dlist dd{overflow:hidden;margin:0;font-weight:bold}
 #main .logo-box img{max-width:100%}
 #main .contact-cell{background:rgba(0,161,96,0.1);padding:15px 18px 19px;font-size:12px;line-height:21px;font-weight:bold}

@@ -53,3 +53,22 @@ function check_rhi_manufacturer_callback($post, $global_get) {
 	return $post;
 }
 add_filter('check_rhi_manufacturer', 'check_rhi_manufacturer_callback', 10, 2);
+
+function nationwide_by_manufacturer_filter_callback($posts, $global_get) {
+	$valid_posts = array();
+	if(isset($global_get['filter']) && $global_get['filter'] == 'boiler-maintenance' ) {
+		if(isset($global_get['boiler_maintenance_manufacturers']) && $global_get['boiler_maintenance_manufacturers'] != '') {
+			foreach($posts as $k => $v) {
+				$manufacturers_array = get_post_meta($v->ID, 'rhi_manufacturers');
+				$manufacturers_ids = wp_list_pluck( $manufacturers_array[0], 'van_rhimanufacturerid' );
+				if(in_array($global_get["boiler_maintenance_manufacturers"], $manufacturers_ids)) {
+					$valid_posts[] = $v;
+				}
+			}
+		} else {
+			return $posts;
+		}
+	}
+	return $valid_posts;
+}
+add_filter('nationwide_by_manufacturer_filter', 'nationwide_by_manufacturer_filter_callback', 10, 2);

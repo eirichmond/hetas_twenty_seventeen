@@ -66,24 +66,114 @@ if (isset($_GET['regid']) && $_GET['regid']) {
 	}
 	/* Restore original Post Data */
 	wp_reset_postdata();
-} else {
+
+} elseif(isset($_GET['bypass']) && $_GET['bypass'] == 'postcode') {
+	$update = array(
+		'post_type' => 'business',
+		'posts_per_page' => '-1',
+		'meta_query' => array(
+			array(
+				'key' => 'inst_display',
+				'value' => '1',
+				'compare' => '='
+			)
+		),
+	);
+
+	if(isset($_GET["filter"]) && $_GET["filter"] == 'boiler-maintenance') {
+		$meta_array = array(
+			'key' => 'rhi_manufacturers',
+			'compare' => 'EXISTS'
+		);
+		$update['meta_query'][] = $meta_array;
+	};
+
+	if(isset($_GET["nationwide-search"]) && $_GET["nationwide-search"] == '1') {
+		$distance_to_search = 600;
+		$meta_array = array(
+			'key' => 'nationwide_search',
+			'value' => '1',
+			'compare' => '='
+		);
+		//$update['meta_query']['relation'] = 'OR';
+		$update['meta_query'][] = $meta_array;
+	};
+
+
+
+
+
+
+
+
+	$filter = array(
+		'habms-domestic-installations' => array('habms-domestic-installations'),
+		'habms-large-non-domestic-installations-1000-kw' => array('habms-large-non-domestic-installations-1000-kw'),
+		'habms-medium-non-domestic-installations-200-to-1000kw' => array('habms-medium-non-domestic-installations-200-to-1000kw'),
+		'habms-small-non-domestic-installations-200kw' => array('habms-small-non-domestic-installations-200kw')
+	);
+
+	$terms = array();
+	foreach($_GET as $key=>$value) {
+
+	    if ($value == "filter") {
+	        $terms[] = $filter[$key];
+	    }
+
+		if ($value == "boiler-maintenance") {
+			if(!empty($_GET["competencies"])) {
+				$terms[] = $filter[$_GET["competencies"]];
+			} else {
+				$terms[] = array('habms-domestic-installations', 'habms-small-non-domestic-installations-200kw', 'habms-medium-non-domestic-installations-200-to-1000kw', 'habms-large-non-domestic-installations-1000-kw');
+			}
+			
+		}
+
+	}
 	
+				
+	$taxterms = array();
+	foreach ($terms as $term) {
+		foreach ($term as $t) {
+			$taxterms[] = $t;
+		}
+	}
+
+	$unique = array_unique($taxterms);
 	
 
-/*
+	if (!$terms) {
+		$update['post__in'] = array ( 0 ); /* this will cause an empty result set */
+	} else {
+	    $update['competencies'] = join(",", $unique);
+	}
+
+	//$update['business-status'] = "Live,Live PRA 3 Month";
+	
+
+
+	/* update the search query */
+	global $wp_query;
+	$args = array_merge( $wp_query->query, $update );
+	
+		//var_dump($ids);
+
+
+	if ($update) {
+		query_posts( $args );
+	}
+
+
+
+
+
+
+
+
 	$posts = array();
-	$the_query = new WP_Query( array(
-		'posts_per_page' => '-1',
-		'post_type' => 'business',
-		'tax_query' => array(
-			array(
-				'taxonomy' => 'business-status',
-				'field' => 'id',
-				'terms' => array(488,518)
-			)
-		)
-		)
-	);
+	$the_query = new WP_Query( $update );
+
+
 	if ( $the_query->have_posts() ) {
 		while ( $the_query->have_posts() ) {
 			$the_query->the_post();
@@ -91,12 +181,17 @@ if (isset($_GET['regid']) && $_GET['regid']) {
 			$posts[] = $post;
 		}
 	}
+
+	$posts = apply_filters('nationwide_by_manufacturer_filter', $posts, $_GET);
+
+	/* Restore original Post Data */
 	wp_reset_postdata();
-*/
+
+	
+} else {
 
 	$distance_to_search = 50; /* miles */
 	$location = false;
-
 
 	$update = array(
 		'posts_per_page' => '-1',
@@ -116,7 +211,18 @@ if (isset($_GET['regid']) && $_GET['regid']) {
 		);
 		$update['meta_query'][] = $meta_array;
 	};
-	
+
+	// if(isset($_GET["nationwide-search"]) && $_GET["nationwide-search"] == '1') {
+	// 	$distance_to_search = 600;
+	// 	$meta_array = array(
+	// 		'key' => 'nationwide_search',
+	// 		'value' => '1',
+	// 		'compare' => '='
+	// 	);
+	// 	//$update['meta_query']['relation'] = 'OR';
+	// 	$update['meta_query'][] = $meta_array;
+	// };
+
 
 
 
@@ -151,7 +257,6 @@ if (isset($_GET['regid']) && $_GET['regid']) {
 		'plumbing-sanitary-ware' => array('plumbing-and-sanitary-ware'),
 		'mcs-biomass' => array('mcs-biomass-installation'),
 		'mcs-solar-thermal' => array('mcs-solar-thermal-installation'),
-		//'service-maintenance' => array('service-and-maintenance-dry-appliances','service-and-maintenance-biomass-systems','service-and-maintenance-wet-systems'),
 		'service-and-maintenance-dry-appliances' => array('service-and-maintenance-dry-appliances'),
 		'service-and-maintenance-wet-systems' => array('service-and-maintenance-wet-systems'),
 		'service-and-maintenance-biomass-systems' => array('service-and-maintenance-biomass-systems'),
@@ -161,22 +266,6 @@ if (isset($_GET['regid']) && $_GET['regid']) {
 		'habms-large-non-domestic-installations-1000-kw' => array('habms-large-non-domestic-installations-1000-kw'),
 		'habms-medium-non-domestic-installations-200-to-1000kw' => array('habms-medium-non-domestic-installations-200-to-1000kw'),
 		'habms-small-non-domestic-installations-200kw' => array('habms-small-non-domestic-installations-200kw')
-
-/*
-		'dry-stove-room-heater-cooker' => array('dry-stove'),
-		'biomass-boiler' => array('biomass-wet-system', 'heating-systems'),
-		'pellet-stove-boiler' => array('biomass-wet-system', 'heating-systems'),
-		'stove-room-heater-cooker-including-boiler' => array('stove-with-boiler', 'heating-systems'),
-		'factory-madesystem-chimney-internal-or-external' => array('flues-chimneys'),
-		'flue-liner-or-external-factory-madesystem-chimney' => array('flues-chimneys'),
-		'specialist-flue-liner-installation' => array('flues-chimneys', 'flues-chimneys'),
-		'install-a-heating-system' => array('heating-systems'),
-		'plumbing-and-sanitary-ware' => array('plumbing-sanitary-ware'),
-		'mcs-biomass-installation' => array('biomass-wet-system', 'heating-systems', 'mcs-biomass'),
-		'mcs-solar-thermal-installation' => array('heating-systems', 'mcs-solar-thermal'),
-		'solar-thermal-installation' => array('heating-systems'),
-		'service-and-maintenance' => array('service-maintenance'),
-*/
 	);
 
 	$terms = array();
@@ -236,6 +325,11 @@ if (isset($_GET['regid']) && $_GET['regid']) {
 		$posts[] = apply_filters('check_rhi_manufacturer', $post, $_GET);
 	endwhile;
 	$posts = array_filter($posts);
+	if(in_array('boiler-maintenance', $_GET)) {
+		$posts = apply_filters('nationwide_by_manufacturer_filter', $posts, $_GET);
+	}
+
+	
 
 	// sort them by distance
 	function compare_distance($a, $b) {

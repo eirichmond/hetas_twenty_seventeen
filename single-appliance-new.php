@@ -57,7 +57,7 @@ rewind_posts();
 										<img src="<?php echo bloginfo('template_url'); ?>/images/hetas_mcs_combined.jpg" alt="MCS HETAS Approved" />
 									<?php } ?>
 									<?php if ($hetas_ecodesign == 'Yes') { ?>
-										<img src="<?php echo bloginfo('template_url'); ?>/images/hetas-cleaner-choice.png" alt="HETAS cleaner choice" />
+										<img src="<?php echo bloginfo('template_url'); ?>/images/HETAS-Ecodesign-Compliant-Logo.jpg" alt="HETAS Ecodesign Compliant Logo" />
 									<?php } ?>
 									
 								</div>
@@ -65,13 +65,9 @@ rewind_posts();
 							<div class="col-md-7">
 	
 								<div class="entity">
-
 									<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 										<?php the_content(); ?>
 									</div>
-
-									<?php //get_template_part( 'template-parts/old', 'layout' ); ?>
-									
 								</div>
 	
 							</div>

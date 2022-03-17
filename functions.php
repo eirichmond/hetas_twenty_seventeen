@@ -264,7 +264,7 @@ function hetas_twenty_seventeen_scripts() {
 	wp_enqueue_script( 'hetas_twenty_seventeen-bootstrap', get_template_directory_uri() . '/bootstrap-sass/assets/javascripts/bootstrap.min.js', array('jquery'), '20170525', true );
 
 	//wp_enqueue_script( 'hetas_twenty_seventeen-ninjaforms', get_template_directory_uri() . '/js/ninjaforms.js', array('jquery'), '20170525', true );
-	if(is_page( array('find-fuels','find-woodfuels','find-retailer','find-installer','find-servicing','find-chimney-sweep','find-appliance') )) {
+	if(is_page( array('find-fuels','find-woodfuels','find-retailer','find-installer','find-servicing','find-chimney-sweep','find-appliance','search-boiler-maintenance') )) {
 		wp_enqueue_script( 'jquery.validate.js', get_template_directory_uri() . '/js/jquery.validate.js', array( 'jquery' ), '20170525' );
 		wp_enqueue_script( 'jquery.validate-additional-methods', get_template_directory_uri() . '/js/jquery.validate-additional-methods.js', array( 'jquery' ), '20170525' );
 		wp_enqueue_script( 'validate-scripts', get_template_directory_uri() . '/js/validate-scripts.js', array( 'jquery' ), '20170525', true );

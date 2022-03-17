@@ -15,16 +15,19 @@ Template Name: Search Boiler Maintenance
 			
 			<!-- Nav tabs -->
 			<ul class="nav nav-tabs hbg" role="tablist">
-				<li role="presentation" class="active"><a href="#findbusiness" aria-controls="findbusiness" role="tab" data-toggle="tab">Find Business</a></li>
+				<li role="presentation" class="active"><a href="#findbusiness" aria-controls="findbusiness" role="tab" data-toggle="tab">Find by Location</a></li>
+				<li role="presentation"><a href="#findnationwide" aria-controls="findnationwide" role="tab" data-toggle="tab">Find Nationwide</a></li>
 			</ul>
+
 			
 			<!-- Tab panes -->
 			<div class="tab-content">
 				
+
 				<div role="tabpanel" class="tab-pane fade in active" id="findbusiness">
 					<div class="hetasform hybrid">
 						
-						<h3>Find HETAS Approved Biomass Maintenance (HABMS)</h3>
+						<h3>Find HETAS Approved Biomass Maintenance (HABMS) by Location</h3>
 
 						<form class="cmxform" id="geocode" method="get" action="/business/">
 
@@ -57,8 +60,17 @@ Template Name: Search Boiler Maintenance
 								<input id="postcode" class="form-control postcodeUK" name="postcode" type="text" placeholder="Enter your postcode (required)" required>
 	
 							</div>
+
+							<!-- <div class="checkbox">
+								<label>
+									<input id="habmsnationwide" type="checkbox" name="nationwide-search" value="1">
+									Include Nationwide results
+								</label>
+							</div> -->
+
 							
 							<input type="hidden" name="filter" value="boiler-maintenance">
+							<input type="hidden" name="dry-stove" value="filter">
 							
 							<div class="form-group">
 								<button type="submit" class="btn btn-submit">Search</button>
@@ -67,6 +79,46 @@ Template Name: Search Boiler Maintenance
 						</form>
 					</div>
 				</div>
+
+				<div role="tabpanel" class="tab-pane fade" id="findnationwide">
+					<div class="hetasform hybrid">
+						
+						<h3>Find HETAS Approved Biomass Maintenance (HABMS) Nationwide</h3>
+						<form class="cmxform" method="get" action="/business/">
+
+							<div class="form-group">
+								<label for="competencies">By Biomass Category</label>
+								<select id="competencies" name="competencies" class="form-control">
+								    <option value=""> - all - </option>
+								    <?php foreach($competencies as $boiler_competency) { ?>
+									<option value="<?php echo $boiler_competency->slug; ?>"><?php echo $boiler_competency->name; ?></option>
+									<?php } ?>
+								</select>
+							</div>
+
+
+							<div class="form-group">
+								<label for="boiler_maintenance_manufacturers">By Manufacturer</label>
+								<select id="boiler_maintenance_manufacturers" name="boiler_maintenance_manufacturers" class="form-control">
+								    <option value=""> - all - </option>
+								    <?php foreach($rhi_manufacturers as $rhimanufacturerid => $rhi_manufacturer) { ?>
+									<option value="<?php echo esc_attr( $rhimanufacturerid ); ?>"><?php echo esc_attr( $rhi_manufacturer ); ?></option>
+									<?php } ?>
+								</select>
+							</div>
+							
+							<input type="hidden" name="filter" value="boiler-maintenance">
+							<input type="hidden" name="bypass" value="postcode">
+							<input type="hidden" name="nationwide-search" value="1">
+							
+							<div class="form-group">
+								<button type="submit" class="btn btn-submit">Search</button>
+							</div>
+							
+						</form>
+					</div>
+				</div>
+
 
 			</div>
 								
