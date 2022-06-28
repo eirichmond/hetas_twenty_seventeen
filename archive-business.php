@@ -356,6 +356,10 @@ if (isset($_GET['regid']) && $_GET['regid']) {
 	if (isset($_GET['chimney-sweep'])) {
 		$result = 'Chimney Sweeps';
 	}
+
+	if(isset($_GET['filter']) && $_GET['filter'] == 'boiler-maintenance') {
+		$result = 'Businesses';
+	}
 }
 
 ?>
@@ -469,7 +473,11 @@ if (isset($_GET['regid']) && $_GET['regid']) {
 			</div><!-- /main -->
 
 		<?php else: ?>
-			<p>Sorry, no businesses could be found.</p>
+			<?php if(isset($_GET['filter']) && $_GET['filter'] == 'boiler-maintenance') { ?>
+				<p>There are no businesses local to this postcode, please try our <a href="/search-boiler-maintenance/?search=nationwide">nationwide provider search.</a></p>
+			<?php } else { ?>
+				<p>Sorry, no businesses could be found.</p>
+			<?php } ?>
 		<?php endif; ?>
 
 	</div>

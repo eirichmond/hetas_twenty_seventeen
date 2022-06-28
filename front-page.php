@@ -11,7 +11,6 @@
  *
  * @package Hetas_Twenty_Seventeen
  */
-
 get_header(); ?>
 
 

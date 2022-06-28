@@ -15,8 +15,8 @@ Template Name: Search Boiler Maintenance
 			
 			<!-- Nav tabs -->
 			<ul class="nav nav-tabs hbg" role="tablist">
-				<li role="presentation" class="active"><a href="#findbusiness" aria-controls="findbusiness" role="tab" data-toggle="tab">Find by Location</a></li>
-				<li role="presentation"><a href="#findnationwide" aria-controls="findnationwide" role="tab" data-toggle="tab">Find Nationwide</a></li>
+				<li role="presentation" <?php echo empty($_GET['search']) ? 'class="active"' : ''; ?>><a href="#findbusiness" aria-controls="findbusiness" role="tab" data-toggle="tab">Find by Location</a></li>
+				<li role="presentation" <?php echo isset($_GET['search']) && $_GET['search'] == 'nationwide' ? 'class="active"' : ''; ?>><a href="#findnationwide" aria-controls="findnationwide" role="tab" data-toggle="tab">Find Nationwide</a></li>
 			</ul>
 
 			
@@ -24,7 +24,7 @@ Template Name: Search Boiler Maintenance
 			<div class="tab-content">
 				
 
-				<div role="tabpanel" class="tab-pane fade in active" id="findbusiness">
+				<div role="tabpanel" class="tab-pane fade <?php echo empty($_GET['search']) ? 'in active' : ''; ?>" id="findbusiness">
 					<div class="hetasform hybrid">
 						
 						<h3>Find HETAS Approved Biomass Maintenance (HABMS) by Location</h3>
@@ -80,7 +80,7 @@ Template Name: Search Boiler Maintenance
 					</div>
 				</div>
 
-				<div role="tabpanel" class="tab-pane fade" id="findnationwide">
+				<div role="tabpanel" class="tab-pane fade <?php echo isset($_GET['search']) && $_GET['search'] == 'nationwide' ? 'in active' : ''; ?>" id="findnationwide">
 					<div class="hetasform hybrid">
 						
 						<h3>Find HETAS Approved Biomass Maintenance (HABMS) Nationwide</h3>

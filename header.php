@@ -17,7 +17,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link rel="profile" href="http://gmpg.org/xfn/11">
 
-<?php wp_head(); ?>
+<?php wp_head();
+if(!is_user_logged_in()) {
+	wp_redirect( '/wp-admin/' );
+	exit;
+}
+?>
 
 <script type='text/javascript'>
 (function (d, t) {
