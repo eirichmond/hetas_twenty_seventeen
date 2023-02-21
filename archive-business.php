@@ -364,7 +364,7 @@ if (isset($_GET['regid']) && $_GET['regid']) {
 
 ?>
 
-<?php get_template_part( 'header-parts/search', 'nav' ); ?>
+<?php get_template_part( 'header-parts/search', 'brand' ); ?>
 
 <div class="heading">
 	<h2>The following <?php echo $result; ?> have been found:</h2>

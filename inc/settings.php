@@ -269,9 +269,9 @@ function mytheme_add_admin() {
  
 global $themename, $shortname, $options;
  
-if ( isset($_GET) && $_GET['page'] == basename(__FILE__) ) {
+if ( isset($_GET) && !empty($_GET['page']) && $_GET['page'] == basename(__FILE__) ) {
  
-	if ( 'save' == $_REQUEST['action'] ) {
+	if ( isset($_REQUEST) && !empty($_REQUEST['action']) && 'save' == $_REQUEST['action'] ) {
  
 		foreach ($options as $value) {
 		update_option( $value['id'], $_REQUEST[ $value['id'] ] ); }
@@ -283,7 +283,7 @@ foreach ($options as $value) {
 die;
  
 } 
-else if( 'reset' == $_REQUEST['action'] ) {
+else if( isset($_REQUEST) && !empty($_REQUEST['action']) && 'reset' == $_REQUEST['action'] ) {
  
 	foreach ($options as $value) {
 		delete_option( $value['id'] ); }

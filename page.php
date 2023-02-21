@@ -15,7 +15,7 @@
 get_header(); ?>
 
 <?php if (get_current_blog_id() == 1) {
-	get_template_part( 'header-parts/search', 'nav' );
+	get_template_part( 'header-parts/search', 'brand' );
 }  ?>
 
 

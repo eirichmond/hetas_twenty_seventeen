@@ -17,7 +17,7 @@
 
 get_header(); ?>
 
-<?php get_template_part( 'header-parts/search', 'nav' ); ?>
+<?php get_template_part( 'header-parts/search', 'brand' ); ?>
 
 
 	<div class="row">

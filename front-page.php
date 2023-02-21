@@ -1,37 +1,75 @@
 <?php
-/**
- * The template for displaying all pages
- *
- * This is the template that displays all pages by default.
- * Please note that this is the WordPress construct of pages
- * and that other 'pages' on your WordPress site may use a
- * different template.
- *
- * @link https://codex.wordpress.org/Template_Hierarchy
- *
- * @package Hetas_Twenty_Seventeen
- */
-get_header(); ?>
 
+installer_user_check();
 
-<?php if ( !wp_is_mobile() ) {
-	get_template_part( 'front-page/carousel', 'slider' );
-} ?>
-
-<?php if (get_current_blog_id() == 1) {
-		get_template_part( 'header-parts/search', 'nav' );
-}  ?>
-
-<?php the_content(); ?>
-
-<?php edit_post_link('<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit', '<p>', '</p>'); ?>
-
-<?php //get_template_part( 'front-page/main', 'description' ); ?>
-
-<?php //get_template_part( 'front-page/home', 'widgets' ); ?>
-
-<?php //get_template_part( 'front-page/other' ); ?>
-
-<?php
-	get_footer();
+get_header();
 ?>
+
+	<?php include('installers-nav.php'); ?>
+		
+
+
+	<div id="main" class="offset">
+		
+		<div class="row">
+			
+			<div class="col-md-12">
+				<div id="content">
+					
+					<?php
+					if ( has_post_thumbnail() ) {
+						echo '<div class="featured">';
+						the_post_thumbnail(array(100,100));
+						echo '</div>';
+					}
+					?>
+					<div class="installers-conent">
+						<?php the_content(); ?>
+					</div>
+									
+<!--
+					<?php 
+					
+					$args = array(
+						'post_type' => 'installers',
+						'post_status' => 'publish',
+						'posts_per_page' => -1,
+					);
+					$the_query = new WP_Query( $args ); ?>
+					
+					<?php if ( $the_query->have_posts() ) : ?>
+					
+					  <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+					  
+					  <div class="installers-conent">
+
+						<?php
+						if ( has_post_thumbnail() ) {
+							echo '<div class="featured">';
+							the_post_thumbnail(array(100,100));
+							echo '</div>';
+						}
+						?>
+
+					  
+							<h2><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
+							<p><?php the_excerpt(); ?></p>
+							
+					  </div>
+					  <?php endwhile; ?>
+					  <?php wp_reset_postdata(); ?>
+					
+					<?php else:  ?>
+					  <p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
+					<?php endif; ?>
+-->
+
+				</div>
+			</div>
+
+		</div>
+
+	</div><!-- /main -->
+				
+				
+<?php get_footer();?>

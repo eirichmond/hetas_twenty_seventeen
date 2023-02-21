@@ -7,7 +7,7 @@ Template Name: Search Boiler Maintenance
 */
 ?>
 
-<?php get_template_part( 'header-parts/search', 'nav' ); ?>
+<?php get_template_part( 'header-parts/search', 'brand' ); ?>
 
 <div class="hsp">
 	<div class="row">

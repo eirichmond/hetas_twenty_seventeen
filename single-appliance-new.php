@@ -13,7 +13,7 @@ rewind_posts();
 <?php get_header(); ?>
 
 
-	<?php get_template_part( 'header-parts/search', 'nav' ); ?>
+	<?php get_template_part( 'header-parts/search', 'brand' ); ?>
 		
 			<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?> 
 

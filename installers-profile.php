@@ -135,7 +135,6 @@ get_header();
 
 				</div>
 				
-				<?php get_sidebar('installers'); ?>
 
 			</div><!-- /main -->
 <?php get_footer();?>

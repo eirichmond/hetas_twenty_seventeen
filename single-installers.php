@@ -49,7 +49,6 @@ get_header(); ?>
 					<h2>Nothing Found</h2>
 					<?php endif; ?>	
 					
-					<?php get_sidebar('installers'); ?>
 					
 				</div>
 			</div><!-- /main -->

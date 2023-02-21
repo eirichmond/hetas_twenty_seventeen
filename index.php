@@ -16,7 +16,7 @@ get_header(); ?>
 
 	<div id="primary" class="content-area row">
 		
-		<?php get_template_part( 'header-parts/search', 'nav' ); ?>
+		<?php get_template_part( 'header-parts/search', 'brand' ); ?>
 		
 		<main id="main" class="site-main col-md-9" role="main">
 

@@ -129,8 +129,9 @@ function installer_user_check() {
     || current_user_can('manage_options');
 	if ( !is_user_logged_in() || !$access) {
         
-		wp_die('You\'ll need to be logged in to the HETAS website to access this exclusive content. <a href="'.home_url('/members-area/').'">Click here to login</a> or contact <a href="mailto:info@hetas.co.uk">info@hetas.co.uk</a> for more details or to reset your password.<br/><br/>
-        <a href="'.home_url().'">Click here to return to the homepage.</a>');
+		wp_redirect( home_url() . '/wp-admin/' );
+		exit;
+		
 	}
 }
 
@@ -480,7 +481,7 @@ function my_login_redirect( $redirect_to, $request, $user ) {
 	}
 }
 
-add_filter( 'login_redirect', 'my_login_redirect', 10, 3 );
+//add_filter( 'login_redirect', 'my_login_redirect', 10, 3 );
 
 /* meta fields / taxonomy shortcuts */
 

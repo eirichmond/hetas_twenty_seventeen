@@ -175,7 +175,7 @@ function menu_filters($sorted_menu_items, $args) {
 	}
 	return $sorted_menu_items;
 }
-add_filter('wp_nav_menu_objects','menu_filters',10,2);
+//add_filter('wp_nav_menu_objects','menu_filters',10,2);
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
@@ -352,7 +352,7 @@ include_once 'metaboxes/ta-manufacturers-spec.php';
 /**
  * Include all legacy
  */
-require get_template_directory() . '/inc/settings.php';
+// require get_template_directory() . '/inc/settings.php';
 require get_template_directory() . '/inc/legacy-code.php';
 require get_template_directory() . '/inc/required-legacy-code.php';
 

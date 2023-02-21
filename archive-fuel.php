@@ -123,7 +123,7 @@ $google_api_key = hetas_gm_api_key();
 
 ?>
 
-<?php get_template_part( 'header-parts/search', 'nav' ); ?>
+<?php get_template_part( 'header-parts/search', 'brand' ); ?>
 
 			<?php if ($has_location) : ?> 
 				<div class="heading">

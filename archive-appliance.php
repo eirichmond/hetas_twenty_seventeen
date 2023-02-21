@@ -8,6 +8,7 @@ $update = array(
 	'paged' => $paged
 );
 
+
 if (isset($_GET['manufacturer']) && $_GET['manufacturer']) {
 	$update['tax_query'][] = array(
 		'taxonomy' => 'manufacturers',
@@ -227,7 +228,7 @@ if ($update) {
 ?>
 
 
-	<?php get_template_part( 'header-parts/search', 'nav' ); ?>
+	<?php get_template_part( 'header-parts/search', 'brand' ); ?>
 
 		<?php if ( $prem_posts->have_posts() ) : ?>
 			<div class="heading">

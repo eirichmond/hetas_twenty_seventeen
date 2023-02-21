@@ -19,11 +19,7 @@ get_header(); ?>
 				<div class="page-content">
 
 
-					<?php
-						$post = get_post('253242');
-						$output =  apply_filters( 'the_content', $post->post_content );
-						echo $output;
-					?>
+					<h2 class="nopage">Sorry, this page no longer exists.</h2>
 
 
 				</div><!-- .page-content -->

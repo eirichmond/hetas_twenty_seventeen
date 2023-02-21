@@ -52,7 +52,7 @@ if(!is_user_logged_in()) {
 		<div class="row">
 			<div class="col-md-12">
 
-				<?php get_template_part( 'header-parts/header', 'nav' ); ?>
+				<?php get_template_part( 'header-parts/header', 'brand' ); ?>
 
 			</div>
 		</div>
